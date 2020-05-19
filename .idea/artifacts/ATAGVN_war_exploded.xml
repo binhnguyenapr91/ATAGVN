@@ -8,16 +8,13 @@
           <element id="module-output" name="ATAGVN" />
         </element>
         <element id="directory" name="lib">
-<<<<<<< HEAD
-          <element id="library" level="project" name="taglibs-standard-impl-1.2.5" />
-=======
+
           <element id="library" level="project" name="jstl-1.2" />
           <element id="library" level="project" name="Java EE 6-Java EE 6" />
           <element id="library" level="project" name="mysql-connector-java-5.1.48-bin" />
           <element id="library" level="project" name="taglibs-standard-impl-1.2.5" />
           <element id="library" level="project" name="taglibs-standard-impl-1.2.51" />
           <element id="library" level="project" name="taglibs-standard-spec-1.2.5" />
->>>>>>> a0f0d39b9a172bc8df5f3f4e52f46c477f151547
         </element>
       </element>
     </root>

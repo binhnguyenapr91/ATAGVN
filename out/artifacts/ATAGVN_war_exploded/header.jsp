@@ -1,10 +1,7 @@
 <%@ page import="service.CategoryServiceImp" %>
 <%@ page import="model.Category" %>
-<<<<<<< HEAD
-=======
 <%@ page import="service.ProductServiceImp" %>
 <%@ page import="model.Product" %>
->>>>>>> a0f0d39b9a172bc8df5f3f4e52f46c477f151547
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -58,11 +55,7 @@
                             <%
                                 for (Category category: categoryServiceImp.getListCategory()){
                             %>
-<<<<<<< HEAD
-                            <li><a href="product-page.html"><%=category.getCategoryName()%></a></li>
-=======
                             <li><a href="showAllProduct.jsp?categoryId=<%=category.getCategoryId()%>"><%=category.getCategoryName()%></a></li>
->>>>>>> a0f0d39b9a172bc8df5f3f4e52f46c477f151547
                             <%
                                 }
                             %>
