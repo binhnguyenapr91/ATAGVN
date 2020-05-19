@@ -36,7 +36,24 @@ public class ProductServiceImp implements ProductService{
 
     @Override
     public List<Product> getListProduct(String categoryId) throws SQLException {
-        return null;
+        Connection connection = DBConnect.getConnection();
+        String sql = "select * from product where CategoryId = '" + categoryId + "'";
+        PreparedStatement ps = connection.prepareCall(sql);
+        ResultSet rs = ps.executeQuery();
+        ArrayList<Product> products = new ArrayList<>();
+        while (rs.next()) {
+            Product product = new Product();
+            product.setProductId(rs.getString("ProductID"));
+            product.setCategoryId(rs.getString("CategoryId"));
+            product.setProductName(rs.getString("ProductName"));
+            product.setProductPrice(rs.getFloat("ProductPrice"));
+            product.setQuantityInStock(rs.getInt("QuantityInStock"));
+            product.setImage(rs.getString("Image"));
+            product.setStatus(rs.getInt("Status"));
+            product.setDescription(rs.getString("Description"));
+            products.add(product);
+        }
+        return products;
     }
 
     @Override
@@ -102,5 +119,27 @@ public class ProductServiceImp implements ProductService{
             product.setDescription(rs.getString("Description"));
         }
         return product;
+    }
+
+    @Override
+    public List<Product> sortProduct() throws SQLException {
+        Connection connection = DBConnect.getConnection();
+        String sql = "select * from product order by ProductPrice desc ";
+        PreparedStatement ps = connection.prepareCall(sql);
+        ResultSet rs = ps.executeQuery();
+        ArrayList<Product> products = new ArrayList<>();
+        while (rs.next()) {
+            Product product = new Product();
+            product.setProductId(rs.getString("ProductID"));
+            product.setCategoryId(rs.getString("CategoryId"));
+            product.setProductName(rs.getString("ProductName"));
+            product.setProductPrice(rs.getFloat("ProductPrice"));
+            product.setQuantityInStock(rs.getInt("QuantityInStock"));
+            product.setImage(rs.getString("Image"));
+            product.setStatus(rs.getInt("Status"));
+            product.setDescription(rs.getString("Description"));
+            products.add(product);
+        }
+        return products;
     }
 }

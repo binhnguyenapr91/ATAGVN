@@ -53,7 +53,7 @@
                             <%
                                 for (Category category: categoryServiceImp.getListCategory()){
                             %>
-                            <li><a href="product-page.html"><%=category.getCategoryName()%></a></li>
+                            <li><a href="showAllProduct.jsp?categoryId=<%=category.getCategoryId()%>"><%=category.getCategoryName()%></a></li>
                             <%
                                 }
                             %>

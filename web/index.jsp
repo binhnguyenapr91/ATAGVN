@@ -1,6 +1,8 @@
 <%@ page import="service.ProductServiceImp" %>
 <%@ page import="model.Product" %>
 <%@ page import="java.text.NumberFormat" %>
+<%@ page import="service.CategoryServiceImp" %>
+<%@ page import="model.Category" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
@@ -28,6 +30,8 @@
 <%
     ProductServiceImp productServiceImp = new ProductServiceImp();
     NumberFormat numberFormat = NumberFormat.getNumberInstance();
+    CategoryServiceImp categoryServiceImp = new CategoryServiceImp();
+
 %>
 <%--HEADER--%>
 <jsp:include page="header.jsp"></jsp:include>
@@ -43,7 +47,13 @@
 <%--CATEGORY 1--%>
 <div class="categories-block">
     <h2 class="col-xl-2" style="padding-left: 40px">SAMSUNG</h2>
-    <a href="#"><h6 class="showall">Show all</h6></a>
+    <%
+        Category category = categoryServiceImp.getCategory(request.getParameter("categoryId"));
+    %>
+    <a href="showAllProduct.jsp?catrgoryId=<%=category.getCategoryId()%>"><h6 class="showall">Show all</h6></a>
+    <%
+
+    %>
     <br>
     <div class="row">
         <%
@@ -70,7 +80,7 @@
 <%--CATEGORY 2--%>
 <div class="categories-block">
     <h2 class="col-xl-2" style="padding-left: 40px">APPLE</h2>
-    <a href="#"><h6 class="showall">Show all</h6></a>
+    <a href="showAllProduct.jsp?categoryId=<%=category.getCategoryId()%>"><h6 class="showall">Show all</h6></a>
     <br>
     <div class="row">
         <%

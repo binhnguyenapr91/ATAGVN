@@ -1,3 +1,6 @@
+<%@ page import="service.ProductServiceImp" %>
+<%@ page import="model.Product" %>
+<%@ page import="java.text.NumberFormat" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -22,9 +25,11 @@
 </head>
 <body>
 
-
+<%
+    ProductServiceImp productServiceImp = new ProductServiceImp();
+    NumberFormat format = NumberFormat.getNumberInstance();
+%>
 <%--HEADER--%>
-
 <jsp:include page="header.jsp"></jsp:include>
 <jsp:include page="header-infor.jsp"></jsp:include>
 
@@ -49,24 +54,22 @@
     <div class="productListShow" style="margin: 30px">
 
 <%--        Vòng lặp ở đây để show lần lượt tất cả sản phẩm--%>
-
+        <%
+            for (Product product: productServiceImp.getListProduct(request.getParameter("categoryId"))){
+        %>
         <div style="padding-top: 40px; padding-bottom: 60px">
             <table style="margin-bottom: 60px">
                 <tr>
-                    <td rowspan="3"><img class="card-img-top" src="img/phone1.png" style="height: 100%;width: 100%">
+                    <td rowspan="3"><img class="card-img-top" src="<%=product.getImage()%>" style="height: 100%;width: 100%">
                     </td>
-                    <td><h4>OPPO RENO3 PRO</h4></td>
+                    <td><h4><%=product.getProductName()%></h4></td>
                 </tr>
                 <tr>
-                    <td style="vertical-align: top; color: red">Giá bán : 12.990.000₫</td>
+                    <td style="vertical-align: top; color: red">Giá bán : <%=format.format(product.getProductPrice())%>₫</td>
                 </tr>
                 <tr>
-                    <td style="line-height:25px; vertical-align: top">MÀN HÌNH ĐỤC LỖ KÉP ĐỘC ĐÁO : Sáng tạo và khác
-                        biệt <br>
-                        CAMERA SELFIE KÉP ĐÊM 44MP + 2MP : Xuất hiện đầu tiên trên thế giới <br>
-                        4 CAMERA 64MP ẢNH SIÊU NÉT 108MP <br>
-                        SẠC NHANH <br>
-                        HIỆU NĂNG CẢI TIẾN MẠNH MẼ <br>
+                    <td style="line-height:25px; vertical-align: top">
+                        <%=product.getDescription()%>
                     </td>
                 </tr>
             </table>
@@ -74,6 +77,9 @@
             <hr style="width: 800px">
         </div>
     </div>
+    <%
+        }
+    %>
 </div>
 
 <%--FOOTER--%>
