@@ -35,7 +35,7 @@
                     <td><input type="password" name="password" style="border-radius: 2px"></td>
                 </tr>
                 <tr>
-                    <td><a href="/login?action=signup"><input type="button" value="SignUp"></a></td>
+                    <td><a href="/signUp.jsp"><input type="button" value="SignUp"></a></td>
                     <td><input type="submit" value="Login">&nbsp<a href=""> Forgot Password ?</a></td>
                 </tr>
             </table>
