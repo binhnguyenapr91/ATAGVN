@@ -165,11 +165,25 @@ public class ProductServiceImp implements ProductService{
         return false;
     }
 
+    @Override
+    public boolean deleteProduct(String productId) throws SQLException {
+        try {
+            Connection connection = DBConnect.getConnection();
+            String sql = "DELETE FROM product WHERE ProductID = ?";
+            PreparedStatement ps = connection.prepareCall(sql);
+            ps.setString(1, productId);
+            int temp = ps.executeUpdate();
+            return temp == 1;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
     public static void main(String[] args) {
         Product product = new Product("IP130","OPP","Daikahuynh95",987654,1,"Dang Cap Nhat",0,"Dang Cap Nhat");
         ProductServiceImp productServiceImp = new ProductServiceImp();
         try {
-            productServiceImp.updateProduct(product);
+            productServiceImp.deleteProduct("IP131");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
