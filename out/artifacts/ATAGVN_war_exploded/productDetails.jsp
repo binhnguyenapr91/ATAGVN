@@ -38,7 +38,7 @@
         <br>
         <div class="row">
             <div class="col-lg-6 text-left">
-                <img src="<%=product.getImage()%>"/>
+                <img src="<%=product.getImage()%>" width="620" height="350"/>
             </div>
             <div class="col-lg-6">
                 <div class="product-content">

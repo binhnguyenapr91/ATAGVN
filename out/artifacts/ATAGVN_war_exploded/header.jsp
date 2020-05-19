@@ -3,6 +3,7 @@
 <%@ page import="service.ProductServiceImp" %>
 <%@ page import="model.Product" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -37,15 +38,43 @@
             </div>
             <div class="header-right">
                 <i class="fa fa-search"></i>
-                <i class="fa fa-user"></i>
+                <i class="fa fa-user">
+                    <c:set var = "checkLogin" scope = "session" value = "${isLogin}"/>
+                    <c:choose>
+                        <c:when test = "${checkLogin == 1}">
+                            ${loginName}
+                        </c:when>
+                        <c:otherwise>
+                        </c:otherwise>
+                    </c:choose>
+                </i>
                 <a href="#">
                     <i class="fa fa-shopping-bag"></i>
                     <span>2</span>
                 </a>
             </div>
             <div class="user-access">
-                <a href="#">Register</a>
-                <a href="#" class="in">Sign in</a>
+                <a href="/signUp.jsp">Register</a>
+                <a href="<c:set var = "checkLogin" scope = "session" value = "${isLogin}"/>
+                    <c:choose>
+                        <c:when test = "${checkLogin == 1}">
+                            /index.jsp
+                            <c:set var = "checkLogin" scope = "session" value = "0"/>
+                        </c:when>
+                        <c:otherwise>
+                            /login.jsp
+                        </c:otherwise>
+                    </c:choose>" class="in">
+                    <c:set var = "checkLogin" scope = "session" value = "${isLogin}"/>
+                    <c:choose>
+                        <c:when test = "${checkLogin == 1}">
+                            Sign Out
+                        </c:when>
+                        <c:otherwise>
+                            Sign In
+                        </c:otherwise>
+                    </c:choose>
+                </a>
             </div>
             <nav class="main-menu mobile-menu">
                 <ul>
