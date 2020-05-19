@@ -1,3 +1,6 @@
+<%@ page import="service.ProductServiceImp" %>
+<%@ page import="model.Product" %>
+<%@ page import="java.text.NumberFormat" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
@@ -21,6 +24,11 @@
     <link rel="stylesheet" href="boostrap/css/mainStyle.css">
 </head>
 <body>
+<%
+    ProductServiceImp productServiceImp = new ProductServiceImp();
+    Product product = productServiceImp.getProduct(request.getParameter("productId"));
+    NumberFormat format = NumberFormat.getNumberInstance();
+%>
 <%--HEADER--%>
 <jsp:include page="header.jsp"></jsp:include>
 <jsp:include page="header-infor.jsp"></jsp:include>
@@ -30,25 +38,21 @@
         <br>
         <div class="row">
             <div class="col-lg-6 text-left">
-                <img src="img/phone1.png"/>
+                <img src="<%=product.getImage()%>"/>
             </div>
             <div class="col-lg-6">
                 <div class="product-content">
-                    <h2>OPPO RENO3 PRO</h2>
+                    <h2><%=product.getProductName()%></h2>
                     <div class="price">
-                        <h5 style="color:red; padding-bottom: 15px">12.990.000₫</h5>
+                        <h5 style="color:red; padding-bottom: 15px"><%=format.format(product.getProductPrice())%>₫</h5>
                     </div>
                     <p class="description">
-                        MÀN HÌNH ĐỤC LỖ KÉP ĐỘC ĐÁO : Sáng tạo và khác biệt <br>
-                        CAMERA SELFIE KÉP ĐÊM 44MP + 2MP : Xuất hiện đầu tiên trên thế giới <br>
-                        4 CAMERA 64MP ẢNH SIÊU NÉT 108MP <br>
-                        SẠC NHANH <br>
-                        HIỆU NĂNG CẢI TIẾN MẠNH MẼ <br>
+                        <%=product.getDescription()%>
                     </p>
                     <table class="tags">
                         <tr>
                             <td>Tồn Kho :</td>
-                            <td><input style="background-color: transparent; border-color: transparent" type="text" name="quantityInStock" disabled value="2"></td>
+                            <td><input style="background-color: transparent; border-color: transparent" type="text" name="quantityInStock" disabled value="<%=product.getQuantityInStock()%>"></td>
                         </tr>
                     </table>
                     <div class="product-quantity">
