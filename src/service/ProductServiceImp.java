@@ -123,7 +123,7 @@ public class ProductServiceImp implements ProductService{
 
     @Override
     public void saveProduct(Product product) throws SQLException {
-        String sql = "INSERT INTO Product(ProductID,CategoryID,ProductName,ProductPrice,QuantityInStock,Image,Status,Desciption) VALUES (?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO product(ProductID,CategoryID,ProductName,ProductPrice,QuantityInStock,Image,Status,Description) VALUES (?,?,?,?,?,?,?,?)";
         Connection con = DBConnect.getConnection();
 
         try {
@@ -131,13 +131,47 @@ public class ProductServiceImp implements ProductService{
             ps.setString(1, product.getProductId());
             ps.setString(2, product.getCategoryId());
             ps.setString(3, product.getProductName());
-            ps.setString(4, product.getImage());
+            ps.setFloat(4,product.getProductPrice());
             ps.setInt(5, product.getQuantityInStock());
-            ps.setFloat(6,product.getProductPrice());
-            ps.setString(7,product.getDescription());
+            ps.setString(6, product.getImage());
+            ps.setInt(7,product.getStatus());
+            ps.setString(8,product.getDescription());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    public boolean updateProduct(Product product) throws SQLException {
+        Connection connection = DBConnect.getConnection();
+        String sql = "UPDATE product SET CategoryID=?, ProductName=?, ProductPrice=?,QuantityInStock=?, Image=?,Status=?,Description = ? WHERE ProductID = ?";
+
+        try {
+            PreparedStatement ps = connection.prepareCall(sql);
+            ps.setString(1, product.getCategoryId());
+            ps.setString(2, product.getProductName());
+            ps.setFloat(3, product.getProductPrice());
+            ps.setInt(4,product.getQuantityInStock());
+            ps.setString(5, product.getImage());
+            ps.setInt(6,product.getStatus());
+            ps.setString(7, product.getDescription());
+            ps.setString(8,product.getProductId());
+
+            return ps.executeUpdate()> 0;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        Product product = new Product("IP130","OPP","Daikahuynh95",987654,1,"Dang Cap Nhat",0,"Dang Cap Nhat");
+        ProductServiceImp productServiceImp = new ProductServiceImp();
+        try {
+            productServiceImp.updateProduct(product);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
     }
 }
