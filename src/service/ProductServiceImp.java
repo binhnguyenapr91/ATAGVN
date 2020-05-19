@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ProductServiceImp implements ProductService{
 
-    @Override
+
     public List<Product> getListProduct() throws SQLException {
         Connection connection = DBConnect.getConnection();
         String sql = "select * from product";
@@ -34,7 +34,7 @@ public class ProductServiceImp implements ProductService{
         return products;
     }
 
-    @Override
+
     public List<Product> getListProduct(String categoryId) throws SQLException {
         Connection connection = DBConnect.getConnection();
         String sql = "select * from product where CategoryId = '" + categoryId + "'";
@@ -56,7 +56,7 @@ public class ProductServiceImp implements ProductService{
         return products;
     }
 
-    @Override
+
     public List<Product> getListProductIP() throws SQLException {
         Connection connection = DBConnect.getConnection();
         String sql = "select product.* from product where ProductID like '%IP%' limit 3";
@@ -78,7 +78,7 @@ public class ProductServiceImp implements ProductService{
         return products;
     }
 
-    @Override
+
     public ArrayList<Product> getListProductSS() throws SQLException {
         Connection connection = DBConnect.getConnection();
         String sql = "\n" +
@@ -101,7 +101,7 @@ public class ProductServiceImp implements ProductService{
         return products;
     }
 
-    @Override
+
     public Product getProduct(String productId) throws SQLException {
         Connection connection = DBConnect.getConnection();
         String sql = "select * from product where ProductID = '"+productId+"'";
@@ -122,6 +122,15 @@ public class ProductServiceImp implements ProductService{
     }
 
     @Override
+<<<<<<< HEAD
+    public List<Product> showAllProduct() {
+        return null;
+    }
+
+    @Override
+    public void saveProduct(Product product) {
+
+=======
     public void saveProduct(Product product) throws SQLException {
         String sql = "INSERT INTO Product(ProductID,CategoryID,ProductName,ProductPrice,QuantityInStock,Image,Status,Desciption) VALUES (?,?,?,?,?,?,?,?)";
         Connection con = DBConnect.getConnection();
@@ -139,5 +148,6 @@ public class ProductServiceImp implements ProductService{
         } catch (SQLException e) {
             e.printStackTrace();
         }
+>>>>>>> a0f0d39b9a172bc8df5f3f4e52f46c477f151547
     }
 }
