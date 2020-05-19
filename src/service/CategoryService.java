@@ -8,4 +8,6 @@ import java.util.List;
 public interface CategoryService {
     public List<Category> getListCategory() throws SQLException;
 
+    public Category getCategory(String categoryId) throws SQLException;
+
 }
