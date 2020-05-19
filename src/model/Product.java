@@ -9,7 +9,6 @@ public class Product {
     private String image;
     private int status;
     private String description;
-    private String categoryName;
 
     public Product() {
     }
@@ -23,17 +22,6 @@ public class Product {
         this.image = image;
         this.status = status;
         this.description = description;
-    }
-
-    public Product(String productId, String productName, float productPrice, int quantityInStock, String image, int status, String description, String categoryName) {
-        this.productId = productId;
-        this.productName = productName;
-        this.productPrice = productPrice;
-        this.quantityInStock = quantityInStock;
-        this.image = image;
-        this.status = status;
-        this.description = description;
-        this.categoryName = categoryName;
     }
 
     public String getProductId() {
@@ -99,13 +87,4 @@ public class Product {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
-    }
-
 }
