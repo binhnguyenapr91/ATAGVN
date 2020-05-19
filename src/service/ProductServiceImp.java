@@ -36,7 +36,24 @@ public class ProductServiceImp implements ProductService{
 
     @Override
     public List<Product> getListProduct(String categoryId) throws SQLException {
-        return null;
+        Connection connection = DBConnect.getConnection();
+        String sql = "select * from product where CategoryId = '" + categoryId + "'";
+        PreparedStatement ps = connection.prepareCall(sql);
+        ResultSet rs = ps.executeQuery();
+        ArrayList<Product> products = new ArrayList<>();
+        while (rs.next()) {
+            Product product = new Product();
+            product.setProductId(rs.getString("ProductID"));
+            product.setCategoryId(rs.getString("CategoryId"));
+            product.setProductName(rs.getString("ProductName"));
+            product.setProductPrice(rs.getFloat("ProductPrice"));
+            product.setQuantityInStock(rs.getInt("QuantityInStock"));
+            product.setImage(rs.getString("Image"));
+            product.setStatus(rs.getInt("Status"));
+            product.setDescription(rs.getString("Description"));
+            products.add(product);
+        }
+        return products;
     }
 
     @Override
@@ -102,5 +119,25 @@ public class ProductServiceImp implements ProductService{
             product.setDescription(rs.getString("Description"));
         }
         return product;
+    }
+
+    @Override
+    public void saveProduct(Product product) throws SQLException {
+        String sql = "INSERT INTO Product(ProductID,CategoryID,ProductName,ProductPrice,QuantityInStock,Image,Status,Desciption) VALUES (?,?,?,?,?,?,?,?)";
+        Connection con = DBConnect.getConnection();
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, product.getProductId());
+            ps.setString(2, product.getCategoryId());
+            ps.setString(3, product.getProductName());
+            ps.setString(4, product.getImage());
+            ps.setInt(5, product.getQuantityInStock());
+            ps.setFloat(6,product.getProductPrice());
+            ps.setString(7,product.getDescription());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

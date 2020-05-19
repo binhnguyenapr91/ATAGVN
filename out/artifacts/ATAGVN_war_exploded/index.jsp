@@ -1,3 +1,6 @@
+<%@ page import="service.ProductServiceImp" %>
+<%@ page import="model.Product" %>
+<%@ page import="java.text.NumberFormat" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
@@ -22,6 +25,10 @@
 </head>
 <body>
 
+<%
+    ProductServiceImp productServiceImp = new ProductServiceImp();
+    NumberFormat numberFormat = NumberFormat.getNumberInstance();
+%>
 <%--HEADER--%>
 <jsp:include page="header.jsp"></jsp:include>
 <jsp:include page="header-infor.jsp"></jsp:include>
@@ -39,51 +46,23 @@
     <a href="#"><h6 class="showall">Show all</h6></a>
     <br>
     <div class="row">
+        <%
+            for (Product product: productServiceImp.getListProductSS()){
+        %>
         <div class="card col-xl-3" style="width: 18rem; padding: 25px 10px ">
-            <img class="card-img-top" src="img/phone1.png" alt="Card image cap">
+            <img class="card-img-top" src="<%=product.getImage()%>" alt="Card image cap">
             <div class="card-body">
-                <b><h5 class="card-title">OPPO RENO3 PRO</h5></b>
-                <h6 class="price" style="padding-bottom: 15px; color: red">Giá bán : 12.990.000₫</h6>
+                <b><h5 class="card-title"><%=product.getProductName()%></h5></b>
+                <h6 class="price" style="padding-bottom: 15px; color: red">Giá bán : <%=numberFormat.format(product.getProductPrice())%>₫</h6>
                 <p class="description">
-                    MÀN HÌNH ĐỤC LỖ KÉP ĐỘC ĐÁO : Sáng tạo và khác biệt <br>
-                    CAMERA SELFIE KÉP ĐÊM 44MP + 2MP : Xuất hiện đầu tiên trên thế giới <br>
-                    4 CAMERA 64MP ẢNH SIÊU NÉT 108MP <br>
-                    SẠC NHANH <br>
-                    HIỆU NĂNG CẢI TIẾN MẠNH MẼ <br>
+                    <%=product.getDescription()%>
                 </p>
-                <a href="productDetails.jsp" class="btn btn-primary">Chi Tiết</a>
+                <a href="productDetails.jsp?productId=<%=product.getProductId()%>" class="btn btn-primary">Chi Tiết</a>
             </div>
         </div>
-        <div class="card col-xl-3" style="width: 18rem; padding: 25px 10px ">
-            <img class="card-img-top" src="img/phone1.png" alt="Card image cap">
-            <div class="card-body">
-                <b><h5 class="card-title">OPPO RENO3 PRO</h5></b>
-                <h6 class="price" style="padding-bottom: 15px; color: red">Giá bán : 12.990.000₫</h6>
-                <p class="description">
-                    MÀN HÌNH ĐỤC LỖ KÉP ĐỘC ĐÁO : Sáng tạo và khác biệt <br>
-                    CAMERA SELFIE KÉP ĐÊM 44MP + 2MP : Xuất hiện đầu tiên trên thế giới <br>
-                    4 CAMERA 64MP ẢNH SIÊU NÉT 108MP <br>
-                    SẠC NHANH <br>
-                    HIỆU NĂNG CẢI TIẾN MẠNH MẼ <br>
-                </p>
-                <a href="productDetails.jsp" class="btn btn-primary">Chi Tiết</a>
-            </div>
-        </div>
-        <div class="card col-xl-3" style="width: 18rem; padding: 25px 10px ">
-            <img class="card-img-top" src="img/phone1.png" alt="Card image cap">
-            <div class="card-body">
-                <b><h5 class="card-title">OPPO RENO3 PRO</h5></b>
-                <h6 class="price" style="padding-bottom: 15px; color: red">Giá bán : 12.990.000₫</h6>
-                <p class="description">
-                    MÀN HÌNH ĐỤC LỖ KÉP ĐỘC ĐÁO : Sáng tạo và khác biệt <br>
-                    CAMERA SELFIE KÉP ĐÊM 44MP + 2MP : Xuất hiện đầu tiên trên thế giới <br>
-                    4 CAMERA 64MP ẢNH SIÊU NÉT 108MP <br>
-                    SẠC NHANH <br>
-                    HIỆU NĂNG CẢI TIẾN MẠNH MẼ <br>
-                </p>
-                <a href="productDetails.jsp" class="btn btn-primary">Chi Tiết</a>
-            </div>
-        </div>
+        <%
+            }
+        %>
     </div>
     <br>
 </div>
@@ -94,51 +73,23 @@
     <a href="#"><h6 class="showall">Show all</h6></a>
     <br>
     <div class="row">
+        <%
+            for (Product product: productServiceImp.getListProductIP()){
+        %>
         <div class="card col-xl-3" style="width: 18rem; padding: 25px 10px ">
-            <img class="card-img-top" src="img/phone1.png" alt="Card image cap">
+            <img class="card-img-top" src="<%=product.getImage()%>" alt="Card image cap">
             <div class="card-body">
-                <b><h5 class="card-title">OPPO RENO3 PRO</h5></b>
-                <h6 class="price" style="padding-bottom: 15px; color: red">Giá bán : 12.990.000₫</h6>
+                <b><h5 class="card-title"><%=product.getProductName()%></h5></b>
+                <h6 class="price" style="padding-bottom: 15px; color: red">Giá bán : <%=numberFormat.format(product.getProductPrice())%>₫</h6>
                 <p class="description">
-                    MÀN HÌNH ĐỤC LỖ KÉP ĐỘC ĐÁO : Sáng tạo và khác biệt <br>
-                    CAMERA SELFIE KÉP ĐÊM 44MP + 2MP : Xuất hiện đầu tiên trên thế giới <br>
-                    4 CAMERA 64MP ẢNH SIÊU NÉT 108MP <br>
-                    SẠC NHANH <br>
-                    HIỆU NĂNG CẢI TIẾN MẠNH MẼ <br>
+                    <%=product.getDescription()%>
                 </p>
-                <a href="productDetails.jsp" class="btn btn-primary">Chi Tiết</a>
+                <a href="productDetails.jsp?productId=<%=product.getProductId()%>" class="btn btn-primary">Chi Tiết</a>
             </div>
         </div>
-        <div class="card col-xl-3" style="width: 18rem; padding: 25px 10px ">
-            <img class="card-img-top" src="img/phone1.png" alt="Card image cap">
-            <div class="card-body">
-                <b><h5 class="card-title">OPPO RENO3 PRO</h5></b>
-                <h6 class="price" style="padding-bottom: 15px; color: red">Giá bán : 12.990.000₫</h6>
-                <p class="description">
-                    MÀN HÌNH ĐỤC LỖ KÉP ĐỘC ĐÁO : Sáng tạo và khác biệt <br>
-                    CAMERA SELFIE KÉP ĐÊM 44MP + 2MP : Xuất hiện đầu tiên trên thế giới <br>
-                    4 CAMERA 64MP ẢNH SIÊU NÉT 108MP <br>
-                    SẠC NHANH <br>
-                    HIỆU NĂNG CẢI TIẾN MẠNH MẼ <br>
-                </p>
-                <a href="productDetails.jsp" class="btn btn-primary">Chi Tiết</a>
-            </div>
-        </div>
-        <div class="card col-xl-3" style="width: 18rem; padding: 25px 10px ">
-            <img class="card-img-top" src="img/phone1.png" alt="Card image cap">
-            <div class="card-body">
-                <b><h5 class="card-title">OPPO RENO3 PRO</h5></b>
-                <h6 class="price" style="padding-bottom: 15px; color: red">Giá bán : 12.990.000₫</h6>
-                <p class="description">
-                    MÀN HÌNH ĐỤC LỖ KÉP ĐỘC ĐÁO : Sáng tạo và khác biệt <br>
-                    CAMERA SELFIE KÉP ĐÊM 44MP + 2MP : Xuất hiện đầu tiên trên thế giới <br>
-                    4 CAMERA 64MP ẢNH SIÊU NÉT 108MP <br>
-                    SẠC NHANH <br>
-                    HIỆU NĂNG CẢI TIẾN MẠNH MẼ <br>
-                </p>
-                <a href="productDetails.jsp" class="btn btn-primary">Chi Tiết</a>
-            </div>
-        </div>
+      <%
+          }
+      %>
     </div>
     <br>
 </div>

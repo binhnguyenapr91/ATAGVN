@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 @WebServlet(name="productServlet", urlPatterns = "/productServlet")
@@ -43,7 +44,11 @@ public class ProductServlet extends HttpServlet {
         String categoryName = req.getParameter("categoryName");
 
         Product product = new Product(productID,productName,productPrice,quantityInStock,img,status,description,categoryName);
-        this.productService.saveProduct(product);
+        try {
+            this.productService.saveProduct(product);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("addProduct.jsp");
         req.setAttribute("message","New product is added!");
         requestDispatcher.forward(req,resp);
@@ -64,7 +69,12 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void listProducts(HttpServletRequest req, HttpServletResponse resp) {
-        List<Product> productList = this.productService.showAllProduct();
+        List<Product> productList = null;
+        try {
+            productList = this.productService.getListProduct();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
         req.setAttribute("productList",productList);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("admin.jsp");
         try {
