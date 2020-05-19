@@ -76,7 +76,7 @@
                     <th><input type="text" name="pmStatus" value="<%=product.getStatus()%>"></th>
                     <th><input type="text" name="pmDes" value="<%=product.getProductPrice()%>"></th>
                     <td><a href="/admin/updateProduct.jsp?productId=<%=product.getProductId()%>">Update</a></td>
-                    <td><a href="#">Delete</a></td>
+                    <td><a href="/deleteProduct?productId=<%=product.getProductId()%>">Delete</a></td>
                 </tr>
             <%
                 }
