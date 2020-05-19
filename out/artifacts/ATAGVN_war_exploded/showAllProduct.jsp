@@ -55,7 +55,7 @@
 
 <%--        Vòng lặp ở đây để show lần lượt tất cả sản phẩm--%>
         <%
-            for (Product product: productServiceImp.getListProduct(request.getParameter("categoryId"))){
+            for (Product product: productServiceImp.getListProduct(request.getParameter("CategoryID"))){
         %>
         <div style="padding-top: 40px; padding-bottom: 60px">
             <table style="margin-bottom: 60px">

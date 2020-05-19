@@ -49,8 +49,8 @@
             </div>
             <nav class="main-menu mobile-menu">
                 <ul>
-                    <li><a class="active" href="./index.html">Home</a></li>
-                    <li><a href="./categories.html">Category</a>
+                    <li><a class="active" href="index.jsp">Home</a></li>
+                    <li><a href="">Category</a>
                         <ul class="sub-menu">
                             <%
                                 for (Category category: categoryServiceImp.getListCategory()){
@@ -61,9 +61,18 @@
                             %>
                         </ul>
                     </li>
-                    <li><a href="./product-page.html">About</a></li>
-                    <li><a href="./check-out.html">Blog</a></li>
-                    <li><a href="./contact.html">Contact</a></li>
+                    <li><a href="">Blog</a>
+                        <ul class="sub-menu">
+                            <li><a href="">ATAG.VN Story</a></li>
+                            <li><a href="">How to become a perfect Online Market ?</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="">Contact</a>
+                        <ul class="sub-menu">
+                            <li><a href="">Phone : (024).0000-0000</a></li>
+                            <li><a href="">Email : cskh@atag.vn</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
         </div>
