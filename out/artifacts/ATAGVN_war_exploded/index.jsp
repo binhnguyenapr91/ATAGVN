@@ -1,6 +1,8 @@
 <%@ page import="service.ProductServiceImp" %>
 <%@ page import="model.Product" %>
 <%@ page import="java.text.NumberFormat" %>
+<%@ page import="service.CategoryServiceImp" %>
+<%@ page import="model.Category" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
@@ -28,6 +30,8 @@
 <%
     ProductServiceImp productServiceImp = new ProductServiceImp();
     NumberFormat numberFormat = NumberFormat.getNumberInstance();
+    CategoryServiceImp categoryServiceImp = new CategoryServiceImp();
+    Category category = categoryServiceImp.getCategory(request.getParameter("categoryId"));
 %>
 <%--HEADER--%>
 <jsp:include page="header.jsp"></jsp:include>
