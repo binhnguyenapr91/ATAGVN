@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ProductServiceImp implements ProductService{
 
-    @Override
+
     public List<Product> getListProduct() throws SQLException {
         Connection connection = DBConnect.getConnection();
         String sql = "select * from product";
@@ -34,12 +34,12 @@ public class ProductServiceImp implements ProductService{
         return products;
     }
 
-    @Override
+
     public List<Product> getListProduct(String categoryId) throws SQLException {
         return null;
     }
 
-    @Override
+
     public List<Product> getListProductIP() throws SQLException {
         Connection connection = DBConnect.getConnection();
         String sql = "select product.* from product where ProductID like '%IP%' limit 3";
@@ -61,7 +61,7 @@ public class ProductServiceImp implements ProductService{
         return products;
     }
 
-    @Override
+
     public ArrayList<Product> getListProductSS() throws SQLException {
         Connection connection = DBConnect.getConnection();
         String sql = "\n" +
@@ -84,7 +84,7 @@ public class ProductServiceImp implements ProductService{
         return products;
     }
 
-    @Override
+
     public Product getProduct(String productId) throws SQLException {
         Connection connection = DBConnect.getConnection();
         String sql = "select * from product where ProductID = '"+productId+"'";
@@ -102,5 +102,15 @@ public class ProductServiceImp implements ProductService{
             product.setDescription(rs.getString("Description"));
         }
         return product;
+    }
+
+    @Override
+    public List<Product> showAllProduct() {
+        return null;
+    }
+
+    @Override
+    public void saveProduct(Product product) {
+
     }
 }

@@ -1,3 +1,5 @@
+<%@ page import="service.CategoryServiceImp" %>
+<%@ page import="model.Category" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -21,6 +23,10 @@
     <link rel="stylesheet" href="boostrap/css/mainStyle.css">
 </head>
 <body>
+
+<%
+    CategoryServiceImp categoryServiceImp = new CategoryServiceImp();
+%>
 <header class="header-section">
     <div class="container-fluid">
         <div class="inner-header">
@@ -44,8 +50,13 @@
                     <li><a class="active" href="./index.html">Home</a></li>
                     <li><a href="./categories.html">Category</a>
                         <ul class="sub-menu">
-                            <li><a href="product-page.html">Samsung</a></li>
-                            <li><a href="shopping-cart.html">Apple</a></li>
+                            <%
+                                for (Category category: categoryServiceImp.getListCategory()){
+                            %>
+                            <li><a href="product-page.html"><%=category.getCategoryName()%></a></li>
+                            <%
+                                }
+                            %>
                         </ul>
                     </li>
                     <li><a href="./product-page.html">About</a></li>

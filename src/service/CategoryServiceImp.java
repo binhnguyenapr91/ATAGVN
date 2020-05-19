@@ -27,7 +27,7 @@ public class CategoryServiceImp implements CategoryService {
         return list;
     }
 
-    @Override
+
     public Category getCategory(String categoryId) throws SQLException {
         Connection connection = DBConnect.getConnection();
         String sql =  "select * from category where CategoryID=  '"+categoryId+"'";
