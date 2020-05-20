@@ -24,4 +24,6 @@ public interface ProductService {
     public boolean updateProduct(Product product) throws SQLException;
 
     public boolean deleteProduct(String productId) throws SQLException;
+
+    public List<Product> searchProduct(String searchName) throws SQLException;
 }
