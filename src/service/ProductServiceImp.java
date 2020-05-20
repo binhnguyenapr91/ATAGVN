@@ -209,7 +209,7 @@ public class ProductServiceImp implements ProductService {
         List<Product> productList = new ArrayList<>();
         try(Connection connection = DBConnect.getConnection();
             PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setString(1,"%"+searchName+"%");
+            statement.setString(1,"%_"+searchName+"_%");
             ResultSet rs = statement.executeQuery();
             while (rs.next()){
                 String id = rs.getString("ProductID");
@@ -233,6 +233,7 @@ public class ProductServiceImp implements ProductService {
         Product product = new Product("IP130", "OPP", "Daikahuynh95", 987654, 1, "Dang Cap Nhat", 0, "Dang Cap Nhat");
         ProductServiceImp productServiceImp = new ProductServiceImp();
         try {
+
 
             for (Product p:productServiceImp.getListProduct("AAPL")
                  ) {

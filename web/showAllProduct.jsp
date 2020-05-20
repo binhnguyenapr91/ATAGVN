@@ -47,11 +47,18 @@
     </div>
     <div class="cf-left" style="margin-bottom: 20px">
         <form action="#">
-            <select class="sort">
-                <option value="">Sort by</option>
-                <option value="">Price (Lowest first)</option>
-                <option value="">Price (Highest first)</option>
-            </select>
+            <table>
+                <tr>
+                    <td><select name="sortPrice" class="sort">
+                        <option value="">Sort by</option>
+                        <option value="">Price (Lowest first)</option>
+                        <option value="">Price (Highest first)</option>
+                    </select>
+                    </td>
+                    <td><input type="button" value="Sort"></td>
+                </tr>
+            </table>
+
         </form>
     </div>
     <div class="productListShow" style="margin: 30px">
