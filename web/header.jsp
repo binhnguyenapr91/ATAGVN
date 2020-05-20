@@ -37,7 +37,7 @@
                 <a href="index.jsp"><img src="img/logo.png" alt="logo"></a>
             </div>
             <div class="header-right">
-                <i class="fa fa-search"></i>
+                <a href="search.jsp"><i class="fa fa-search"></i></a>
                 <i class="fa fa-user">&nbsp${sessionScope['cookieUserName']}</i>
                 <a href="cart.jsp">
                     <i class="fa fa-shopping-bag"></i>
@@ -56,12 +56,10 @@
                             /&nbsp&nbsp&nbsp&nbspSign In
                         </c:otherwise>
                     </c:choose></a>
-                <a href="/index.jsp" class="in"><c:set var = "isLogined" scope = "session" value = "${sessionScope['cookieUserName']}"/>
+                <a href="/loginSession" class="in"><c:set var = "isLogined" scope = "session" value = "${sessionScope['cookieUserName']}"/>
                     <c:choose>
                         <c:when test = "${isLogined != null}">
                             /&nbsp&nbsp&nbsp&nbspSign Out
-                            <% HttpSession ss =request.getSession();
-                            ss.invalidate(); %>
                         </c:when>
                         <c:otherwise>
                         </c:otherwise>
