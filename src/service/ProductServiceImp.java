@@ -167,7 +167,6 @@ public class ProductServiceImp implements ProductService {
     public boolean updateProduct(Product product) throws SQLException {
         Connection connection = DBConnect.getConnection();
         String sql = "UPDATE atagvn.product SET CategoryID=?, ProductName=?, ProductPrice=?,QuantityInStock=?, Image=?,Status=?,Description = ? WHERE ProductID = ?";
-
         try {
             PreparedStatement ps = connection.prepareCall(sql);
             ps.setString(1, product.getCategoryId());
@@ -200,6 +199,32 @@ public class ProductServiceImp implements ProductService {
         }
     }
 
+    @Override
+    public List<Product> searchProduct(String searchName) throws SQLException {
+        String sql = "select * from product where ProductName like ?";
+        List<Product> productList = new ArrayList<>();
+        try(Connection connection = DBConnect.getConnection();
+            PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1,"%"+searchName+"%");
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()){
+                String id = rs.getString("ProductID");
+                String categoryId = rs.getString("CategoryID");
+                String productName = rs.getString("ProductName");
+                float price = rs.getFloat("ProductPrice");
+                int quantity = rs.getInt("QuantityInStock");
+                String idmage = rs.getString("Image");
+                int status = rs.getInt("Status");
+                String des = rs.getString("Description");
+
+                productList.add(new Product(id,categoryId,productName,price,quantity,idmage,status,des));
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return productList;
+    }
+
     public static void main(String[] args) {
         Product product = new Product("IP130", "OPP", "Daikahuynh95", 987654, 1, "Dang Cap Nhat", 0, "Dang Cap Nhat");
         ProductServiceImp productServiceImp = new ProductServiceImp();
@@ -214,4 +239,6 @@ public class ProductServiceImp implements ProductService {
             throwables.printStackTrace();
         }
     }
+
+
 }
