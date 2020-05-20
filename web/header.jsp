@@ -4,6 +4,7 @@
 <%@ page import="model.Product" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page session="true" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -26,7 +27,6 @@
     <link rel="stylesheet" href="boostrap/css/mainStyle.css">
 </head>
 <body>
-
 <%
     CategoryServiceImp categoryServiceImp = new CategoryServiceImp();
 %>
@@ -38,16 +38,7 @@
             </div>
             <div class="header-right">
                 <i class="fa fa-search"></i>
-                <i class="fa fa-user">
-                    <c:set var = "checkLogin" scope = "session" value = "${isLogin}"/>
-                    <c:choose>
-                        <c:when test = "${checkLogin == 1}">
-                            ${loginName}
-                        </c:when>
-                        <c:otherwise>
-                        </c:otherwise>
-                    </c:choose>
-                </i>
+                <i class="fa fa-user">&nbsp${sessionScope['cookieUserName']}</i>
                 <a href="#">
                     <i class="fa fa-shopping-bag"></i>
                     <span>2</span>
@@ -55,26 +46,26 @@
             </div>
             <div class="user-access">
                 <a href="/signUp.jsp">Register</a>
-                <a href="<c:set var = "checkLogin" scope = "session" value = "${isLogin}"/>
+                <a href="/login.jsp" class="in">
+
+                    <c:set var = "isLogined" scope = "session" value = "${sessionScope['cookieUserName']}"/>
                     <c:choose>
-                        <c:when test = "${checkLogin == 1}">
-                            /index.jsp
-                            <c:set var = "checkLogin" scope = "session" value = "0"/>
+                        <c:when test = "${isLogined != null}">
                         </c:when>
                         <c:otherwise>
-                            /login.jsp
+                            /&nbsp&nbsp&nbsp&nbspSign In
                         </c:otherwise>
-                    </c:choose>" class="in">
-                    <c:set var = "checkLogin" scope = "session" value = "${isLogin}"/>
+                    </c:choose></a>
+                <a href="/index.jsp" class="in"><c:set var = "isLogined" scope = "session" value = "${sessionScope['cookieUserName']}"/>
                     <c:choose>
-                        <c:when test = "${checkLogin == 1}">
-                            Sign Out
+                        <c:when test = "${isLogined != null}">
+                            /&nbsp&nbsp&nbsp&nbspSign Out
+                            <% HttpSession ss =request.getSession();
+                            ss.invalidate(); %>
                         </c:when>
                         <c:otherwise>
-                            Sign In
                         </c:otherwise>
-                    </c:choose>
-                </a>
+                    </c:choose></a>
             </div>
             <nav class="main-menu mobile-menu">
                 <ul>
@@ -107,5 +98,25 @@
         </div>
     </div>
 </header>
+<style>
+    .inner-header .user-access a.in::before {
+        position: absolute;
+        left: -13px;
+        top: 1px;
+        color: #1e1e1e;
+        content: "";
+    }
+    .inner-header .user-access a {
+        color: #1e1e1e;
+        font-size: 16px;
+        display: inline-block;
+        font-weight: 500;
+        position: relative;
+        line-height: 42px;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+</style>
 </body>
 </html>
