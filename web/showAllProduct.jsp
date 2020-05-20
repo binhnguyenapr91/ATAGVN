@@ -43,7 +43,7 @@
 
 <div class="container">
     <div class="categoryName" style="margin-bottom: 20px">
-        <h3><%=categoryServiceImp.getCategory(request.getParameter("categoryId")).getCategoryName()%></h3>
+        <h3><%=categoryServiceImp.getCategory(request.getParameter("categoryID")).getCategoryName()%></h3>
     </div>
     <div class="cf-left" style="margin-bottom: 20px">
         <form action="#">
@@ -65,7 +65,7 @@
 
 <%--        Vòng lặp ở đây để show lần lượt tất cả sản phẩm--%>
         <%
-            for (Product product: productServiceImp.getListProduct(request.getParameter("categoryId"))){
+            for (Product product: productServiceImp.getListProduct(request.getParameter("categoryID"))){
         %>
         <div style="padding-top: 40px; padding-bottom: 60px">
             <table style="margin-bottom: 60px">

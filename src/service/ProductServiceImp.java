@@ -19,16 +19,16 @@ public class ProductServiceImp implements ProductService {
     public Product getProductDetail(String productId) {
         Connection connection = DBConnect.getConnection();
 
-        String sql = "select * from product where ProductID = '" + productId + "'";
+        String sql = "select * from atagvn.product where ProductID = '" + productId + "'";
 
         Product product = new Product();
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Category category = new Category(rs.getString("catagoryId"));
-                product.setProductId(rs.getString("productId"));
-                product.setCategoryName("catagory");
+                Category category = new Category(rs.getString("CatagoryID"));
+                product.setProductId(rs.getString("ProductID"));
+                product.setCategoryName("Category");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -60,14 +60,14 @@ public class ProductServiceImp implements ProductService {
 
     public List<Product> getListProduct(String categoryId) throws SQLException {
         Connection connection = DBConnect.getConnection();
-        String sql = "select * from atagvn.product where CategoryId = '" + categoryId + "'";
+        String sql = "select * from atagvn.product where CategoryID = '" + categoryId + "'";
         PreparedStatement ps = connection.prepareCall(sql);
         ResultSet rs = ps.executeQuery();
         ArrayList<Product> products = new ArrayList<>();
         while (rs.next()) {
             Product product = new Product();
             product.setProductId(rs.getString("ProductID"));
-            product.setCategoryId(rs.getString("CategoryId"));
+            product.setCategoryId(rs.getString("CategoryID"));
             product.setProductName(rs.getString("ProductName"));
             product.setProductPrice(rs.getFloat("ProductPrice"));
             product.setQuantityInStock(rs.getInt("QuantityInStock"));
@@ -89,7 +89,7 @@ public class ProductServiceImp implements ProductService {
         while (rs.next()) {
             Product product = new Product();
             product.setProductId(rs.getString("ProductID"));
-            product.setCategoryId(rs.getString("CategoryId"));
+            product.setCategoryId(rs.getString("CategoryID"));
             product.setProductName(rs.getString("ProductName"));
             product.setProductPrice(rs.getFloat("ProductPrice"));
             product.setQuantityInStock(rs.getInt("QuantityInStock"));
@@ -112,7 +112,7 @@ public class ProductServiceImp implements ProductService {
         while (rs.next()) {
             Product product = new Product();
             product.setProductId(rs.getString("ProductID"));
-            product.setCategoryId(rs.getString("CategoryId"));
+            product.setCategoryId(rs.getString("CategoryID"));
             product.setProductName(rs.getString("ProductName"));
             product.setProductPrice(rs.getFloat("ProductPrice"));
             product.setQuantityInStock(rs.getInt("QuantityInStock"));
@@ -135,7 +135,7 @@ public class ProductServiceImp implements ProductService {
         Product product = new Product();
         while (rs.next()) {
             product.setProductId(rs.getString("ProductID"));
-            product.setCategoryId(rs.getString("CategoryId"));
+            product.setCategoryId(rs.getString("CategoryID"));
             product.setProductName(rs.getString("ProductName"));
             product.setProductPrice(rs.getFloat("ProductPrice"));
             product.setQuantityInStock(rs.getInt("QuantityInStock"));
@@ -205,7 +205,7 @@ public class ProductServiceImp implements ProductService {
 
     @Override
     public List<Product> searchProduct(String searchName) throws SQLException {
-        String sql = "select * from product where ProductName like ?";
+        String sql = "select * from atagvn.product where ProductName like ?";
         List<Product> productList = new ArrayList<>();
         try(Connection connection = DBConnect.getConnection();
             PreparedStatement statement = connection.prepareStatement(sql)) {
