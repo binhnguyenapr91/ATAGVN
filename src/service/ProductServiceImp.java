@@ -18,7 +18,9 @@ public class ProductServiceImp implements ProductService {
     @Override
     public Product getProductDetail(String productId) {
         Connection connection = DBConnect.getConnection();
+
         String sql = "select * from product where ProductID = '" + productId + "'";
+
         Product product = new Product();
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -125,7 +127,9 @@ public class ProductServiceImp implements ProductService {
 
     public Product getProduct(String productId) throws SQLException {
         Connection connection = DBConnect.getConnection();
-        String sql = "select * from atagvn.product where ProductID = '" + productId + "'";
+
+        String sql = "select * from atagvn.product where ProductID = '"+productId+"'";
+
         PreparedStatement ps = connection.prepareCall(sql);
         ResultSet rs = ps.executeQuery();
         Product product = new Product();
@@ -229,8 +233,10 @@ public class ProductServiceImp implements ProductService {
         Product product = new Product("IP130", "OPP", "Daikahuynh95", 987654, 1, "Dang Cap Nhat", 0, "Dang Cap Nhat");
         ProductServiceImp productServiceImp = new ProductServiceImp();
         try {
-            for (Product p : productServiceImp.getListProduct("AAPL")
-            ) {
+
+
+            for (Product p:productServiceImp.getListProduct("AAPL")
+                 ) {
                 System.out.println(p.getProductName());
             }
 
