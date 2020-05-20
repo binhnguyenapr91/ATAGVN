@@ -56,13 +56,13 @@
     <br>
     <div class="row">
         <%
-            for (Product product: productServiceImp.getListProductSS()){
+            for (Product product: productServiceImp.getListProduct(cate.getCategoryId())){
         %>
         <div class="card col-xl-3" style="width: 18rem; padding: 25px 10px ">
             <img class="card-img-top" src="<%=product.getImage()%>" alt="Card image cap" width="620" height="350">
             <div class="card-body">
                 <b><h5 class="card-title"><%=product.getProductName()%></h5></b>
-                <h6 class="price" style="padding-bottom: 15px; color: red">Giá bán : <%=numberFormat.format(product.getProductPrice())%>₫</h6>
+                <h6 class="price" style="padding-bottom: 15px; color: #ff0000">Giá bán : <%=numberFormat.format(product.getProductPrice())%>₫</h6>
                 <p class="description">
                     <%=product.getDescription()%>
                 </p>
