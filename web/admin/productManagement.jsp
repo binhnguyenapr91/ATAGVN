@@ -74,7 +74,7 @@
                     <th><input type="text" name="pmQuantity" value="<%=product.getQuantityInStock()%>"></th>
                     <th><img src="../<%=product.getImage()%>"/></th>
                     <th><input type="text" name="pmStatus" value="<%=product.getStatus()%>"></th>
-                    <th><input type="text" name="pmDes" value="<%=product.getProductPrice()%>"></th>
+                    <th><textarea cols="20" rows="6" name="pmDes" value="<%=product.getDescription()%>" ></textarea></th>
                     <td><a href="/admin/updateProduct.jsp?productId=<%=product.getProductId()%>">Update</a></td>
                     <td><a href="/deleteProduct?productId=<%=product.getProductId()%>">Delete</a></td>
                 </tr>
