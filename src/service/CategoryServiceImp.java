@@ -35,7 +35,7 @@ public class CategoryServiceImp implements CategoryService {
         ResultSet rs = ps.executeQuery();
         Category category = new Category();
         while (rs.next()) {
-            category.setCategoryId(rs.getString("CategoryId"));
+            category.setCategoryId(rs.getString("CategoryID"));
             category.setCategoryName(rs.getString("CategoryName"));
         }
         return category;

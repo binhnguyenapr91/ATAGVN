@@ -14,9 +14,9 @@ public class AccountImp implements AccountService {
     public static final String FIND_ACCOUNT_BY_LOGIN_NAME = "select * from atagvn.account where LoginName=?;";
     public static final String FIND_MAX_ACCOUNT_ID = "select * from atagvn.account where AccountID like 'CT%' order by AccountID desc limit 1;";
     public static final String ADD_NEW_ACCOUNT = "insert into atagvn.account values (?,?,?,?,?,?,?,?,?)";
-    public static final String SELECT_FROM_ACCOUNT = "select * from account;";
-    public static final String SELECT_BY_ID = "select * from account where AccountID = ?;";
-    public static final String UPDATE_ACCOUNT_BY_ID = "update account set AccountName = ?, LoginName=?,Password=?,AccountAccess=?,Address=?,PhoneNumber=?,Gender=?,Status=? where AccountID = ?;";
+    public static final String SELECT_FROM_ACCOUNT = "select * from atagvn.account;";
+    public static final String SELECT_BY_ID = "select * from atagvn.account where AccountID = ?;";
+    public static final String UPDATE_ACCOUNT_BY_ID = "update atagvn.account set AccountName = ?, LoginName=?,Password=?,AccountAccess=?,Address=?,PhoneNumber=?,Gender=?,Status=? where AccountID = ?;";
 
     @Override
     public Account findByLoginName(String loginName) {
@@ -33,10 +33,10 @@ public class AccountImp implements AccountService {
                 String accountName = resultSet.getString("AccountName");
                 String password = resultSet.getString("Password");
                 String accountAccess = resultSet.getString("AccountAccess");
-                String address = resultSet.getString("address");
-                String phoneNumber = resultSet.getString("phoneNumber");
-                boolean gender = Boolean.parseBoolean(resultSet.getString("gender"));
-                boolean status = Boolean.parseBoolean(resultSet.getString("status"));
+                String address = resultSet.getString("Address");
+                String phoneNumber = resultSet.getString("PhoneNumber");
+                boolean gender = Boolean.parseBoolean(resultSet.getString("Gender"));
+                boolean status = Boolean.parseBoolean(resultSet.getString("Status"));
 
                 account = new Account(accountId, accountName, loginName, accountAccess, password, address, phoneNumber, gender, status);
             }
