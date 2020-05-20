@@ -18,4 +18,8 @@ public interface ProductService {
     public Product getProduct(String productId) throws SQLException;
 
     public void saveProduct(Product product) throws SQLException;
+
+    public boolean updateProduct(Product product) throws SQLException;
+
+    public boolean deleteProduct(String productId) throws SQLException;
 }
