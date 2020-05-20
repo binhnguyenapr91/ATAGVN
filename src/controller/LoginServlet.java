@@ -7,9 +7,7 @@ import service.AccountService;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 
 @WebServlet(name = "LoginServlet", urlPatterns = "/login")
@@ -137,15 +135,19 @@ public class LoginServlet extends HttpServlet {
                     request.setAttribute("announcement", announcement);
                     requestDispatcher.forward(request, response);
                 } else {
-                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("admin.jsp");
+                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("productManagement.jsp");
                     requestDispatcher.forward(request, response);
                 }
             } else if (account.getPassword().equals(password)) {
-                RequestDispatcher requestDispatcher1 = request.getRequestDispatcher("index.jsp");
-                int logined = 1;
-                request.setAttribute("loginName", userName);
-                request.setAttribute("isLogin", logined);
-                requestDispatcher1.forward(request, response);
+                String logined = "ok";
+
+                HttpSession httpSession = request.getSession();
+
+                httpSession.setAttribute("cookieUserName",userName);
+                httpSession.setAttribute("cookieIsLogin",logined);
+
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
+                requestDispatcher.forward(request,response);
             } else {
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
                 String announcement = "Wrong 'password'. Please try again!";

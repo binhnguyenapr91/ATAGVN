@@ -22,7 +22,7 @@
     </c:if>
 </p>
 <p>
-    <a href="admin.jsp">Back to Product list</a>
+    <a href="productManagement.jsp">Back to Product list</a>
 </p>
 <form style = "margin-top: 40px" enctype='multipart/form-data' method="post" action="${pageContext.request.contextPath}/addProduct">
     <fieldset>
