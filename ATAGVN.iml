@@ -32,6 +32,10 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="mysql-connector-java-5.1.48-bin" level="project" />
+<<<<<<< HEAD
     <orderEntry type="library" name="mysql-connector-java-8.0.15" level="project" />
+=======
+    <orderEntry type="library" name="jstl-1.2" level="project" />
+>>>>>>> 24b5474fba1c17b68f1c2a674163b70a94772759
   </component>
 </module>
