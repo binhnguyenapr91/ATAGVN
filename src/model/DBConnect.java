@@ -11,6 +11,7 @@ public class DBConnect {
         String url= "jdbc:mysql://localhost:3306/atagvn?&useSSL=false";
         String username = "root";
         String password = "sa1234$";
+
         try {
             // load Driver
             Class.forName("com.mysql.jdbc.Driver");
