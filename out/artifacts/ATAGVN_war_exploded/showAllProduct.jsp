@@ -25,10 +25,7 @@
 </head>
 <body>
 
-<%
-    ProductServiceImp productServiceImp = new ProductServiceImp();
-    NumberFormat format = NumberFormat.getNumberInstance();
-%>
+
 <%--HEADER--%>
 <jsp:include page="header.jsp"></jsp:include>
 <jsp:include page="header-infor.jsp"></jsp:include>
@@ -52,10 +49,13 @@
         </form>
     </div>
     <div class="productListShow" style="margin: 30px">
-
+        <%
+            ProductServiceImp productServiceImp = new ProductServiceImp();
+            NumberFormat format = NumberFormat.getNumberInstance();
+        %>
 <%--        Vòng lặp ở đây để show lần lượt tất cả sản phẩm--%>
         <%
-            for (Product product: productServiceImp.getListProduct(request.getParameter("CategoryID"))){
+            for (Product product: productServiceImp.getListProduct(request.getParameter("categoryId"))){
         %>
         <div style="padding-top: 40px; padding-bottom: 60px">
             <table style="margin-bottom: 60px">
