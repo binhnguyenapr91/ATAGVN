@@ -137,7 +137,7 @@ public class LoginServlet extends HttpServlet {
                     request.setAttribute("announcement", announcement);
                     requestDispatcher.forward(request, response);
                 } else {
-                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("admin.jsp");
+                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("productManagement.jsp");
                     requestDispatcher.forward(request, response);
                 }
             } else if (account.getPassword().equals(password)) {

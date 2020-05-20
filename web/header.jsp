@@ -37,7 +37,7 @@
                 <a href="index.jsp"><img src="img/logo.png" alt="logo"></a>
             </div>
             <div class="header-right">
-                <i class="fa fa-search"></i>
+                <a href="search.jsp"><i class="fa fa-search"></i></a>
                 <i class="fa fa-user">
                     <c:set var = "checkLogin" scope = "session" value = "${isLogin}"/>
                     <c:choose>
