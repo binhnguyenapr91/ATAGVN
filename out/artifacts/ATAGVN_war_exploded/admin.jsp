@@ -1,3 +1,7 @@
+<%@ page import="service.ProductServiceImp" %>
+<%@ page import="service.CategoryServiceImp" %>
+<%@ page import="model.Product" %>
+<%@ page import="java.text.NumberFormat" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -20,6 +24,11 @@
     <link rel="stylesheet" href="boostrap/css/bootstrap.css">
 </head>
 <body>
+<%
+    ProductServiceImp productDAO = new ProductServiceImp();
+    CategoryServiceImp categoryDAO = new CategoryServiceImp();
+    NumberFormat format = NumberFormat.getNumberInstance();
+%>
 <%--HEADER--%>
 <header class="header-section">
     <div class="container-fluid">
@@ -38,34 +47,40 @@
 <div class="mainManagement">
     <div class="productManagement" style="width: 1100px">
         <h3>Product Management</h3>
-        <h6><a href="#">Add more Product</a></h6>
+        <h6><a href="/admin/createProduct.jsp">Add more Product</a></h6>
         <table class="table table-hover">
             <thead>
             <tr>
                 <th>ID</th>
-                <th>Product Name</th>
                 <th>Category ID</th>
+                <th>Product Name</th>
                 <th>Product Price</th>
                 <th>Quantity In Stock</th>
-                <th>Description</th>
                 <th>Image</th>
+                <th>Status</th>
+                <th>Description</th>
                 <th colspan="2">#</th>
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${productList}" var="product">
+            <%
+                for (Product product: productDAO.getListProduct()){
+            %>
                 <tr>
-                    <th><input type="text" name="pmID" value="${product.getProductId()}" style="width: 160px;"></th>
-                    <th><input type="text" name="pmName" value="${product.getProductName()}"></th>
-                    <th><input type="text" name="pmCategoryID" value="${product.getCategoryName()}"></th>
-                    <th><input type="text" name="pmPrice" value="${product.getProductPrice()}"></th>
-                    <th><input type="text" name="pmStatus" value="${product.getStatus()}"></th>
-                    <th><input type="text" name="pmDes" value="${product.getDescription()}"></th>
-                    <th><img src="/img/phone1.png"/></th>
-                    <td><a href="#">Update</a></td>
-                    <td><a href="#">Delete</a></td>
+                    <th><input type="text" name="pmID" value="<%=product.getProductId()%>" style="width: 160px;"></th>
+                    <th><input type="text" name="pmCategoryID" value="<%=categoryDAO.getCategory(product.getCategoryId()).getCategoryName()%>"></th>
+                    <th><input type="text" name="pmName" value="<%=product.getProductName()%>"></th>
+                    <th><input type="text" name="pmPrice" value="<%=format.format(product.getProductPrice())%>"></th>
+                    <th><input type="text" name="pmQuantity" value="<%=product.getQuantityInStock()%>"></th>
+                    <th><img src="<%=product.getImage()%>"/></th>
+                    <th><input type="text" name="pmStatus" value="<%=product.getStatus()%>"></th>
+                    <th><input type="text" name="pmDes" value="<%=product.getProductPrice()%>"></th>
+                    <td><a href="/admin/updateProduct.jsp?productId=<%=product.getProductId()%>">Update</a></td>
+                    <td><a href="/deleteProduct?productId=<%=product.getProductId()%>">Delete</a></td>
                 </tr>
-            </c:forEach>
+            <%
+                }
+            %>
             <tr>
                 <td colspan="4">Total :</td>
                 <td>0xxx</td>
