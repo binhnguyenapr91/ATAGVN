@@ -1,6 +1,7 @@
 <%@ page import="service.ProductServiceImp" %>
 <%@ page import="model.Product" %>
 <%@ page import="java.text.NumberFormat" %>
+<%@ page import="service.CategoryServiceImp" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -28,6 +29,7 @@
 <%
     ProductServiceImp productServiceImp = new ProductServiceImp();
     NumberFormat format = NumberFormat.getNumberInstance();
+    CategoryServiceImp categoryServiceImp = new CategoryServiceImp();
 %>
 <%--HEADER--%>
 <jsp:include page="header.jsp"></jsp:include>
@@ -40,7 +42,7 @@
 
 <div class="container">
     <div class="categoryName" style="margin-bottom: 20px">
-        <h3>SAMSUNG</h3>
+        <h3><%=categoryServiceImp.getCategory(request.getParameter("categoryId")).getCategoryName().toUpperCase()%></h3>
     </div>
     <div class="cf-left" style="margin-bottom: 20px">
         <form action="#">
@@ -54,13 +56,14 @@
     <div class="productListShow" style="margin: 30px">
 
 <%--        Vòng lặp ở đây để show lần lượt tất cả sản phẩm--%>
-        <%
-            for (Product product: productServiceImp.getListProduct(request.getParameter("categoryId"))){
-        %>
+
         <div style="padding-top: 40px; padding-bottom: 60px">
+            <%
+                for (Product product: productServiceImp.getListProduct(request.getParameter("categoryId"))){
+            %>
             <table style="margin-bottom: 60px">
                 <tr>
-                    <td rowspan="3"><img class="card-img-top" src="<%=product.getImage()%>" width="620" height="350">
+                    <td rowspan="3" style="height: 350px; width: 580px;"><img src="<%=product.getImage()%>"  height="500" width="500">
                     </td>
                     <td><h4><%=product.getProductName()%></h4></td>
                 </tr>
@@ -74,12 +77,13 @@
                 </tr>
             </table>
             <br>
-            <hr style="width: 800px">
+            <hr style="width: 800px; margin-bottom: 100px">
+            <%
+                }
+            %>
         </div>
     </div>
-    <%
-        }
-    %>
+
 </div>
 
 <%--FOOTER--%>
