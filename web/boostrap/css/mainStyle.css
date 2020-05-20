@@ -225,8 +225,6 @@ ol {
     font-weight: 500;
     position: relative;
     line-height: 42px;
-    margin-left: 20px;
-    margin-right: 20px;
 }
 
 .inner-header .user-access a.in {
@@ -240,7 +238,7 @@ ol {
     left: -13px;
     top: 1px;
     color: #1e1e1e;
-    content: "/";
+    content: "";
 }
 
 .inner-header .main-menu {
@@ -1056,7 +1054,6 @@ hr {
     position: absolute;
     top: 1px;
     right: -5px;
-    content: "/";
 }
 
 /*---------------------
