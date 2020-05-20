@@ -1,4 +1,6 @@
 <%@ page import="java.text.NumberFormat" %>
+<%@ page import="model.Product" %>
+<%@ page import="service.ProductServiceImp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -9,7 +11,7 @@
 <body>
 
 <%
-    NumberFormat numberFormat = NumberFormat.getNumberInstance();
+    ProductServiceImp productServiceImp = new ProductServiceImp();
 %>
 <%--HEADER--%>
 <jsp:include page="header.jsp"></jsp:include>
@@ -38,7 +40,7 @@
         <h3>SEARCHING RESULT</h3>
     </div>
     <div>
-        <h4>00 Sản phẩm</h4>
+        <h4><%=(productServiceImp.searchProduct(request.getParameter("searchName")).size())%> Product</h4>
     </div>
     <div class="productListShow" style="margin: 30px">
 
@@ -48,7 +50,7 @@
         <div style="padding-top: 40px; padding-bottom: 60px">
             <table style="margin-bottom: 60px">
                 <tr>
-                    <td rowspan="3"><img class="card-img-top" src="img/phone1.png" style="height: 100%;width: 100%">
+                    <td rowspan="3"><img class="card-img-top" src="${product.getImage()}" style="height: 100%;width: 100%">
                     </td>
                     <td><h4>${product.getProductName()}</h4></td>
                 </tr>
