@@ -36,7 +36,7 @@ public class ProductServiceImp implements ProductService{
 
     public List<Product> getListProduct() throws SQLException {
         Connection connection = DBConnect.getConnection();
-        String sql = "select * from product";
+        String sql = "select * from atagvn.product";
         PreparedStatement ps = connection.prepareCall(sql);
         ResultSet rs = ps.executeQuery();
         ArrayList<Product> products = new ArrayList<>();
@@ -58,7 +58,7 @@ public class ProductServiceImp implements ProductService{
 
     public List<Product> getListProduct(String categoryId) throws SQLException {
         Connection connection = DBConnect.getConnection();
-        String sql = "select * from product where CategoryId = '" + categoryId + "'";
+        String sql = "select * from atagvn.product where CategoryId = '" + categoryId + "'";
         PreparedStatement ps = connection.prepareCall(sql);
         ResultSet rs = ps.executeQuery();
         ArrayList<Product> products = new ArrayList<>();
@@ -80,7 +80,7 @@ public class ProductServiceImp implements ProductService{
 
     public List<Product> getListProductIP() throws SQLException {
         Connection connection = DBConnect.getConnection();
-        String sql = "select product.* from product where ProductID like '%IP%' limit 3";
+        String sql = "select atagvn.product.* from atagvn.product where ProductID like '%IP%' limit 3";
         PreparedStatement ps = connection.prepareCall(sql);
         ResultSet rs = ps.executeQuery();
         ArrayList<Product> products = new ArrayList<>();
@@ -103,7 +103,7 @@ public class ProductServiceImp implements ProductService{
     public ArrayList<Product> getListProductSS() throws SQLException {
         Connection connection = DBConnect.getConnection();
         String sql = "\n" +
-                "select product.* from product where ProductID like '%SS%' limit 3";
+                "select atagvn.product.* from atagvn.product where ProductID like '%SS%' limit 3";
         PreparedStatement ps = connection.prepareCall(sql);
         ResultSet rs = ps.executeQuery();
         ArrayList<Product> products = new ArrayList<>();
@@ -125,7 +125,7 @@ public class ProductServiceImp implements ProductService{
 
     public Product getProduct(String productId) throws SQLException {
         Connection connection = DBConnect.getConnection();
-        String sql = "select * from product where ProductID = '"+productId+"'";
+        String sql = "select * from atagvn.product where ProductID = '"+productId+"'";
         PreparedStatement ps = connection.prepareCall(sql);
         ResultSet rs = ps.executeQuery();
         Product product = new Product();
@@ -144,7 +144,7 @@ public class ProductServiceImp implements ProductService{
 
     @Override
     public void saveProduct(Product product) throws SQLException {
-        String sql = "INSERT INTO product(ProductID,CategoryID,ProductName,ProductPrice,QuantityInStock,Image,Status,Description) VALUES (?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO atagvn.product(ProductID,CategoryID,ProductName,ProductPrice,QuantityInStock,Image,Status,Description) VALUES (?,?,?,?,?,?,?,?)";
         Connection con = DBConnect.getConnection();
 
         try {
@@ -166,7 +166,7 @@ public class ProductServiceImp implements ProductService{
     @Override
     public boolean updateProduct(Product product) throws SQLException {
         Connection connection = DBConnect.getConnection();
-        String sql = "UPDATE product SET CategoryID=?, ProductName=?, ProductPrice=?,QuantityInStock=?, Image=?,Status=?,Description = ? WHERE ProductID = ?";
+        String sql = "UPDATE atagvn.product SET CategoryID=?, ProductName=?, ProductPrice=?,QuantityInStock=?, Image=?,Status=?,Description = ? WHERE ProductID = ?";
 
         try {
             PreparedStatement ps = connection.prepareCall(sql);
@@ -190,7 +190,7 @@ public class ProductServiceImp implements ProductService{
     public boolean deleteProduct(String productId) throws SQLException {
         try {
             Connection connection = DBConnect.getConnection();
-            String sql = "DELETE FROM product WHERE ProductID = ?";
+            String sql = "DELETE FROM atagvn.product WHERE ProductID = ?";
             PreparedStatement ps = connection.prepareCall(sql);
             ps.setString(1, productId);
             int temp = ps.executeUpdate();
@@ -204,7 +204,10 @@ public class ProductServiceImp implements ProductService{
         Product product = new Product("IP130","OPP","Daikahuynh95",987654,1,"Dang Cap Nhat",0,"Dang Cap Nhat");
         ProductServiceImp productServiceImp = new ProductServiceImp();
         try {
-            productServiceImp.deleteProduct("IP131");
+            for (Product p:productServiceImp.getListProduct("AAPL")
+                 ) {
+                System.out.println(p.getProductName());
+            }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
