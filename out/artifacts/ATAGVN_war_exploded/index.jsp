@@ -47,14 +47,14 @@
 <%--CATEGORY 1--%>
 <div class="categories-block">
     <h2 class="col-xl-2" style="padding-left: 40px">SAMSUNG</h2>
-    <a href="#"><h6 class="showall">Show all</h6></a>
+    <a href="showAllProduct.jsp"><h6 class="showall">Show all</h6></a>
     <br>
     <div class="row">
         <%
             for (Product product: productServiceImp.getListProductSS()){
         %>
         <div class="card col-xl-3" style="width: 18rem; padding: 25px 10px ">
-            <img class="card-img-top" src="<%=product.getImage()%>" alt="Card image cap">
+            <img class="card-img-top" src="<%=product.getImage()%>" alt="Card image cap" width="620" height="350">
             <div class="card-body">
                 <b><h5 class="card-title"><%=product.getProductName()%></h5></b>
                 <h6 class="price" style="padding-bottom: 15px; color: red">Giá bán : <%=numberFormat.format(product.getProductPrice())%>₫</h6>
@@ -74,14 +74,14 @@
 <%--CATEGORY 2--%>
 <div class="categories-block">
     <h2 class="col-xl-2" style="padding-left: 40px">APPLE</h2>
-    <a href="#"><h6 class="showall">Show all</h6></a>
+    <a href="showAllProduct.jsp"><h6 class="showall">Show all</h6></a>
     <br>
     <div class="row">
         <%
             for (Product product: productServiceImp.getListProductIP()){
         %>
         <div class="card col-xl-3" style="width: 18rem; padding: 25px 10px ">
-            <img class="card-img-top" src="<%=product.getImage()%>" alt="Card image cap">
+            <img class="card-img-top" src="<%=product.getImage()%>" alt="Card image cap"  width="620" height="350">
             <div class="card-body">
                 <b><h5 class="card-title"><%=product.getProductName()%></h5></b>
                 <h6 class="price" style="padding-bottom: 15px; color: red">Giá bán : <%=numberFormat.format(product.getProductPrice())%>₫</h6>

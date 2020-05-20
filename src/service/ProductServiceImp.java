@@ -122,15 +122,6 @@ public class ProductServiceImp implements ProductService{
     }
 
     @Override
-<<<<<<< HEAD
-    public List<Product> showAllProduct() {
-        return null;
-    }
-
-    @Override
-    public void saveProduct(Product product) {
-
-=======
     public void saveProduct(Product product) throws SQLException {
         String sql = "INSERT INTO Product(ProductID,CategoryID,ProductName,ProductPrice,QuantityInStock,Image,Status,Desciption) VALUES (?,?,?,?,?,?,?,?)";
         Connection con = DBConnect.getConnection();
@@ -148,6 +139,5 @@ public class ProductServiceImp implements ProductService{
         } catch (SQLException e) {
             e.printStackTrace();
         }
->>>>>>> a0f0d39b9a172bc8df5f3f4e52f46c477f151547
     }
 }

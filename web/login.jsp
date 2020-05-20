@@ -17,10 +17,11 @@
     <link rel="stylesheet" href="boostrap/css/mainStyle.css">
 </head>
 <body class="bodyImage" style='background-image: url("/img/backGroundLogin.png"); '>
+
 <%--HEADER--%>
 <div class="containerLogin">
     <div class="loginPanel">
-        <form action="" method="post">
+        <form action="/login?action=login" method="post">
             <table>
                 <tr>
                     <td colspan="2" style="text-align: center"><b>LOGIN !</b></td>
@@ -34,11 +35,12 @@
                     <td><input type="password" name="password" style="border-radius: 2px"></td>
                 </tr>
                 <tr>
-                    <td></td>
+                    <td><a href="/signUp.jsp"><input type="button" value="SignUp"></a></td>
                     <td><input type="submit" value="Login">&nbsp<a href=""> Forgot Password ?</a></td>
                 </tr>
             </table>
         </form>
+        <i style="color: red">${announcement}</i>
     </div>
 </div>
 </body>

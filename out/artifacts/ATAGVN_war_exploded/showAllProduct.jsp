@@ -55,12 +55,12 @@
 
 <%--        Vòng lặp ở đây để show lần lượt tất cả sản phẩm--%>
         <%
-            for (Product product: productServiceImp.getListProduct(request.getParameter("categoryId"))){
+            for (Product product: productServiceImp.getListProduct(request.getParameter("CategoryID"))){
         %>
         <div style="padding-top: 40px; padding-bottom: 60px">
             <table style="margin-bottom: 60px">
                 <tr>
-                    <td rowspan="3"><img class="card-img-top" src="<%=product.getImage()%>" style="height: 100%;width: 100%">
+                    <td rowspan="3"><img class="card-img-top" src="<%=product.getImage()%>" width="620" height="350">
                     </td>
                     <td><h4><%=product.getProductName()%></h4></td>
                 </tr>

@@ -52,7 +52,7 @@
         <div style="padding-top: 40px; padding-bottom: 60px">
             <table style="margin-bottom: 60px">
                 <tr>
-                    <td rowspan="3"><img class="card-img-top" src="img/phone1.png" style="height: 100%;width: 100%">
+                    <td rowspan="3"><img class="card-img-top" src="img/phone1.png" width="620" height="350" style="height: 100%;width: 100%">
                     </td>
                     <td><h4>OPPO RENO3 PRO</h4></td>
                 </tr>
