@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface ProductService {
+    public Product getProductDetail(String productId);
+
     public List<Product> getListProduct() throws SQLException;
 
     public List<Product> getListProduct(String categoryId) throws SQLException;

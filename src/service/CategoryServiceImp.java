@@ -14,7 +14,7 @@ public class CategoryServiceImp implements CategoryService {
     @Override
     public List<Category> getListCategory() throws SQLException {
         Connection connection = DBConnect.getConnection();
-        String sql = "SELECT * FROM category";
+        String sql = "SELECT * FROM atagvn.category";
         PreparedStatement ps = connection.prepareCall(sql);
         ResultSet rs = ps.executeQuery();
         ArrayList<Category> list = new ArrayList<>();
@@ -30,7 +30,7 @@ public class CategoryServiceImp implements CategoryService {
 
     public Category getCategory(String categoryId) throws SQLException {
         Connection connection = DBConnect.getConnection();
-        String sql =  "select * from category where CategoryID=  '"+categoryId+"'";
+        String sql =  "select * from atagvn.category where CategoryID=  '"+categoryId+"'";
         PreparedStatement ps = connection.prepareCall(sql);
         ResultSet rs = ps.executeQuery();
         Category category = new Category();
