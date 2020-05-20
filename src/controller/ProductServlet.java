@@ -76,7 +76,7 @@ public class ProductServlet extends HttpServlet {
             throwables.printStackTrace();
         }
         req.setAttribute("productList",productList);
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("admin.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("productManagement.jsp");
         try {
             requestDispatcher.forward(req,resp);
         } catch (ServletException e) {

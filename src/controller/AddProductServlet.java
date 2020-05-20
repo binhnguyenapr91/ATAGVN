@@ -40,12 +40,12 @@ public class AddProductServlet extends HttpServlet {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("admin.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/productManagement.jsp");
         dispatcher.forward(request,response);
         }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("admin.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/productManagement.jsp");
         dispatcher.forward(request,response);
     }
 }

@@ -39,7 +39,7 @@
             <div class="header-right">
                 <i class="fa fa-search"></i>
                 <i class="fa fa-user">&nbsp${sessionScope['cookieUserName']}</i>
-                <a href="#">
+                <a href="cart.jsp">
                     <i class="fa fa-shopping-bag"></i>
                     <span>2</span>
                 </a>

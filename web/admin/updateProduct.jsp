@@ -26,7 +26,7 @@
     </c:if>
 </p>
 <p>
-    <a href="admin.jsp">Back to product list</a>
+    <a href="productManagement.jsp">Back to product list</a>
 </p>
 <form method="post" action="${pageContext.request.contextPath}/updateProduct">
     <fieldset>
