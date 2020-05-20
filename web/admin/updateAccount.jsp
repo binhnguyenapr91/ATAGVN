@@ -39,41 +39,38 @@
     <div class="accountManagement">
         <h3>Account Management</h3>
         <h6><a href="#">Add more Account</a></h6>
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Account Name</th>
-                <th>Login Name</th>
-                <th>Password</th>
-                <th>Account Access</th>
-                <th>Address</th>
-                <th>Phone Number</th>
-                <th>Gender</th>
-                <th scope="col" colspan="2">#</th>
-            </tr>
-            <tr>
-               <td colspan="9"><a href="/accountServlet">Back to Listing</a></td>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach items="${accounts}" var="account">
-            <tr>
-                <th><input type="text" name="amID" value="${account.getAccountId()}"></th>
-                <th><input type="text" name="amName" value="${account.getAccountName()}"></th>
-                <th><input type="text" name="amPassword" value="${account.getLoginName()}"></th>
-                <th><input type="text" name="amAccess" value="${account.getPassword()}"></th>
-                <th><input type="text" name="amAddress" value="${account.getAccountAccess()}"></th>
-                <th><input type="text" name="amPhoneNumber" value="${account.getAddress()}"></th>
-                <th><input type="text" name="amGender" value="${account.getPhoneNumber()}"></th>
-                <th><input type="text" name="amGender" value="${account.isGender()}"></th>
-                <th><input type="text" name="amLoginName" value="${account.isStatus()}"></th>
-                <td><a href="/accountServlet?action=update&id=${account.getAccountId()}">Update</a></td>
-                <td><a href="/accountServlet?action=update&id=${account.getAccountId()})">Delete</a></td>
+        <form method="post" action="/accountServlet">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Account Name</th>
+                    <th>Login Name</th>
+                    <th>Password</th>
+                    <th>Account Access</th>
+                    <th>Address</th>
+                    <th>Phone Number</th>
+                    <th>Gender</th>
+                    <th scope="col" colspan="2">#</th>
                 </tr>
-            </c:forEach>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th><input type="text" name="accountId" value="${requestScope["account"].getAccountId()}"></th>
+                        <th><input type="text" name="accountName" value="${requestScope["account"].getAccountName()}"></th>
+                        <th><input type="text" name="loginName" value="${requestScope["account"].getLoginName()}"></th>
+                        <th><input type="text" name="password" value="${requestScope["account"].getPassword()}"></th>
+                        <th><input type="text" name="accountAccess" value="${requestScope["account"].getAccountAccess()}"></th>
+                        <th><input type="text" name="address" value="${requestScope["account"].getAddress()}"></th>
+                        <th><input type="text" name="phoneNumber" value="${requestScope["account"].getPhoneNumber()}"></th>
+                        <th><input type="text" name="isGender" value="${requestScope["account"].isGender()}"></th>
+                        <th><input type="text" name="isStatus" value="${requestScope["account"].isStatus()}"></th>
+                        <td><input type="submit" value="Update"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </form>
     </div>
 
 </div>
