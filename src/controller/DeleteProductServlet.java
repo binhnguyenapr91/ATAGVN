@@ -25,7 +25,7 @@ public class DeleteProductServlet extends HttpServlet {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("admin.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/productManagement.jsp");
         dispatcher.forward(request,response);
     }
 }
