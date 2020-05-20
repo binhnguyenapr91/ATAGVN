@@ -10,7 +10,7 @@ public class DBConnect {
 
         String url= "jdbc:mysql://localhost:3306/atagvn?&useSSL=false";
         String username = "root";
-        String password = "123456";
+        String password = "Daikahuynh01091995";
 
         try {
             // load Driver

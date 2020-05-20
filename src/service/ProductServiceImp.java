@@ -183,7 +183,7 @@ public class ProductServiceImp implements ProductService{
         Product product = new Product("IP130","OPP","Daikahuynh95",987654,1,"Dang Cap Nhat",0,"Dang Cap Nhat");
         ProductServiceImp productServiceImp = new ProductServiceImp();
         try {
-            productServiceImp.deleteProduct("IP131");
+            System.out.println(productServiceImp.getListProduct("0593XQ").size());
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

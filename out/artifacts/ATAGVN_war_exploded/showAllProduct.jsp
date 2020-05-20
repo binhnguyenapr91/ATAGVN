@@ -1,6 +1,8 @@
 <%@ page import="service.ProductServiceImp" %>
 <%@ page import="model.Product" %>
 <%@ page import="java.text.NumberFormat" %>
+<%@ page import="model.Category" %>
+<%@ page import="service.CategoryServiceImp" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -28,6 +30,7 @@
 <%
     ProductServiceImp productServiceImp = new ProductServiceImp();
     NumberFormat format = NumberFormat.getNumberInstance();
+    CategoryServiceImp categoryServiceImp = new CategoryServiceImp();
 %>
 <%--HEADER--%>
 <jsp:include page="header.jsp"></jsp:include>
@@ -40,7 +43,7 @@
 
 <div class="container">
     <div class="categoryName" style="margin-bottom: 20px">
-        <h3>SAMSUNG</h3>
+        <h3><%=categoryServiceImp.getCategory(request.getParameter("categoryId")).getCategoryName()%></h3>
     </div>
     <div class="cf-left" style="margin-bottom: 20px">
         <form action="#">
@@ -55,7 +58,7 @@
 
 <%--        Vòng lặp ở đây để show lần lượt tất cả sản phẩm--%>
         <%
-            for (Product product: productServiceImp.getListProduct(request.getParameter("CategoryID"))){
+            for (Product product: productServiceImp.getListProduct(request.getParameter("categoryId"))){
         %>
         <div style="padding-top: 40px; padding-bottom: 60px">
             <table style="margin-bottom: 60px">
