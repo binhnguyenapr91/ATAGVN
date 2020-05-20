@@ -45,8 +45,8 @@
                 </a>
             </div>
             <div class="user-access">
-                <a href="/signUp.jsp">Register</a>
-                <a href="/login.jsp" class="in">
+                <a href="signUp.jsp">Register</a>
+                <a href="login.jsp" class="in">
 
                     <c:set var = "isLogined" scope = "session" value = "${sessionScope['cookieUserName']}"/>
                     <c:choose>
