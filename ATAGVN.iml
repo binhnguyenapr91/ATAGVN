@@ -23,10 +23,5 @@
     <orderEntry type="library" name="taglibs-standard-impl-1.2.5" level="project" />
     <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
     <orderEntry type="library" name="mysql-connector-java-5.1.48-bin" level="project" />
-    <orderEntry type="library" name="jstl-1.2" level="project" />
-    <orderEntry type="library" name="taglibs-standard-impl-1.2.51" level="project" />
-    <orderEntry type="library" name="taglibs-standard-spec-1.2.5" level="project" />
-    <orderEntry type="library" name="mysql-connector-java-8.0.15" level="project" />
-    <orderEntry type="library" name="mysql-connector-java-5.1.48-bin1" level="project" />
   </component>
 </module>

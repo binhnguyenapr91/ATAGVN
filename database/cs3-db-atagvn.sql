@@ -14,14 +14,14 @@ create table product
     Description     text          not null
 );
 
-create table Category
+create table category
 (
     CategoryID   varchar(20)   not null primary key unique,
     CategoryName nvarchar(255) not null
 );
 
-alter table Product
-    add foreign key (CategoryID) references Category (CategoryID)
+alter table product
+    add foreign key (CategoryID) references category (CategoryID)
         on update cascade;
 
 create table account
@@ -31,24 +31,24 @@ create table account
     LoginName     varchar(50)   not null,
     Password      varchar(50)   not null,
     AccountAccess varchar(10)   not null,
-    address       varchar(255)  not null,
-    phoneNumber   varchar(255)  not null,
-    gender        bit,
-    status        bit
+    Address       varchar(255)  not null,
+    PhoneNumber   varchar(255)  not null,
+    Gender        bit,
+    Status        bit
 );
 
-create table Orders
+create table orders
 (
     OrderID   varchar(20) not null primary key unique,
     AccountID varchar(20) not null,
     OrderDate date        not null
 );
 
-alter table Orders
-    add foreign key (AccountID) references Account (AccountID)
+alter table orders
+    add foreign key (AccountID) references account (AccountID)
         on update cascade;
 
-create table Order_Product
+create table order_product
 (
     ID        varchar(20) not null primary key unique,
     OrderID   varchar(20) not null,
@@ -57,16 +57,16 @@ create table Order_Product
     PriceEach float
 );
 
-alter table Order_Product
-    add foreign key (OrderID) references Orders (OrderID) on update cascade,
-    add foreign key (ProductID) references Product (ProductID) on update cascade;
+alter table order_product
+    add foreign key (OrderID) references orders (OrderID) on update cascade,
+    add foreign key (ProductID) references product (ProductID) on update cascade;
 
-insert into Category
+insert into category
 values ('0593XQ', 'Samsung');
-insert into Category
+insert into category
 values ('AAPL', 'Apple');
 
-insert into Product (productid, categoryid, productname, productprice, quantityinstock, image, status, description)
+insert into product (ProductID, CategoryID, ProductName, ProductPrice, QuantityInStock, Image, Status, Description)
 values ('SSGA11', '0593XQ', 'Galaxy A11', 3690000, 50, 'img/product/Galaxy-A11.PNG', 1,
         '<p class="description">Màn hình Infinity-O siêu tràn viền 6.4 inch<br>
         Vì là smartphone giá rẻ, Galaxy A11 không dùng màn hình AMOLED<br>
@@ -153,13 +153,13 @@ values ('SSGA11', '0593XQ', 'Galaxy A11', 3690000, 50, 'img/product/Galaxy-A11.P
         bù lại iPhone 7 Plus 32GB lại được trang bị nhiều nâng cấp<br>
         đáng giá như camera kép đầu tiên cũng như cấu hình mạnh mẽ.</p>');
 
-insert into account (accountid, accountname, loginname, password, accountaccess, address, phonenumber, gender, status)
+insert into account (AccountID, AccountName, LoginName, Password, AccountAccess, Address, PhoneNumber, Gender, Status)
 values ('AD1', 'Thinh Bui', 'mrthinh2502', 'thinhba', 1, 'Moon City', '0969357766', 1, 1),
        ('CT1', 'Linh Hoang', 'linhhm', 'linh123', 0, '111 Van Cao', '0913026630', 0, 1),
        ('CT2', 'Binh Nguyen', 'binh491', 'binh123', 0, '50 Pham Hung', '0969358899', 1, 1),
        ('CT3', 'Huynh Bui', 'huynhhuynh', 'huynhbui123', 0, 'Royal City', '0966351299', 0, 0);
 
-insert into orders (orderid, accountid, OrderDate)
+insert into orders (OrderID, AccountID, OrderDate)
 values ('OD300401', 'CT1', '2020-03-11'),
        ('OD300402', 'CT3', '2020-03-12'),
        ('OD010501', 'CT2', '2020-03-13'),
