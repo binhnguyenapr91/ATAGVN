@@ -1,5 +1,6 @@
 package service;
 
+import model.Category;
 import model.DBConnect;
 import model.Product;
 
@@ -12,6 +13,26 @@ import java.util.List;
 
 public class ProductServiceImp implements ProductService{
 
+
+    //get chit tiet chua viet xong
+    @Override
+    public Product getProductDetail(String productId) {
+        Connection connection = DBConnect.getConnection();
+        String sql = "select * from product where ProductID = '"+productId+"'";
+        Product product = new Product();
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Category category = new Category(rs.getString("catagoryId"));
+                product.setProductId(rs.getString("productId"));
+                product.setCategoryName("catagory");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return product;
+    }
 
     public List<Product> getListProduct() throws SQLException {
         Connection connection = DBConnect.getConnection();
