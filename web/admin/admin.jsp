@@ -34,16 +34,14 @@
 </header>
 <div class="container-fluid">
     <h3>Admin Management Page</h3>
-    <form action="">
         <table>
             <tr>
-                <td><input style="background-color: #c69500" type="submit" value="Product Management"></td>
-                <td><input style="background-color: #8fd19e" type="submit" value="Category Management"></td>
-                <td><input style="background-color: #ed969e" type="submit" value="Account Management"></td>
-                <td><input style="background-color: #0056b3" type="submit" value="Order Management"></td>
+                <td><a href="/mainAdminNavigateServlet?target=productManagement"><input style="background-color: #c69500" type="button" value="Product Management"></a></td>
+                <td><a href="/mainAdminNavigateServlet?target=categoryManagement"><input style="background-color: #c69500" type="button" value="Category Management"></a></td>
+                <td><a href="/mainAdminNavigateServlet?target=accountManagement"><input style="background-color: #c69500" type="button" value="Account Management"></a></td>
+                <td><a href="/mainAdminNavigateServlet?target=orderManagement"><input style="background-color: #c69500" type="button" value="Order Management"></a></td>
             </tr>
         </table>
-    </form>
 </div>
 <style>
     .container-fluid table tr td input{

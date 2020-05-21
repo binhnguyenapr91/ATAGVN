@@ -1,4 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -37,41 +39,43 @@
         <h3>SAMSUNG</h3>
     </div>
     <div class="cf-left" style="margin-bottom: 20px">
-        <form action="#">
-            <select class="sort">
-                <option value="">Sort by</option>
-                <option value="">Price (Lowest first)</option>
-                <option value="">Price (Highest first)</option>
-            </select>
+        <form method="post" action="/sort">
+            <table>
+                <tr>
+                    <td><select name="sortByPrice" class="sort">
+                        <option value="">Sort by</option>
+                        <option value="asc">Price (Lowest first)</option>
+                        <option value="desc">Price (Highest first)</option>
+                    </select>
+                    </td>
+                    <td><input type="submit" value="Sort"></td>
+                </tr>
+            </table>
         </form>
     </div>
     <div class="productListShow" style="margin: 30px">
 
-        <%--        Vòng lặp ở đây để show lần lượt tất cả sản phẩm--%>
-
+        <c:forEach items="${requestScope['productList']}" var="product">
         <div style="padding-top: 40px; padding-bottom: 60px">
             <table style="margin-bottom: 60px">
                 <tr>
-                    <td rowspan="3"><img class="card-img-top" src="img/phone1.png" width="620" height="350" style="height: 100%;width: 100%">
+                    <td rowspan="3"><img class="card-img-top" src="${product.getImage()}" width="620" height="350" style="height: 100%;width: 100%">
                     </td>
-                    <td><h4>OPPO RENO3 PRO</h4></td>
+                    <td><h4>${product.getProductName()}</h4></td>
                 </tr>
                 <tr>
-                    <td style="vertical-align: top; color: red">Giá bán : 12.990.000₫</td>
+                    <td style="vertical-align: top; color: red">Giá bán : <fmt:formatNumber value="${product.getProductPrice()}"></fmt:formatNumber>₫</td>
                 </tr>
                 <tr>
-                    <td style="line-height:25px; vertical-align: top">MÀN HÌNH ĐỤC LỖ KÉP ĐỘC ĐÁO : Sáng tạo và khác
-                        biệt <br>
-                        CAMERA SELFIE KÉP ĐÊM 44MP + 2MP : Xuất hiện đầu tiên trên thế giới <br>
-                        4 CAMERA 64MP ẢNH SIÊU NÉT 108MP <br>
-                        SẠC NHANH <br>
-                        HIỆU NĂNG CẢI TIẾN MẠNH MẼ <br>
+                    <td style="line-height:25px; vertical-align: top">
+                            ${product.getDescription()}
                     </td>
                 </tr>
             </table>
             <br>
             <hr style="width: 800px">
         </div>
+        </c:forEach>
     </div>
 </div>
 
