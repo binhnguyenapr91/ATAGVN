@@ -55,7 +55,7 @@
     <br>
     <div class="row">
         <c:forEach items="${subList}" var="product">
-            <div class="card col-xl-3" style="width: 18rem; padding: 25px 10px ">
+            <div class="card col-xl-3" style="width: 18rem; padding: 25px 10px; margin-bottom: 20px">
                 <img class="card-img-top" src="${product.getImage()}" alt="Card image cap" width="620" height="350">
                 <div class="card-body">
                     <b><h5 class="card-title">${product.getProductName()}</h5></b>
@@ -82,7 +82,7 @@
         loopSize = (listSize / PRODUCT_QUANTITY_PER_PAGE) + 1;
     }
 %>
-<nav aria-label="..." style="margin-left: 150px; margin-top: 50px">
+<nav aria-label="..." style="margin-left: 150px; margin-bottom: 50px">
     <ul class="pagination">
         <% for (int i = 1; i <= loopSize; i++) {
         %>
