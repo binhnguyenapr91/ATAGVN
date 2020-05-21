@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="p" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -55,26 +56,31 @@
                             <tr>
                                 <td>${item.product.productId}</td>
                                 <td>${item.product.productName}</td>
-                                <td>${item.product.productPrice}</td>
+                                <td><p:formatNumber value="${item.product.productPrice}"></p:formatNumber>₫</td>
                                 <td>${item.quantity}</td>
-                                <td>${item.product.productPrice * item.quantity}</td>
+                                <td><p:formatNumber value="${item.product.productPrice * item.quantity}"></p:formatNumber>₫</td>
                                 <td><a href="#">Update</a></td>
                                 <td><a href="#">Delete</a></td>
-                                <td><a href="#">Delete</a></td>
                             </tr>
-                            //sd
                         </c:forEach>
                         <tr>
                             <td colspan="4">Total :</td>
-                            <td>0xxx</td>
+                            <td>
+                                <c:set var="totalOrder" value="${0}"/>
+                                <c:forEach var="item" items="${order.items}">
+                                    <c:set var="totalOrder" value="${totalOrder + item.product.productPrice}"/>
+                                </c:forEach>
+                                <p:formatNumber value="${totalOrder}"></p:formatNumber>₫
+
+                            </td>
                         </tr>
                         <tr>
                             <td colspan="4">Delivery Cost (2%) :</td>
-                            <td>2% of Total ?????</td>
+                            <td><p:formatNumber value="${totalOrder*2/100}"></p:formatNumber>₫</td>
                         </tr>
                         <tr>
                             <td colspan="4">Final :</td>
-                            <td>0xxx</td>
+                            <td><p:formatNumber value="${totalOrder*102/100}"></p:formatNumber>₫</td>
                         </tr>
 
                         <%--                        <c:forEach items="${order.items}" var="item">--%>
