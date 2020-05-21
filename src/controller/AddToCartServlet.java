@@ -18,7 +18,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "AddtoCartServlet", urlPatterns = "/cartServlet")
+@WebServlet(name = "AddtoCartServlet", urlPatterns = "/addToCartServlet")
 public class AddToCartServlet extends HttpServlet {
     private ProductService productService;
 
@@ -58,7 +58,7 @@ public class AddToCartServlet extends HttpServlet {
                         List<Item> listItems = order.getItems();
                         boolean check = false;
                         for (Item item: listItems) {
-                            if (item.getProduct().getProductId() == product.getProductId()) {
+                            if (item.getProduct().getProductId().equals(product.getProductId())) {
                                 item.setQuantity(item.getQuantity() + quantity);
                                 check = true;
                             }
@@ -72,9 +72,9 @@ public class AddToCartServlet extends HttpServlet {
                         }
                         session.setAttribute("order", order);
                     }
-                    response.sendRedirect(request.getContextPath()+"index.jsp");
+                    response.sendRedirect(request.getContextPath()+"/pagination");
                 }else {
-                    response.sendRedirect(request.getContextPath()+"index.jsp");
+                    response.sendRedirect(request.getContextPath()+"/pagination");
                 }
             } catch (SQLException e) {
                 e.printStackTrace();

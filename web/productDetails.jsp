@@ -60,7 +60,7 @@
                             <input type="text" value="1" name="productQuantity">
                         </div>
                     </div>
-                    <a href="#" class="primary-btn pc-btn" id="addToCart"><i class="fa fa-cart-plus"></i></a>
+                    <a href="/addToCartServlet?productId=<%=product.getProductId()%>" class="primary-btn pc-btn" id="addToCart"><i class="fa fa-cart-plus">Add to cart</i></a>
                     <a href="#" class="primary-btn pc-btn" id="backToMain">Tiếp tục mua hàng</a>
                 </div>
             </div>
