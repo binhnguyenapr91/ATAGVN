@@ -39,7 +39,7 @@
     <div class="accountManagement">
         <h3>Account Management</h3>
         <h6><a href="#">Add more Account</a></h6>
-        <form method="post" action="/accountServlet">
+        <form method="post">
             <table class="table table-hover">
                 <thead>
                 <tr>
@@ -51,7 +51,8 @@
                     <th>Address</th>
                     <th>Phone Number</th>
                     <th>Gender</th>
-                    <th scope="col" colspan="2">#</th>
+                    <th>Status</th>
+                    <th scope="col" colspan="2">Functions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -63,8 +64,8 @@
                         <th><input type="text" name="accountAccess" value="${requestScope["account"].getAccountAccess()}"></th>
                         <th><input type="text" name="address" value="${requestScope["account"].getAddress()}"></th>
                         <th><input type="text" name="phoneNumber" value="${requestScope["account"].getPhoneNumber()}"></th>
-                        <th><input type="text" name="isGender" value="${requestScope["account"].isGender()}"></th>
-                        <th><input type="text" name="isStatus" value="${requestScope["account"].isStatus()}"></th>
+                        <th><input type="text" name="gender" value="${requestScope["account"].isGender()}"></th>
+                        <th><input type="text" name="status" value="${requestScope["account"].isStatus()}"></th>
                         <td><input type="submit" value="Update"></td>
                     </tr>
                 </tbody>

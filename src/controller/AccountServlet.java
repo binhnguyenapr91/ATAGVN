@@ -15,7 +15,7 @@ import java.util.List;
 
 @WebServlet(name = "AccountServlet", urlPatterns = "/accountServlet")
 public class AccountServlet extends HttpServlet {
-    private AccountService accountService = new AccountImp();
+    private AccountImp accountImp = new AccountImp();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -33,7 +33,7 @@ public class AccountServlet extends HttpServlet {
     }
 
     private void updateAccountForm(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
-        String accountId = httpServletRequest.getParameter("id");
+        String accountId = httpServletRequest.getParameter("accountId");
         AccountService accountService = new AccountImp();
         Account handler = accountService.findById(accountId);
         httpServletRequest.setAttribute("account", handler);
@@ -48,7 +48,7 @@ public class AccountServlet extends HttpServlet {
     }
 
     private void viewAllAccount(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
-        List<Account> accounts = accountService.viewAllAccount();
+        List<Account> accounts = accountImp.viewAllAccount();
         httpServletRequest.setAttribute("accounts", accounts);
         RequestDispatcher requestDispatcher = httpServletRequest.getRequestDispatcher("admin/viewAccount.jsp");
         try {
@@ -75,7 +75,7 @@ public class AccountServlet extends HttpServlet {
         }
     }
 
-    private void updateAccount(HttpServletRequest req, HttpServletResponse resp) {
+    private void updateAccount(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String accountId = req.getParameter("accountId");
         String accountName = req.getParameter("accountName");
         String loginName = req.getParameter("loginName");
@@ -83,22 +83,12 @@ public class AccountServlet extends HttpServlet {
         String accountAccess = req.getParameter("accountAccess");
         String address = req.getParameter("address");
         String phoneNumber = req.getParameter("phoneNumber");
-        boolean gender = Boolean.parseBoolean(req.getParameter("isGender"));
-        boolean status = Boolean.parseBoolean(req.getParameter("isStatus"));
+        boolean gender = Boolean.parseBoolean(req.getParameter("gender"));
+        boolean status = Boolean.parseBoolean(req.getParameter("status"));
         Account handler = new Account(accountId, accountName, loginName, password, accountAccess, address, phoneNumber, gender, status);
-        AccountService accountService = new AccountImp();
-        RequestDispatcher requestDispatcher;
-        boolean updateResult = false;
-        updateResult = accountService.updateAccountById(handler);
-        if (updateResult = true) {
-            try {
-                requestDispatcher = req.getRequestDispatcher("/admin/viewAccount.jsp");
-                requestDispatcher.forward(req,resp);
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (ServletException e) {
-                e.printStackTrace();
-            }
-        }
+        accountImp.updateAccountById(handler);
+        req.setAttribute("action","");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/admin/viewAccount.jsp");
+        requestDispatcher.forward(req,resp);
     }
 }
