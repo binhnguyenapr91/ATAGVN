@@ -59,15 +59,36 @@ public class CategoryServiceImp implements CategoryService {
 
     }
 
-    public static void main(String[] args) {
-        CategoryServiceImp categoryServiceImp = new CategoryServiceImp();
+    @Override
+    public void addCategory(Category category) {
+        Connection connection = DBConnect.getConnection();
         try {
-            for (Category c : categoryServiceImp.getListCategory()
-            ) {
-                System.out.println(c.getCategoryName());
-            }
+            PreparedStatement ps = connection.prepareStatement("insert into category values (?,?)");
+            ps.setString(1,category.getCategoryId());
+            ps.setString(2,category.getCategoryName());
+            ps.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+    }
+
+    @Override
+    public void deleteCategory(String in_categoryId) {
+        Connection connection = DBConnect.getConnection();
+        try {
+            PreparedStatement ps = connection.prepareStatement("delete from category where CategoryID = ?");
+            ps.setString(1,in_categoryId);
+            ps.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+
+    }
+
+    public static void main(String[] args) {
+        CategoryServiceImp categoryServiceImp = new CategoryServiceImp();
+        Category category = new Category("BBB","1111");
+        categoryServiceImp.addCategory(category);
     }
 }
