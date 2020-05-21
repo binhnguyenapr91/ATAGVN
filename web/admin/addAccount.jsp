@@ -38,41 +38,39 @@
 <div class="mainManagement">
     <div class="accountManagement">
         <h3>Account Management</h3>
-        <h6><a href="/accountServlet?action=add">Add more Account</a>|<a href="/accountServlet">Back to Listing</a></h6>
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Account Name</th>
-                <th>Login Name</th>
-                <th>Password</th>
-                <th>Account Access</th>
-                <th>Address</th>
-                <th>Phone Number</th>
-                <th>Gender</th>
-                <th>Status</th>
-                <th scope="col" colspan="2">Functions</th>
-            </tr>
-
-            </thead>
-            <tbody>
-            <c:forEach items="${accounts}" var="account">
-            <tr>
-                <th><input type="text" name="accountId" value="${account.getAccountId()}"></th>
-                <th><input type="text" name="accountName" value="${account.getAccountName()}"></th>
-                <th><input type="text" name="loginName" value="${account.getLoginName()}"></th>
-                <th><input type="text" name="password" value="${account.getPassword()}"></th>
-                <th><input type="text" name="accountAccess" value="${account.getAccountAccess()}"></th>
-                <th><input type="text" name="address" value="${account.getAddress()}"></th>
-                <th><input type="text" name="phoneNumber" value="${account.getPhoneNumber()}"></th>
-                <th><input type="text" name="gender" value="${account.isGender()}"></th>
-                <th><input type="text" name="status" value="${account.isStatus()}"></th>
-                <td><a href="/accountServlet?action=update&accountId=${account.getAccountId()}">Update</a></td>
-                <td><a href="/accountServlet?action=delete&accountId=${account.getAccountId()})">Delete</a></td>
+        <h6><a href="#">Add more Account</a></h6>
+        <form method="post">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Account Name</th>
+                    <th>Login Name</th>
+                    <th>Password</th>
+                    <th>Account Access</th>
+                    <th>Address</th>
+                    <th>Phone Number</th>
+                    <th>Gender</th>
+                    <th>Status</th>
+                    <th>Functions</th>
                 </tr>
-            </c:forEach>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th><input type="text" name="accountId" ></th>
+                        <th><input type="text" name="accountName" ></th>
+                        <th><input type="text" name="loginName" ></th>
+                        <th><input type="text" name="password" ></th>
+                        <th><input type="text" name="accountAccess"></th>
+                        <th><input type="text" name="address"></th>
+                        <th><input type="text" name="phoneNumber"></th>
+                        <th><input type="text" name="gender"></th>
+                        <th><input type="text" name="status"></th>
+                        <td><input type="submit" value="Add"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
     </div>
 
 </div>

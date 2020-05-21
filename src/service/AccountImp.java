@@ -60,7 +60,6 @@ public class AccountImp implements AccountService {
             preparedStatement.setString(7, account.getPhoneNumber());
             preparedStatement.setBoolean(8, account.isGender());
             preparedStatement.setBoolean(9, account.isStatus());
-
             preparedStatement.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();

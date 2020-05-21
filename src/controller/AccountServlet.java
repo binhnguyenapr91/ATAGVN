@@ -29,9 +29,18 @@ public class AccountServlet extends HttpServlet {
                 break;
             case "delete":
                 deleteAccount(req,resp);
+                break;
+            case "add":
+                addAccountForm(req,resp);
+                break;
             default:
                 viewAllAccount(req, resp);
         }
+    }
+
+    private void addAccountForm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/admin/addAccount.jsp");
+        requestDispatcher.forward(req,resp);
     }
 
     private void deleteAccount(HttpServletRequest req, HttpServletResponse resp) {
@@ -77,9 +86,27 @@ public class AccountServlet extends HttpServlet {
             case "update":
                 updateAccount(req, resp);
                 break;
+            case "add":
+                addAccount(req,resp);
             default:
                 viewAllAccount(req, resp);
         }
+    }
+
+    private void addAccount(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String accountId = req.getParameter("accountId");
+        String accountName = req.getParameter("accountName");
+        String loginName = req.getParameter("loginName");
+        String password = req.getParameter("password");
+        String accountAccess = req.getParameter("accountAccess");
+        String address = req.getParameter("address");
+        String phoneNumber = req.getParameter("phoneNumber");
+        boolean gender = Boolean.parseBoolean(req.getParameter("gender"));
+        boolean status = Boolean.parseBoolean(req.getParameter("status"));
+        Account handler = new Account(accountId, accountName, loginName, password, accountAccess, address, phoneNumber, gender, status);
+        accountImp.addNewAccount(handler);
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/admin/viewAccount.jsp");
+        requestDispatcher.forward(req,resp);
     }
 
     private void updateAccount(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
