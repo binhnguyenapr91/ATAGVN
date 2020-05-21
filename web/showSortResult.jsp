@@ -1,3 +1,5 @@
+<%@ page import="service.CategoryServiceImp" %>
+<%@ page import="service.ProductServiceImp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
@@ -23,7 +25,10 @@
     <link rel="stylesheet" href="boostrap/css/mainStyle.css">
 </head>
 <body>
-
+<%
+    CategoryServiceImp categoryServiceImp = new CategoryServiceImp();
+    ProductServiceImp productServiceImp = new ProductServiceImp();
+%>
 
 <%--HEADER--%>
 <jsp:include page="header.jsp"></jsp:include>
@@ -39,7 +44,7 @@
         <h3>SAMSUNG</h3>
     </div>
     <div class="cf-left" style="margin-bottom: 20px">
-        <form method="post" action="/sort">
+        <form method="post" action=${pageContext.request.contextPath}/sort?categoryId=<%=categoryServiceImp.getCategory(request.getParameter("categoryId")).getCategoryId()%>>
             <table>
                 <tr>
                     <td><select name="sortByPrice" class="sort">
