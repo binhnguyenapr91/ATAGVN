@@ -29,15 +29,15 @@ public class PaginationServlet extends HttpServlet {
             pageNumber = Integer.parseInt(request.getParameter("page"));
         }
         int perPage = 3;
-        String category = request.getParameter("category");
-        if (category == null) category="ss";
+        String categoryss = request.getParameter("categoryss");
+        if (categoryss == null) categoryss="ss";
         List<Product> productList = null;
         List<Product> subList = null;
 
         int start = (pageNumber-1)*perPage;
         int end = pageNumber*perPage;
 
-        switch (category){
+        switch (categoryss){
             case "ss":{
                 try {
                     productList = productServiceImp.getListProductSS();
