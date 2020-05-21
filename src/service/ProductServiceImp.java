@@ -230,16 +230,16 @@ public class ProductServiceImp implements ProductService {
     }
 
     @Override
-    public List<Product> sortByPriceDesc() throws SQLException {
+    public List<Product> sortListProductDesc(String categoryId) throws SQLException {
         Connection connection = DBConnect.getConnection();
-        String sql = "select * from product order by ProductPrice desc";
+        String sql = "select * from atagvn.product where CategoryID = '" + categoryId + "'"+"order by ProductPrice desc";
         PreparedStatement ps = connection.prepareCall(sql);
         ResultSet rs = ps.executeQuery();
         ArrayList<Product> products = new ArrayList<>();
         while (rs.next()) {
             Product product = new Product();
             product.setProductId(rs.getString("ProductID"));
-            product.setCategoryId(rs.getString("CategoryId"));
+            product.setCategoryId(rs.getString("CategoryID"));
             product.setProductName(rs.getString("ProductName"));
             product.setProductPrice(rs.getFloat("ProductPrice"));
             product.setQuantityInStock(rs.getInt("QuantityInStock"));
@@ -252,16 +252,16 @@ public class ProductServiceImp implements ProductService {
     }
 
     @Override
-    public List<Product> sortByPriceAsc() throws SQLException {
+    public List<Product> sortListProductAsc(String categoryId) throws SQLException {
         Connection connection = DBConnect.getConnection();
-        String sql = "select * from atagvn.product order by ProductPrice asc";
+        String sql = "select * from atagvn.product where CategoryID = '" + categoryId + "'"+"order by ProductPrice asc";
         PreparedStatement ps = connection.prepareCall(sql);
         ResultSet rs = ps.executeQuery();
         ArrayList<Product> products = new ArrayList<>();
         while (rs.next()) {
             Product product = new Product();
             product.setProductId(rs.getString("ProductID"));
-            product.setCategoryId(rs.getString("CategoryId"));
+            product.setCategoryId(rs.getString("CategoryID"));
             product.setProductName(rs.getString("ProductName"));
             product.setProductPrice(rs.getFloat("ProductPrice"));
             product.setQuantityInStock(rs.getInt("QuantityInStock"));
