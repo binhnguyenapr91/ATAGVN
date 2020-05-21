@@ -62,7 +62,6 @@
                                 <td><a href="#">Delete</a></td>
                                 <td><a href="#">Delete</a></td>
                             </tr>
-                            //sd
                         </c:forEach>
                         <tr>
                             <td colspan="4">Total :</td>
@@ -76,17 +75,6 @@
                             <td colspan="4">Final :</td>
                             <td>0xxx</td>
                         </tr>
-
-                        <%--                        <c:forEach items="${order.items}" var="item">--%>
-                        <%--                            <tr>--%>
-                        <%--                                <td>${item.product.productId}</td>--%>
-                        <%--                                <td>${item.product.productName}</td>--%>
-                        <%--                                <td>${item.product.productPrice}</td>--%>
-                        <%--                                <td>${item.quantity}</td>--%>
-                        <%--                                <td>${item.product.productPrice * item.quantity}</td>--%>
-                        <%--                            </tr>--%>
-
-                        <%--                        </c:forEach>--%>
                         </tbody>
                     </table>
                 </div>

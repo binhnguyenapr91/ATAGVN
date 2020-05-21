@@ -46,16 +46,14 @@
 
 <%--BODY--%>
 
-<h2 class="col-xl-12 text-center" style="font-size: 50px">Our Best Things</h2>
+<h3 class="col-xl-12 text-center" style="font-size: 50px; margin: 20px 0">Best Products of the World</h3>
 
 <%--CATEGORY 1--%>
-<div class="categories-block">
-    <h2 class="col-xl-2" style="padding-left: 40px">SAMSUNG</h2>
-    <a href="showAllProduct.jsp"><h6 class="showall">Show all</h6></a>
+<div class="categories-block" >
     <br>
     <div class="row">
         <c:forEach items="${subList}" var="product">
-            <div class="card col-xl-3" style="width: 18rem; padding: 25px 10px; margin-bottom: 20px">
+            <div class="card col-xl-3" style="width: 18rem; padding: 25px 10px; margin-bottom: 20px;box-shadow: 5px 5px rgba(43,134,126,0.2);border-radius: 20px; border: 1px rgba(43,134,126,0.7) solid;">
                 <img class="card-img-top" src="${product.getImage()}" alt="Card image cap" width="620" height="350">
                 <div class="card-body">
                     <b><h5 class="card-title">${product.getProductName()}</h5></b>
