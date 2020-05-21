@@ -2,6 +2,7 @@
 <%@ page import="service.CategoryServiceImp" %>
 <%@ page import="model.Product" %>
 <%@ page import="java.text.NumberFormat" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -35,20 +36,20 @@
     <div class="container-fluid">
         <div class="inner-header">
             <div class="logo">
-                <a href="/pagination"><img src="../img/logo.png" alt="logo"></a>
+                <h2 style="margin-bottom: 20px">PRODUCT <small class="text-muted">Management</small></h2>
             </div>
             <div class="user-access">
-                <a class="active" href="/pagination">Home Page/Logout</a>
-                <a href="" class="out"><i class="fa fa-user"></i> Admin</a>
+                <a style="margin: 30px" class="active" href="/pagination">Home Page/Logout</a>
+                <a href="" class="out"><i class="fa fa-user"></i>&nbspAdmin</a>
             </div>
         </div>
     </div>
 </header>
 <hr style="height: 10px">
 <div class="mainManagement">
-    <div class="productManagement" style="width: 1100px">
-        <h3>Product Management</h3>
-        <h6><a href="/admin/createProduct.jsp">Add more Product</a></h6>
+    <div class="productManagement" style="width: 1470px">
+
+        <h6 class="btn btn-outline-primary" style="float: right;margin: 10px 10px"><a href="/admin/createProduct.jsp">Add more Product</a></h6>
         <table class="table table-hover">
             <thead>
             <tr>
@@ -75,16 +76,26 @@
                     <th style="width: 160px;"><input style="width: 160px;"type="text" name="pmQuantity" value="<%=product.getQuantityInStock()%>"></th>
                     <th style="width: 100px;"><img style="width: 100px;"src="../<%=product.getImage()%>"/></th>
                     <th style="width: 80px;"><input style="width: 80px;"type="text" name="pmStatus" value="<%=product.getStatus()%>"></th>
-                    <th style="width: 300px;"><textarea cols="45" rows="6" name="pmDes" value="<%=product.getDescription()%>" ></textarea></th>
-                    <th style="width: 70px;"><a href="/admin/updateProduct.jsp?productId=<%=product.getProductId()%>">Update</a></th>
-                    <th style="width: 70px;"><a href="/deleteProduct?productId=<%=product.getProductId()%>">Delete</a></th>
+                    <th style="width: 300px;"><textarea cols="35" rows="6" name="pmDes" value="<%=product.getDescription()%>" ></textarea></th>
+                    <th style="width: 70px;"><a class="btn btn-outline-success" href="/admin/updateProduct.jsp?productId=<%=product.getProductId()%>">Update</a></th>
+                    <th style="width: 70px;"><a class="btn btn-outline-danger" href="/deleteProduct?productId=<%=product.getProductId()%>">Delete</a></th>
                 </tr>
             <%
                 }
             %>
             <tr>
-                <td colspan="4">Total :</td>
-                <td>0xxx</td>
+                <td style="color: blue" colspan="4"><b>Total :</b></td>
+                <td style="color: blue"><b>
+                    <%
+                        int count = 0;
+                        List<Product> list = productDAO.getListProduct();
+                        for (Product product : list) {
+                            count += product.getQuantityInStock();
+                        }
+
+                    %>
+                    <%=count%></b>
+                </td>
             </tr>
             </tbody>
         </table>

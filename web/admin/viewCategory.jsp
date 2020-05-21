@@ -32,10 +32,10 @@
     <div class="container-fluid">
         <div class="inner-header">
             <div class="logo">
-                <a href="index.jsp"><img src="img/logo.png" alt="logo"></a>
+                <a href="/pagination"><img src="img/logo.png" alt="logo"></a>
             </div>
             <div class="user-access">
-                <a class="active" href="index.jsp">Home Page/Logout</a>
+                <a class="active" href="/pagination">Home Page/Logout</a>
                 <a href="" class="out"><i class="fa fa-user"></i> Admin</a>
             </div>
         </div>

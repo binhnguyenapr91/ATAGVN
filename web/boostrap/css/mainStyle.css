@@ -453,13 +453,8 @@ ol {
 /*---------------------
   Header Info
 -----------------------*/
-.mainManagement a:active, .mainManagement a:visited {
-    color: blue;
-}
 
-.mainManagement a:hover {
-    color: red;
-}
+
 
 .mainManagement {
     width: 100%;
