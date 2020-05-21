@@ -47,19 +47,18 @@
         <h3><%=categoryServiceImp.getCategory(request.getParameter("categoryId")).getCategoryName().toUpperCase()%></h3>
     </div>
     <div class="cf-left" style="margin-bottom: 20px">
-        <form action="#">
+        <form method="post" action="${pageContext.request.contextPath}/sort">
             <table>
                 <tr>
-                    <td><select name="sortPrice" class="sort">
+                    <td><select name="sortByPrice" class="sort">
                         <option value="">Sort by</option>
-                        <option value="">Price (Lowest first)</option>
-                        <option value="">Price (Highest first)</option>
+                        <option value="asc">Price (Lowest first)</option>
+                        <option value="desc">Price (Highest first)</option>
                     </select>
                     </td>
-                    <td><input type="button" value="Sort"></td>
+                    <td><input type="submit" value="Sort"></td>
                 </tr>
             </table>
-
         </form>
     </div>
     <div class="productListShow" style="margin: 30px">

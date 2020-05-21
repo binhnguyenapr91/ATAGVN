@@ -229,6 +229,50 @@ public class ProductServiceImp implements ProductService {
         return productList;
     }
 
+    @Override
+    public List<Product> sortByPriceDesc() throws SQLException {
+        Connection connection = DBConnect.getConnection();
+        String sql = "select * from product order by ProductPrice desc";
+        PreparedStatement ps = connection.prepareCall(sql);
+        ResultSet rs = ps.executeQuery();
+        ArrayList<Product> products = new ArrayList<>();
+        while (rs.next()) {
+            Product product = new Product();
+            product.setProductId(rs.getString("ProductID"));
+            product.setCategoryId(rs.getString("CategoryId"));
+            product.setProductName(rs.getString("ProductName"));
+            product.setProductPrice(rs.getFloat("ProductPrice"));
+            product.setQuantityInStock(rs.getInt("QuantityInStock"));
+            product.setImage(rs.getString("Image"));
+            product.setStatus(rs.getInt("Status"));
+            product.setDescription(rs.getString("Description"));
+            products.add(product);
+        }
+        return products;
+    }
+
+    @Override
+    public List<Product> sortByPriceAsc() throws SQLException {
+        Connection connection = DBConnect.getConnection();
+        String sql = "select * from atagvn.product order by ProductPrice asc";
+        PreparedStatement ps = connection.prepareCall(sql);
+        ResultSet rs = ps.executeQuery();
+        ArrayList<Product> products = new ArrayList<>();
+        while (rs.next()) {
+            Product product = new Product();
+            product.setProductId(rs.getString("ProductID"));
+            product.setCategoryId(rs.getString("CategoryId"));
+            product.setProductName(rs.getString("ProductName"));
+            product.setProductPrice(rs.getFloat("ProductPrice"));
+            product.setQuantityInStock(rs.getInt("QuantityInStock"));
+            product.setImage(rs.getString("Image"));
+            product.setStatus(rs.getInt("Status"));
+            product.setDescription(rs.getString("Description"));
+            products.add(product);
+        }
+        return products;
+    }
+
     public static void main(String[] args) {
         Product product = new Product("IP130", "OPP", "Daikahuynh95", 987654, 1, "Dang Cap Nhat", 0, "Dang Cap Nhat");
         ProductServiceImp productServiceImp = new ProductServiceImp();
@@ -244,6 +288,5 @@ public class ProductServiceImp implements ProductService {
             throwables.printStackTrace();
         }
     }
-
 
 }

@@ -28,4 +28,8 @@ public interface ProductService {
     public boolean deleteProduct(String productId) throws SQLException;
 
     public List<Product> searchProduct(String searchName) throws SQLException;
+
+    public List<Product> sortByPriceDesc() throws SQLException;
+
+    public List<Product> sortByPriceAsc() throws SQLException;
 }
