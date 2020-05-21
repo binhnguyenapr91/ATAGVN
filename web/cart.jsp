@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -41,7 +42,7 @@
                     <table class="table table-hover" style="margin-bottom: 70px">
                         <thead>
                         <tr>
-                            <th scope="col">#</th>
+                            <th scope="col">Product ID</th>
                             <th scope="col">Ordered Product</th>
                             <th scope="col">Price</th>
                             <th scope="col">Quantity</th>
@@ -50,16 +51,19 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Iphone</td>
-                            <td>1000000</td>
-                            <td><input type="text" name="orderQuantity" value="3"
-                                       style="width: 50px;font-size: 16px; text-align: right;"></td>
-                            <td>3000000</td>
-                            <td><a href="#">Update</a></td>
-                            <td><a href="#">Delete</a></td>
-                        </tr>
+                        <c:forEach items="${order.items}" var="item">
+                            <tr>
+                                <td>${item.product.productId}</td>
+                                <td>${item.product.productName}</td>
+                                <td>${item.product.productPrice}</td>
+                                <td>${item.quantity}</td>
+                                <td>${item.product.productPrice * item.quantity}</td>
+                                <td><a href="#">Update</a></td>
+                                <td><a href="#">Delete</a></td>
+                                <td><a href="#">Delete</a></td>
+                            </tr>
+                            //sd
+                        </c:forEach>
                         <tr>
                             <td colspan="4">Total :</td>
                             <td>0xxx</td>
@@ -72,6 +76,17 @@
                             <td colspan="4">Final :</td>
                             <td>0xxx</td>
                         </tr>
+
+                        <%--                        <c:forEach items="${order.items}" var="item">--%>
+                        <%--                            <tr>--%>
+                        <%--                                <td>${item.product.productId}</td>--%>
+                        <%--                                <td>${item.product.productName}</td>--%>
+                        <%--                                <td>${item.product.productPrice}</td>--%>
+                        <%--                                <td>${item.quantity}</td>--%>
+                        <%--                                <td>${item.product.productPrice * item.quantity}</td>--%>
+                        <%--                            </tr>--%>
+
+                        <%--                        </c:forEach>--%>
                         </tbody>
                     </table>
                 </div>
@@ -87,11 +102,13 @@
                         <table style="margin-left: 20px; width: 1060px; margin-bottom: 50px;">
                             <tr>
                                 <th style="width: 150px">Your Name*</th>
-                                <td style="width: 500px"><input type="text" placeholder="Full Name" style="font-size: 15px" ></td>
+                                <td style="width: 500px"><input type="text" placeholder="Full Name"
+                                                                style="font-size: 15px"></td>
                             </tr>
                             <tr>
                                 <th style="width: 150px;">Your Email*</th>
-                                <td style="width: 500px"><input type="text" placeholder="example@gmail.com" style="font-size: 15px"></td>
+                                <td style="width: 500px"><input type="text" placeholder="example@gmail.com"
+                                                                style="font-size: 15px"></td>
                             </tr>
                             <tr>
                                 <th style="width: 150px;">Your Phone Number*</th>
@@ -103,11 +120,13 @@
                             </tr>
                             <tr>
                                 <th style="width: 150px;">Payment Method</th>
-                                <td style="width: 500px"><input type="text" value=" Cash on Delivery" disabled style="font-size: 15px"></td>
+                                <td style="width: 500px"><input type="text" value=" Cash on Delivery" disabled
+                                                                style="font-size: 15px"></td>
                             </tr>
                             <tr>
                                 <th style="width: 150px;">Delivery Date</th>
-                                <td style="width: 500px"><input type="text" value=" 3-5 working days " disabled style="font-size: 15px"></td>
+                                <td style="width: 500px"><input type="text" value=" 3-5 working days " disabled
+                                                                style="font-size: 15px"></td>
                             </tr>
                             <tr>
                                 <th colspan="2" style="text-align: right"><input type="submit" value="Order"></th>
