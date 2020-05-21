@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "AccountServlet", urlPatterns = "/accountServlet")
@@ -46,6 +47,17 @@ public class AccountServlet extends HttpServlet {
     private void deleteAccount(HttpServletRequest req, HttpServletResponse resp) {
         String accountId = req.getParameter("accountId");
         accountImp.deleteAccountById(accountId);
+        List<Account> accounts = new ArrayList<>();
+        accounts = accountImp.viewAllAccount();
+        req.setAttribute("accounts",accounts);
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("admin/viewAccount.jsp");
+        try {
+            requestDispatcher.forward(req,resp);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void updateAccountForm(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
@@ -105,8 +117,17 @@ public class AccountServlet extends HttpServlet {
         boolean status = Boolean.parseBoolean(req.getParameter("status"));
         Account handler = new Account(accountId, accountName, loginName, password, accountAccess, address, phoneNumber, gender, status);
         accountImp.addNewAccount(handler);
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/admin/viewAccount.jsp");
-        requestDispatcher.forward(req,resp);
+        List<Account> accounts;
+        accounts = accountImp.viewAllAccount();
+        req.setAttribute("accounts",accounts);
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("admin/viewAccount.jsp");
+        try {
+            requestDispatcher.forward(req,resp);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void updateAccount(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -121,8 +142,16 @@ public class AccountServlet extends HttpServlet {
         boolean status = Boolean.parseBoolean(req.getParameter("status"));
         Account handler = new Account(accountId, accountName, loginName, password, accountAccess, address, phoneNumber, gender, status);
         accountImp.updateAccountById(handler);
-        req.setAttribute("action","");
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/admin/viewAccount.jsp");
-        requestDispatcher.forward(req,resp);
+        List<Account> accounts;
+        accounts = accountImp.viewAllAccount();
+        req.setAttribute("accounts",accounts);
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("admin/viewAccount.jsp");
+        try {
+            requestDispatcher.forward(req,resp);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -167,14 +167,7 @@ public class AccountImp implements AccountService {
             throwables.printStackTrace();
         }
     }
-
-    public static void main(String[] args) {
-        Account acc = new Account("CT1","accountName","Update","Update","Update","Update","Update",false,true);
-        AccountImp ai = new AccountImp();
-        ai.updateAccountById(acc);
-        ai.deleteAccountById("CT1");
-    }
-
+    @Override
     public void deleteAccountById(String accountId) {
         Connection conn = DBConnect.getConnection();
         try {
@@ -184,5 +177,11 @@ public class AccountImp implements AccountService {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+    }
+    public static void main(String[] args) {
+        Account acc = new Account("CT1","accountName","Update","Update","Update","Update","Update",false,true);
+        AccountImp ai = new AccountImp();
+        ai.updateAccountById(acc);
+        ai.deleteAccountById("NE1");
     }
 }
