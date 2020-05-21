@@ -30,7 +30,8 @@
 </head>
 <body>
 
-<%
+<%! public static final int PRODUCT_QUANTITY_PER_PAGE = 6;
+%><%
     ProductServiceImp productServiceImp = new ProductServiceImp();
     NumberFormat numberFormat = NumberFormat.getNumberInstance();
     CategoryServiceImp categoryServiceImp = new CategoryServiceImp();
@@ -63,8 +64,7 @@
                     <p class="description">
                             ${product.getDescription()}
                     </p>
-                    <a href="productDetails.jsp?productId=${product.getProductId()}" class="btn btn-primary">Chi
-                        Tiết</a>
+                    <a href="productDetails.jsp?productId=${product.getProductId()}" class="btn btn-primary">Chi Tiết</a>
                 </div>
             </div>
         </c:forEach>
@@ -72,76 +72,27 @@
     <br>
 </div>
 <%
-    List<Product> productListSS = productServiceImp.getListProductSS();
-    int listSizeSS = productListSS.size();
-    int loopSizeSS;
+    List<Product> productList = productServiceImp.getListProduct();
+    int listSize = productList.size();
+    int loopSize;
 
-    if (listSizeSS % 3 == 0) {
-        loopSizeSS = listSizeSS / 3;
+    if (listSize % PRODUCT_QUANTITY_PER_PAGE == 0) {
+        loopSize = listSize / PRODUCT_QUANTITY_PER_PAGE;
     } else {
-        loopSizeSS = (listSizeSS / 3) + 1;
+        loopSize = (listSize / PRODUCT_QUANTITY_PER_PAGE) + 1;
     }
 %>
-<nav aria-label="..." style="margin-left: 150px; margin-bottom: 50px">
+<nav aria-label="..." style="margin-left: 150px; margin-top: 50px">
     <ul class="pagination">
-        <% for (int i = 1; i <= loopSizeSS; i++) {
+        <% for (int i = 1; i <= loopSize; i++) {
         %>
         <li class="page-item">
-            <a class="page-link" href="/pagination?category=ss&page=<%=i%>"><%=i%><span class="sr-only">(current)</span></a></li>
+            <a class="page-link" href="/pagination?page=<%=i%>"><%=i%><span class="sr-only">(current)</span></a></li>
         <%
             }
         %>
     </ul>
 </nav>
-
-<%--&lt;%&ndash;CATEGORY 2&ndash;%&gt;--%>
-<%--<div class="categories-block">--%>
-<%--    <h2 class="col-xl-2" style="padding-left: 40px">IPHONE</h2>--%>
-<%--    <a href="showAllProduct.jsp"><h6 class="showall">Show all</h6></a>--%>
-<%--    <br>--%>
-<%--    <div class="row">--%>
-<%--        <c:forEach items="${subList}" var="product">--%>
-<%--            <div class="card col-xl-3" style="width: 18rem; padding: 25px 10px ">--%>
-<%--                <img class="card-img-top" src="${product.getImage()}" alt="Card image cap" width="620" height="350">--%>
-<%--                <div class="card-body">--%>
-<%--                    <b><h5 class="card-title">${product.getProductName()}</h5></b>--%>
-<%--                    <h6 class="price" style="padding-bottom: 15px; color: red">Giá bán--%>
-<%--                        : ${product.getProductPrice()}₫</h6>--%>
-<%--                    <p class="description">--%>
-<%--                            ${product.getDescription()}--%>
-<%--                    </p>--%>
-<%--                    <a href="productDetails.jsp?productId=${product.getProductId()}" class="btn btn-primary">Chi--%>
-<%--                        Tiết</a>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </c:forEach>--%>
-<%--    </div>--%>
-<%--    <br>--%>
-<%--</div>--%>
-<%--<%--%>
-<%--    List<Product> productListIp = productServiceImp.getListProductSS();--%>
-<%--    int listSizeIp = productListIp.size();--%>
-<%--    int loopSizeIp;--%>
-
-<%--    if (listSizeSS % 3 == 0) {--%>
-<%--        loopSizeIp = listSizeIp / 3;--%>
-<%--    } else {--%>
-<%--        loopSizeIp = (listSizeIp / 3) + 1;--%>
-<%--    }--%>
-<%--%>--%>
-<%--<nav aria-label="..." style="margin-left: 150px; margin-bottom: 50px">--%>
-<%--    <ul class="pagination">--%>
-<%--        <% for (int i = 1; i <= loopSizeIp; i++) {--%>
-<%--        %>--%>
-<%--        <li class="page-item">--%>
-<%--            <a class="page-link" href="/pagination?category=ip&page=<%=i%>"><%=i%><span class="sr-only">(current)</span></a></li>--%>
-<%--        <%--%>
-<%--            }--%>
-<%--        %>--%>
-<%--    </ul>--%>
-<%--</nav>--%>
-
-
 <%--FOOTER--%>
 <jsp:include page="footer.jsp"></jsp:include>
 </body>

@@ -15,7 +15,9 @@ import java.util.List;
 
 @WebServlet(name = "PaginationServlet", urlPatterns = "/pagination")
 public class PaginationServlet extends HttpServlet {
+    public static final int PRODUCT_QUANTITY_PER_PAGE = 6;
     ProductServiceImp productServiceImp = new ProductServiceImp();
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
@@ -23,43 +25,35 @@ public class PaginationServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String page = request.getParameter("page");
         int pageNumber;
-        if (page == null){
+        if (page == null) {
             pageNumber = 1;
         } else {
             pageNumber = Integer.parseInt(request.getParameter("page"));
         }
-        int perPage = 3;
-        String categoryss = request.getParameter("categoryss");
-        if (categoryss == null) categoryss="ss";
+        int perPage = 6;
         List<Product> productList = null;
         List<Product> subList = null;
 
-        int start = (pageNumber-1)*perPage;
-        int end = pageNumber*perPage;
-
-        switch (categoryss){
-            case "ss":{
-                try {
-                    productList = productServiceImp.getListProductSS();
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
-                break;
-            }
-            case "ip":{
-                try {
-                    productList = productServiceImp.getListProductIP();
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
-                break;
-            }
+        try {
+            productList = productServiceImp.getListProduct();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
 
-        subList = productList.subList(start,end);
+        int start = (pageNumber - 1) * perPage;
+        int lastNumber = productList.size();
+        int end;
+        if (start < lastNumber - PRODUCT_QUANTITY_PER_PAGE) {
+            end = start + PRODUCT_QUANTITY_PER_PAGE;
+        } else {
+            end = start + (lastNumber-start);
+        }
+
+
+        subList = productList.subList(start, end);
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
         request.setAttribute("subList", subList);
-        requestDispatcher.forward(request,response);
+        requestDispatcher.forward(request, response);
     }
 }

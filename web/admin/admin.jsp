@@ -26,7 +26,7 @@
         <div class="inner-header">
 
             <div class="user-access" style="vertical-align: middle">
-                <a style="font-size: 20px;color:white;" class="active" href="index.jsp">Home Page/Logout</a>
+                <a style="font-size: 20px;color:white;" class="active" href="/pagination">Home Page/Logout</a>
                 <a style="font-size: 20px;color:white;" href="" class="out"><i class="fa fa-user"></i> Admin</a>
             </div>
         </div>
