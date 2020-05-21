@@ -68,7 +68,7 @@
                 <th><input type="text" name="gender" value="${account.isGender()}"></th>
                 <th><input type="text" name="status" value="${account.isStatus()}"></th>
                 <td><a href="/accountServlet?action=update&accountId=${account.getAccountId()}">Update</a></td>
-                <td><a href="/accountServlet?action=update&accountId=${account.getAccountId()})">Delete</a></td>
+                <td><a href="/accountServlet?action=delete&accountId=${account.getAccountId()})">Delete</a></td>
                 </tr>
             </c:forEach>
             </tbody>

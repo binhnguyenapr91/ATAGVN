@@ -173,5 +173,17 @@ public class AccountImp implements AccountService {
         Account acc = new Account("CT1","accountName","Update","Update","Update","Update","Update",false,true);
         AccountImp ai = new AccountImp();
         ai.updateAccountById(acc);
+        ai.deleteAccountById("CT1");
+    }
+
+    public void deleteAccountById(String accountId) {
+        Connection conn = DBConnect.getConnection();
+        try {
+            PreparedStatement ps = conn.prepareStatement("delete from account where AccountID = ?");
+            ps.setString(1,accountId);
+            ps.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 }

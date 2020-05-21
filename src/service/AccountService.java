@@ -11,4 +11,5 @@ public interface AccountService {
     public List<Account> viewAllAccount();
     Account findById(String accountId);
     public void updateAccountById(Account account);
+    public void deleteAccountById(String accountId);
 }

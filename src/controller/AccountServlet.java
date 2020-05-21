@@ -27,9 +27,16 @@ public class AccountServlet extends HttpServlet {
             case "update":
                 updateAccountForm(req, resp);
                 break;
+            case "delete":
+                deleteAccount(req,resp);
             default:
                 viewAllAccount(req, resp);
         }
+    }
+
+    private void deleteAccount(HttpServletRequest req, HttpServletResponse resp) {
+        String accountId = req.getParameter("accountId");
+        accountImp.deleteAccountById(accountId);
     }
 
     private void updateAccountForm(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
