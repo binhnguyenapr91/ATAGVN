@@ -60,7 +60,6 @@ public class AccountImp implements AccountService {
             preparedStatement.setString(7, account.getPhoneNumber());
             preparedStatement.setBoolean(8, account.isGender());
             preparedStatement.setBoolean(9, account.isStatus());
-
             preparedStatement.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -150,36 +149,39 @@ public class AccountImp implements AccountService {
     }
 
     @Override
-    public boolean updateAccountById(Account account) {
-        boolean result = false;
+    public void updateAccountById(Account account) {
         Connection connection = DBConnect.getConnection();
         try {
             PreparedStatement ps = connection.prepareStatement(UPDATE_ACCOUNT_BY_ID);
-            ps.setString(1,account.getAccountName());
-            ps.setString(2,account.getLoginName());
-            ps.setString(3,account.getPassword());
-            ps.setString(4,account.getAccountAccess());
-            ps.setString(5,account.getAddress());
-            ps.setString(6,account.getPhoneNumber());
-            ps.setBoolean(7,account.isGender());
-            ps.setBoolean(8,account.isStatus());
-            ps.setString(9,account.getAccountId());
-            int rowsUpdated = ps.executeUpdate();
-            if (rowsUpdated > 0) {
-                result = true;
-
-            }else {
-                result = false;
-            }
+            ps.setString(1, account.getAccountName());
+            ps.setString(2, account.getLoginName());
+            ps.setString(3, account.getPassword());
+            ps.setString(4, account.getAccountAccess());
+            ps.setString(5, account.getAddress());
+            ps.setString(6, account.getPhoneNumber());
+            ps.setBoolean(7, account.isGender());
+            ps.setBoolean(8, account.isStatus());
+            ps.setString(9, account.getAccountId());
+            ps.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return result;
     }
-
+    @Override
+    public void deleteAccountById(String accountId) {
+        Connection conn = DBConnect.getConnection();
+        try {
+            PreparedStatement ps = conn.prepareStatement("delete from account where AccountID = ?");
+            ps.setString(1,accountId);
+            ps.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
     public static void main(String[] args) {
-        Account acc = new Account("CT1","Update","Update","Update","Update","Update","Update",false,true);
+        Account acc = new Account("CT1","accountName","Update","Update","Update","Update","Update",false,true);
         AccountImp ai = new AccountImp();
         ai.updateAccountById(acc);
+        ai.deleteAccountById("NE1");
     }
 }

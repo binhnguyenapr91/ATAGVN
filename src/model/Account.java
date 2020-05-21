@@ -14,7 +14,7 @@ public class Account {
     public Account() {
     }
 
-    public Account(String accountId, String accountName, String loginName, String accountAccess, String password, String address, String phoneNumber, boolean gender, boolean status) {
+    public Account(String accountId, String accountName, String loginName,  String password, String accountAccess, String address, String phoneNumber, boolean gender, boolean status) {
         this.accountId = accountId;
         this.accountName = accountName;
         this.loginName = loginName;
