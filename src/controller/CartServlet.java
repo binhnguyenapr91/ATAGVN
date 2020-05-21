@@ -1,7 +1,9 @@
 package controller;
 
-import model.Cart;
+import model.Item;
+import model.Order;
 import model.Product;
+import service.ProductService;
 import service.ProductServiceImp;
 
 import javax.servlet.RequestDispatcher;
@@ -12,50 +14,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
-@WebServlet(name = "CartServlet")
+@WebServlet(name = "CartServlet", urlPatterns = "/cartServlet")
 public class CartServlet extends HttpServlet {
-    private ProductServiceImp productServiceImp = new ProductServiceImp();
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        Cart cart = (Cart) session.getAttribute("cart");
-        String productId = request.getParameter("productId");
-        String action = request.getParameter("action");
-        ArrayList<Long> listBuy = null;
-        String url = "";
-        try {
-            listBuy = (ArrayList<Long>) session.getAttribute("cartId");
-            long idBuy = 0;
-            if (request.getParameter("cartId") != null) {
-                idBuy = Long.parseLong(request.getParameter("cartId"));
-            }
-            Product product = productServiceImp.getProductDetail(productId);
-            switch (action) {
-                case "insert":
-                    if (listBuy == null) {
-                        listBuy = new ArrayList<>();
-                        session.setAttribute("cartId", idBuy);
-                    }
-                    if (listBuy.indexOf(idBuy) == -1) {
-                        cart.insertToCart(product, 1);
-                        listBuy.add(idBuy);
-                    }
-                    url = "/cart.jsp";
-                    break;
-                case "delete" :
-                    break;
-                default:
-                    break;
-            }
-            RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(url);
-            requestDispatcher.forward(request, response);
-        } catch (Exception e) {
+    private ProductService productService;
 
-        }
+    public void init() throws ServletException {
+        productService = new ProductServiceImp();
+        super.init();
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
+        super.doPost(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        RequestDispatcher dispatcher = request.getRequestDispatcher("cart.jsp");
+        dispatcher.forward(request, response);
     }
 }
