@@ -47,7 +47,7 @@
         <h3><%=categoryServiceImp.getCategory(request.getParameter("categoryId")).getCategoryName().toUpperCase()%></h3>
     </div>
     <div class="cf-left" style="margin-bottom: 20px">
-        <form method="post" action="${pageContext.request.contextPath}/sort">
+        <form method="post" action="${pageContext.request.contextPath}/sort?categoryId=<%=categoryServiceImp.getCategory(request.getParameter("categoryId")).getCategoryId()%>">
             <table>
                 <tr>
                     <td><select name="sortByPrice" class="sort">
