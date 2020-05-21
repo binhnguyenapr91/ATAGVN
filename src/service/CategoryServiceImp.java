@@ -11,10 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryServiceImp implements CategoryService {
+
+    public static final String SELECT_ALL_CATEGORY = "SELECT * FROM atagvn.category";
+
     @Override
     public List<Category> getListCategory() throws SQLException {
         Connection connection = DBConnect.getConnection();
-        String sql = "SELECT * FROM atagvn.category";
+        String sql = SELECT_ALL_CATEGORY;
         PreparedStatement ps = connection.prepareCall(sql);
         ResultSet rs = ps.executeQuery();
         ArrayList<Category> list = new ArrayList<>();
@@ -39,6 +42,21 @@ public class CategoryServiceImp implements CategoryService {
             category.setCategoryName(rs.getString("CategoryName"));
         }
         return category;
+    }
+
+    @Override
+    public void updateCategory(Category category) {
+        Connection connection = DBConnect.getConnection();
+        String sql = "update category set CategoryName = ? where CategoryID = ?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1,category.getCategoryName());
+            ps.setString(2,category.getCategoryId());
+            ps.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
     }
 
     public static void main(String[] args) {
