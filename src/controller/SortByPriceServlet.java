@@ -18,18 +18,19 @@ public class SortByPriceServlet extends HttpServlet {
     ProductServiceImp productServiceImp = new ProductServiceImp();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String sort = request.getParameter("sortByPrice");
+        String categoryId = request.getParameter("categoryId");
         List<Product> productList=null;
         switch (sort){
             case "desc":
                 try {
-                    productList = this.productServiceImp.sortByPriceDesc();
+                    productList = this.productServiceImp.sortListProductDesc(categoryId);
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
                 break;
             case "asc":
                 try {
-                    productList = this.productServiceImp.sortByPriceAsc();
+                    productList = this.productServiceImp.sortListProductAsc(categoryId);
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }

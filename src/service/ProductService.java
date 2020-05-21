@@ -29,7 +29,7 @@ public interface ProductService {
 
     public List<Product> searchProduct(String searchName) throws SQLException;
 
-    public List<Product> sortByPriceDesc() throws SQLException;
+    public List<Product> sortListProductDesc(String categoryId) throws SQLException;
 
-    public List<Product> sortByPriceAsc() throws SQLException;
+    public List<Product> sortListProductAsc(String categoryId) throws SQLException;
 }
