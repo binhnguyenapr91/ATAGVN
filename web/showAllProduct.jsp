@@ -44,11 +44,7 @@
 
 <div class="container">
     <div class="categoryName" style="margin-bottom: 20px">
-<<<<<<< HEAD
         <h3><%=categoryServiceImp.getCategory(request.getParameter("categoryId")).getCategoryName().toUpperCase()%></h3>
-=======
-        <h3><%=categoryServiceImp.getCategory(request.getParameter("categoryID")).getCategoryName()%></h3>
->>>>>>> 295cfdd6df80060a05d13ea7a74f830934a15e10
     </div>
     <div class="cf-left" style="margin-bottom: 20px">
         <form action="#">
