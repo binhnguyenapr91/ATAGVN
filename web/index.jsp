@@ -5,6 +5,7 @@
 <%@ page import="model.Category" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 <head>
@@ -58,7 +59,7 @@
                 <div class="card-body">
                     <b><h5 class="card-title">${product.getProductName()}</h5></b>
                     <h6 class="price" style="padding-bottom: 15px; color: red">Giá bán
-                        : ${product.getProductPrice()}₫</h6>
+                        : <fmt:formatNumber value="${product.getProductPrice()}"></fmt:formatNumber>₫</h6>
                     <p class="description">
                             ${product.getDescription()}
                     </p>

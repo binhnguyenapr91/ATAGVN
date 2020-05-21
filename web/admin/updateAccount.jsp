@@ -60,8 +60,8 @@
                         <th><input type="text" name="accountId" value="${requestScope["account"].getAccountId()}"></th>
                         <th><input type="text" name="accountName" value="${requestScope["account"].getAccountName()}"></th>
                         <th><input type="text" name="loginName" value="${requestScope["account"].getLoginName()}"></th>
-                        <th><input type="text" name="password" value="${requestScope["account"].getPassword()}"></th>
                         <th><input type="text" name="accountAccess" value="${requestScope["account"].getAccountAccess()}"></th>
+                        <th><input type="text" name="password" value="${requestScope["account"].getPassword()}"></th>
                         <th><input type="text" name="address" value="${requestScope["account"].getAddress()}"></th>
                         <th><input type="text" name="phoneNumber" value="${requestScope["account"].getPhoneNumber()}"></th>
                         <th><input type="text" name="gender" value="${requestScope["account"].isGender()}"></th>
