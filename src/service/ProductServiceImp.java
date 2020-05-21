@@ -105,7 +105,7 @@ public class ProductServiceImp implements ProductService {
     public ArrayList<Product> getListProductSS() throws SQLException {
         Connection connection = DBConnect.getConnection();
         String sql = "\n" +
-                "select atagvn.product.* from atagvn.product where ProductID like '%SS%' limit 3";
+                "select * from atagvn.product where ProductID like '%SS%'";
         PreparedStatement ps = connection.prepareCall(sql);
         ResultSet rs = ps.executeQuery();
         ArrayList<Product> products = new ArrayList<>();

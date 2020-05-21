@@ -5,6 +5,7 @@
 <%@ page import="model.Category" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -46,90 +47,99 @@
 <h2 class="col-xl-12 text-center" style="font-size: 50px">Our Best Things</h2>
 
 <%--CATEGORY 1--%>
-<%
-    List<Category> categoryList = categoryServiceImp.getListCategory();
-    for (Category cate : categoryList){
-%>
 <div class="categories-block">
-    <h2 class="col-xl-2" style="padding-left: 40px"><%=cate.getCategoryName()%></h2>
-    <a href="showAllProduct.jsp?categoryId=<%=cate.getCategoryId()%>"><h6 class="showall">Show all</h6></a>
+    <h2 class="col-xl-2" style="padding-left: 40px">SAMSUNG</h2>
+    <a href="showAllProduct.jsp"><h6 class="showall">Show all</h6></a>
     <br>
     <div class="row">
-        <%
-            for (Product product: productServiceImp.getListProduct(cate.getCategoryId())){
-        %>
-        <div class="card col-xl-3" style="width: 18rem; padding: 25px 10px ">
-            <img class="card-img-top" src="<%=product.getImage()%>" alt="Card image cap" width="620" height="350">
-            <div class="card-body">
-                <b><h5 class="card-title"><%=product.getProductName()%></h5></b>
-                <h6 class="price" style="padding-bottom: 15px; color: #ff0000">Giá bán : <%=numberFormat.format(product.getProductPrice())%>₫</h6>
-                <p class="description">
-                    <%=product.getDescription()%>
-                </p>
-                <a href="productDetails.jsp?productId=<%=product.getProductId()%>" class="btn btn-primary">Chi Tiết</a>
+        <c:forEach items="${subList}" var="product">
+            <div class="card col-xl-3" style="width: 18rem; padding: 25px 10px ">
+                <img class="card-img-top" src="${product.getImage()}" alt="Card image cap" width="620" height="350">
+                <div class="card-body">
+                    <b><h5 class="card-title">${product.getProductName()}</h5></b>
+                    <h6 class="price" style="padding-bottom: 15px; color: red">Giá bán
+                        : ${product.getProductPrice()}₫</h6>
+                    <p class="description">
+                            ${product.getDescription()}
+                    </p>
+                    <a href="productDetails.jsp?productId=${product.getProductId()}" class="btn btn-primary">Chi
+                        Tiết</a>
+                </div>
             </div>
-        </div>
-        <%
-            }
-        %>
+        </c:forEach>
     </div>
     <br>
 </div>
-<% } %>
+<%
+    List<Product> productListSS = productServiceImp.getListProductSS();
+    int listSizeSS = productListSS.size();
+    int loopSizeSS;
 
-
-<%--<div class="categories-block">--%>
-<%--    <h2 class="col-xl-2" style="padding-left: 40px">SAMSUNG</h2>--%>
-<%--    <a href="showAllProduct.jsp"><h6 class="showall">Show all</h6></a>--%>
-<%--    <br>--%>
-<%--    <div class="row">--%>
-<%--        <%--%>
-<%--            for (Product product: productServiceImp.getListProductSS()){--%>
-<%--        %>--%>
-<%--        <div class="card col-xl-3" style="width: 18rem; padding: 25px 10px ">--%>
-<%--            <img class="card-img-top" src="<%=product.getImage()%>" alt="Card image cap" width="620" height="350">--%>
-<%--            <div class="card-body">--%>
-<%--                <b><h5 class="card-title"><%=product.getProductName()%></h5></b>--%>
-<%--                <h6 class="price" style="padding-bottom: 15px; color: red">Giá bán : <%=numberFormat.format(product.getProductPrice())%>₫</h6>--%>
-<%--                <p class="description">--%>
-<%--                    <%=product.getDescription()%>--%>
-<%--                </p>--%>
-<%--                <a href="productDetails.jsp?productId=<%=product.getProductId()%>" class="btn btn-primary">Chi Tiết</a>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--        <%--%>
-<%--            }--%>
-<%--        %>--%>
-<%--    </div>--%>
-<%--    <br>--%>
-<%--</div>--%>
+    if (listSizeSS % 3 == 0) {
+        loopSizeSS = listSizeSS / 3;
+    } else {
+        loopSizeSS = (listSizeSS / 3) + 1;
+    }
+%>
+<nav aria-label="..." style="margin-left: 150px; margin-bottom: 50px">
+    <ul class="pagination">
+        <% for (int i = 1; i <= loopSizeSS; i++) {
+        %>
+        <li class="page-item">
+            <a class="page-link" href="/pagination?category=ss&page=<%=i%>"><%=i%><span class="sr-only">(current)</span></a></li>
+        <%
+            }
+        %>
+    </ul>
+</nav>
 
 <%--&lt;%&ndash;CATEGORY 2&ndash;%&gt;--%>
 <%--<div class="categories-block">--%>
-<%--    <h2 class="col-xl-2" style="padding-left: 40px">APPLE</h2>--%>
-<%--    <a href="showAllProduct.jsp?CategoryID="><h6 class="showall">Show all</h6></a>--%>
+<%--    <h2 class="col-xl-2" style="padding-left: 40px">IPHONE</h2>--%>
+<%--    <a href="showAllProduct.jsp"><h6 class="showall">Show all</h6></a>--%>
 <%--    <br>--%>
 <%--    <div class="row">--%>
-<%--        <%--%>
-<%--            for (Product product: productServiceImp.getListProductIP()){--%>
-<%--        %>--%>
-<%--        <div class="card col-xl-3" style="width: 18rem; padding: 25px 10px ">--%>
-<%--            <img class="card-img-top" src="<%=product.getImage()%>" alt="Card image cap"  width="620" height="350">--%>
-<%--            <div class="card-body">--%>
-<%--                <b><h5 class="card-title"><%=product.getProductName()%></h5></b>--%>
-<%--                <h6 class="price" style="padding-bottom: 15px; color: red">Giá bán : <%=numberFormat.format(product.getProductPrice())%>₫</h6>--%>
-<%--                <p class="description">--%>
-<%--                    <%=product.getDescription()%>--%>
-<%--                </p>--%>
-<%--                <a href="productDetails.jsp?productId=<%=product.getProductId()%>" class="btn btn-primary">Chi Tiết</a>--%>
+<%--        <c:forEach items="${subList}" var="product">--%>
+<%--            <div class="card col-xl-3" style="width: 18rem; padding: 25px 10px ">--%>
+<%--                <img class="card-img-top" src="${product.getImage()}" alt="Card image cap" width="620" height="350">--%>
+<%--                <div class="card-body">--%>
+<%--                    <b><h5 class="card-title">${product.getProductName()}</h5></b>--%>
+<%--                    <h6 class="price" style="padding-bottom: 15px; color: red">Giá bán--%>
+<%--                        : ${product.getProductPrice()}₫</h6>--%>
+<%--                    <p class="description">--%>
+<%--                            ${product.getDescription()}--%>
+<%--                    </p>--%>
+<%--                    <a href="productDetails.jsp?productId=${product.getProductId()}" class="btn btn-primary">Chi--%>
+<%--                        Tiết</a>--%>
+<%--                </div>--%>
 <%--            </div>--%>
-<%--        </div>--%>
-<%--      <%--%>
-<%--          }--%>
-<%--      %>--%>
+<%--        </c:forEach>--%>
 <%--    </div>--%>
 <%--    <br>--%>
 <%--</div>--%>
+<%--<%--%>
+<%--    List<Product> productListIp = productServiceImp.getListProductSS();--%>
+<%--    int listSizeIp = productListIp.size();--%>
+<%--    int loopSizeIp;--%>
+
+<%--    if (listSizeSS % 3 == 0) {--%>
+<%--        loopSizeIp = listSizeIp / 3;--%>
+<%--    } else {--%>
+<%--        loopSizeIp = (listSizeIp / 3) + 1;--%>
+<%--    }--%>
+<%--%>--%>
+<%--<nav aria-label="..." style="margin-left: 150px; margin-bottom: 50px">--%>
+<%--    <ul class="pagination">--%>
+<%--        <% for (int i = 1; i <= loopSizeIp; i++) {--%>
+<%--        %>--%>
+<%--        <li class="page-item">--%>
+<%--            <a class="page-link" href="/pagination?category=ip&page=<%=i%>"><%=i%><span class="sr-only">(current)</span></a></li>--%>
+<%--        <%--%>
+<%--            }--%>
+<%--        %>--%>
+<%--    </ul>--%>
+<%--</nav>--%>
+
 
 <%--FOOTER--%>
 <jsp:include page="footer.jsp"></jsp:include>
