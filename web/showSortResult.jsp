@@ -61,10 +61,11 @@
     <div class="productListShow" style="margin: 30px">
 
         <c:forEach items="${requestScope['productList']}" var="product">
-        <div style="padding-top: 40px; padding-bottom: 60px">
+        <div style="padding-top: 0; padding-bottom: 0">
+            <div class="categories-block" style="box-shadow: 5px 5px rgba(43,134,126,0.5);border-radius: 20px; border: 1px rgba(43,134,126,0.5) solid; padding: 40px; height: 580px;">
             <table style="margin-bottom: 60px">
                 <tr>
-                    <td rowspan="3"><img class="card-img-top" src="${product.getImage()}" width="620" height="350" style="height: 100%;width: 100%">
+                    <td rowspan="4" style="height: 350px; width: 580px;"><img class="card-img-top" src="${product.getImage()}" height="500" width="500">
                     </td>
                     <td><h4>${product.getProductName()}</h4></td>
                 </tr>
@@ -76,9 +77,12 @@
                             ${product.getDescription()}
                     </td>
                 </tr>
+                <tr>
+                    <td><a href="productDetails.jsp?productId=${product.getProductId()}" class="btn btn-primary">Chi Tiết</a></td>
+                </tr>
             </table>
+            </div>
             <br>
-            <hr style="width: 800px">
         </div>
         </c:forEach>
     </div>

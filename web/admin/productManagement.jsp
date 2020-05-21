@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="../boostrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../boostrap/css/mainStyle.css">
 </head>
 <body>
 <%
@@ -34,10 +35,10 @@
     <div class="container-fluid">
         <div class="inner-header">
             <div class="logo">
-                <a href="../index.jsp"><img src="../img/logo.png" alt="logo"></a>
+                <a href="/pagination"><img src="../img/logo.png" alt="logo"></a>
             </div>
             <div class="user-access">
-                <a class="active" href="../index.jsp">Home Page/Logout</a>
+                <a class="active" href="/pagination">Home Page/Logout</a>
                 <a href="" class="out"><i class="fa fa-user"></i> Admin</a>
             </div>
         </div>
@@ -51,15 +52,15 @@
         <table class="table table-hover">
             <thead>
             <tr>
-                <th>ID</th>
-                <th>Category ID</th>
-                <th>Product Name</th>
-                <th>Product Price</th>
-                <th>Quantity In Stock</th>
-                <th>Image</th>
-                <th>Status</th>
-                <th>Description</th>
-                <th colspan="2">#</th>
+                <th style="width: 80px;">ID</th>
+                <th style="width: 100px;">Category ID</th>
+                <th style="width: 150px;">Product Name</th>
+                <th style="width: 150px;">Product Price</th>
+                <th style="width: 160px;">Quantity In Stock</th>
+                <th style="width: 100px;">Image</th>
+                <th style="width: 80px;">Status</th>
+                <th style="width: 300px;">Description</th>
+                <th style="width: 70px;" colspan="2">#</th>
             </tr>
             </thead>
             <tbody>
@@ -67,16 +68,16 @@
                 for (Product product: productDAO.getListProduct()){
             %>
                 <tr>
-                    <th><input type="text" name="pmID" value="<%=product.getProductId()%>" style="width: 160px;"></th>
-                    <th><input type="text" name="pmCategoryID" value="<%=categoryDAO.getCategory(product.getCategoryId()).getCategoryName()%>"></th>
-                    <th><input type="text" name="pmName" value="<%=product.getProductName()%>"></th>
-                    <th><input type="text" name="pmPrice" value="<%=format.format(product.getProductPrice())%>"></th>
-                    <th><input type="text" name="pmQuantity" value="<%=product.getQuantityInStock()%>"></th>
-                    <th><img src="../<%=product.getImage()%>"/></th>
-                    <th><input type="text" name="pmStatus" value="<%=product.getStatus()%>"></th>
-                    <th><textarea cols="20" rows="6" name="pmDes" value="<%=product.getDescription()%>" ></textarea></th>
-                    <td><a href="/admin/updateProduct.jsp?productId=<%=product.getProductId()%>">Update</a></td>
-                    <td><a href="/deleteProduct?productId=<%=product.getProductId()%>">Delete</a></td>
+                    <th style="width: 80px;"><input  style="width: 80px;" type="text" name="pmID" value="<%=product.getProductId()%>"></th>
+                    <th style="width: 100px;"><input style="width: 100px;" type="text" name="pmCategoryID" value="<%=categoryDAO.getCategory(product.getCategoryId()).getCategoryName()%>"></th>
+                    <th style="width: 150px;"><input style="width: 150px;" type="text" name="pmName" value="<%=product.getProductName()%>"></th>
+                    <th style="width: 150px;"><input style="width: 150px;"type="text" name="pmPrice" value="<%=format.format(product.getProductPrice())%>"></th>
+                    <th style="width: 160px;"><input style="width: 160px;"type="text" name="pmQuantity" value="<%=product.getQuantityInStock()%>"></th>
+                    <th style="width: 100px;"><img style="width: 100px;"src="../<%=product.getImage()%>"/></th>
+                    <th style="width: 80px;"><input style="width: 80px;"type="text" name="pmStatus" value="<%=product.getStatus()%>"></th>
+                    <th style="width: 300px;"><textarea cols="45" rows="6" name="pmDes" value="<%=product.getDescription()%>" ></textarea></th>
+                    <th style="width: 70px;"><a href="/admin/updateProduct.jsp?productId=<%=product.getProductId()%>">Update</a></th>
+                    <th style="width: 70px;"><a href="/deleteProduct?productId=<%=product.getProductId()%>">Delete</a></th>
                 </tr>
             <%
                 }

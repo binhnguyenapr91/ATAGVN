@@ -63,8 +63,6 @@
     </div>
     <div class="productListShow" style="margin: 30px">
 
-<%--        Vòng lặp ở đây để show lần lượt tất cả sản phẩm--%>
-
         <div style="padding-top: 40px; padding-bottom: 60px">
             <%
                 for (Product product: productServiceImp.getListProduct(request.getParameter("categoryId"))){
@@ -90,7 +88,6 @@
             </table>
             </div>
             <br>
-<%--            <hr style="width: 800px; margin-bottom: 100px">--%>
             <%
                 }
             %>
