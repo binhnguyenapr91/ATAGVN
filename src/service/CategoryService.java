@@ -10,4 +10,5 @@ public interface CategoryService {
 
     public Category getCategory(String categoryId) throws SQLException;
 
+    public void updateCategory (Category category);
 }
