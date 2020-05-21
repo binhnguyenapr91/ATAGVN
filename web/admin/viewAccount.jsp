@@ -38,7 +38,7 @@
 <div class="mainManagement">
     <div class="accountManagement">
         <h3>Account Management</h3>
-        <h6><a href="#">Add more Account</a></h6>
+        <h6><a href="/accountServlet?action=add">Add more Account</a>|<a href="/accountServlet">Back to Listing</a></h6>
         <table class="table table-hover">
             <thead>
             <tr>
@@ -50,26 +50,25 @@
                 <th>Address</th>
                 <th>Phone Number</th>
                 <th>Gender</th>
-                <th scope="col" colspan="2">#</th>
+                <th>Status</th>
+                <th scope="col" colspan="2">Functions</th>
             </tr>
-            <tr>
-               <td colspan="9"><a href="/accountServlet">Back to Listing</a></td>
-            </tr>
+
             </thead>
             <tbody>
             <c:forEach items="${accounts}" var="account">
             <tr>
-                <th><input type="text" name="amID" value="${account.getAccountId()}"></th>
-                <th><input type="text" name="amName" value="${account.getAccountName()}"></th>
-                <th><input type="text" name="amPassword" value="${account.getLoginName()}"></th>
-                <th><input type="text" name="amAccess" value="${account.getPassword()}"></th>
-                <th><input type="text" name="amAddress" value="${account.getAccountAccess()}"></th>
-                <th><input type="text" name="amPhoneNumber" value="${account.getAddress()}"></th>
-                <th><input type="text" name="amGender" value="${account.getPhoneNumber()}"></th>
-                <th><input type="text" name="amGender" value="${account.isGender()}"></th>
-                <th><input type="text" name="amLoginName" value="${account.isStatus()}"></th>
-                <td><a href="/accountServlet?action=update&id=${account.getAccountId()}">Update</a></td>
-                <td><a href="/accountServlet?action=update&id=${account.getAccountId()})">Delete</a></td>
+                <th><input type="text" name="accountId" value="${account.getAccountId()}"></th>
+                <th><input type="text" name="accountName" value="${account.getAccountName()}"></th>
+                <th><input type="text" name="loginName" value="${account.getLoginName()}"></th>
+                <th><input type="text" name="password" value="${account.getPassword()}"></th>
+                <th><input type="text" name="accountAccess" value="${account.getAccountAccess()}"></th>
+                <th><input type="text" name="address" value="${account.getAddress()}"></th>
+                <th><input type="text" name="phoneNumber" value="${account.getPhoneNumber()}"></th>
+                <th><input type="text" name="gender" value="${account.isGender()}"></th>
+                <th><input type="text" name="status" value="${account.isStatus()}"></th>
+                <td><a href="/accountServlet?action=update&accountId=${account.getAccountId()}">Update</a></td>
+                <td><a href="/accountServlet?action=delete&accountId=${account.getAccountId()}">Delete</a></td>
                 </tr>
             </c:forEach>
             </tbody>

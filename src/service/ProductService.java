@@ -11,6 +11,8 @@ public interface ProductService {
 
     public List<Product> getListProduct() throws SQLException;
 
+//    public List<Product> getSubListProduct(List<Product> list, int start, int end) throws SQLException;
+
     public List<Product> getListProduct(String categoryId) throws SQLException;
 
     public List<Product> getListProductIP() throws SQLException;

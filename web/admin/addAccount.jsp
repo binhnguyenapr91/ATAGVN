@@ -52,21 +52,21 @@
                     <th>Phone Number</th>
                     <th>Gender</th>
                     <th>Status</th>
-                    <th scope="col" colspan="2">Functions</th>
+                    <th>Functions</th>
                 </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <th><input type="text" name="accountId" value="${requestScope["account"].getAccountId()}"></th>
-                        <th><input type="text" name="accountName" value="${requestScope["account"].getAccountName()}"></th>
-                        <th><input type="text" name="loginName" value="${requestScope["account"].getLoginName()}"></th>
-                        <th><input type="text" name="accountAccess" value="${requestScope["account"].getAccountAccess()}"></th>
-                        <th><input type="text" name="password" value="${requestScope["account"].getPassword()}"></th>
-                        <th><input type="text" name="address" value="${requestScope["account"].getAddress()}"></th>
-                        <th><input type="text" name="phoneNumber" value="${requestScope["account"].getPhoneNumber()}"></th>
-                        <th><input type="text" name="gender" value="${requestScope["account"].isGender()}"></th>
-                        <th><input type="text" name="status" value="${requestScope["account"].isStatus()}"></th>
-                        <td><input type="submit" value="Update"></td>
+                        <th><input type="text" name="accountId" ></th>
+                        <th><input type="text" name="accountName" ></th>
+                        <th><input type="text" name="loginName" ></th>
+                        <th><input type="text" name="password" ></th>
+                        <th><input type="text" name="accountAccess"></th>
+                        <th><input type="text" name="address"></th>
+                        <th><input type="text" name="phoneNumber"></th>
+                        <th><input type="text" name="gender"></th>
+                        <th><input type="text" name="status"></th>
+                        <td><input type="submit" value="Add"></td>
                     </tr>
                 </tbody>
             </table>

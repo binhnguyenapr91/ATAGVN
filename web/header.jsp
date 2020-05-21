@@ -34,7 +34,7 @@
     <div class="container-fluid">
         <div class="inner-header">
             <div class="logo">
-                <a href="index.jsp"><img src="img/logo.png" alt="logo"></a>
+                <a href="/pagination"><img src="img/logo.png" alt="logo"></a>
             </div>
             <div class="header-right">
                 <a href="search.jsp"><i class="fa fa-search"></i></a>
@@ -67,7 +67,7 @@
             </div>
             <nav class="main-menu mobile-menu">
                 <ul>
-                    <li><a class="active" href="index.jsp">Home</a></li>
+                    <li><a class="active" href="/pagination">Home</a></li>
                     <li><a href="">Category</a>
                         <ul class="sub-menu">
                             <%

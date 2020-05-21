@@ -10,5 +10,6 @@ public interface AccountService {
     String getMaxAccountID();
     public List<Account> viewAllAccount();
     Account findById(String accountId);
-    public boolean updateAccountById(Account account);
+    public void updateAccountById(Account account);
+    public void deleteAccountById(String accountId);
 }
