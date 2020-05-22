@@ -49,7 +49,7 @@
 <div class="mainManagement">
     <div class="productManagement" style="width: 1470px">
 
-        <h6 class="btn btn-outline-primary" style="float: right;margin: 10px 10px"><a href="/admin/createProduct.jsp">Add more Product</a></h6>
+        <h6 class="btn btn-outline-primary" style="float: right;margin: 10px 10px"><a href="/admin/createProduct.jsp">Add more Product</a>|<a href="/admin/createProduct.jsp">Prodcut Report</a></h6>
         <table class="table table-hover">
             <thead>
             <tr>

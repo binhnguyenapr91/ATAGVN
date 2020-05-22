@@ -33,6 +33,10 @@ public class MainAdminNavigateServlet extends HttpServlet {
             case "orderManagement":
                 resp.sendRedirect("/accountServlet");
                 break;
+            case "report":
+                requestDispatcher =req.getRequestDispatcher("/reportServlet");
+                requestDispatcher.forward(req,resp);
+                break;
 
         }
     }
