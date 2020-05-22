@@ -29,6 +29,8 @@
 <body>
 <%
     CategoryServiceImp categoryServiceImp = new CategoryServiceImp();
+    ProductServiceImp productServiceImp = new ProductServiceImp();
+    Product product = productServiceImp.getProduct(request.getParameter("productId"));
 %>
 <header class="header-section">
     <div class="container-fluid">
@@ -41,7 +43,9 @@
                 <i class="fa fa-user">&nbsp${sessionScope['cookieUserName']}</i>
                 <a href="cart.jsp">
                     <i class="fa fa-shopping-bag"></i>
-                    <span>2</span>
+                    <span>
+                         <a href="/addToCartServlet?productId=<%=product.getProductId()%>"></a>
+                    </span>
                 </a>
             </div>
             <div class="user-access">
