@@ -41,7 +41,7 @@ create table orders
 (
     OrderID     varchar(20) not null primary key unique,
     AccountID   varchar(20) not null,
-    OrderDate   date        not null default (current_date),
+    OrderDate   datetime        not null default now(),
     Receiver    nvarchar(255),
     Address     nvarchar(255),
     Email       varchar(50),
