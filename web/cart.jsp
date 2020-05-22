@@ -60,11 +60,13 @@
                                 <td><p:formatNumber value="${item.price}"></p:formatNumber>₫</td>
                                 <td style="width: 80px; height: 20px;">
                                     <i class="qty mt-5" style="height: 30px;">
-                                        <input style="width: 54px;height: 20px;" type="number" class="count" name="quantity" value="${item.quantity}">
+                                        <input style="width: 54px;height: 20px;" type="number" class="count"
+                                               name="quantity" value="${item.quantity}">
                                     </i>
                                 </td>
                                 <td><p:formatNumber value="${item.price * item.quantity}"></p:formatNumber>₫</td>
-                                <td><a href=""><input name="act" class="btn btn-outline-danger" type="submit" value="Delete"></a></td>
+                                <td><a href="/cartUpdateServlet?action=Delete&productId=${item.product.productId}"><input name="act" class="btn btn-outline-danger" type="button"
+                                                      value="Delete"></a></td>
                             </tr>
                         </c:forEach>
                         <tr>

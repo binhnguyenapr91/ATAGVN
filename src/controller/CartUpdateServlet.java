@@ -37,15 +37,7 @@ public class CartUpdateServlet extends HttpServlet {
                 updateCart(request, response);
                 break;
             }
-            case "Delete": {
-                deleteProduct(request, response);
-                break;
-            }
         }
-    }
-
-    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) {
-
     }
 
     private void updateCart(HttpServletRequest request, HttpServletResponse response) {
@@ -56,7 +48,6 @@ public class CartUpdateServlet extends HttpServlet {
                 checkMinutes = false;
             }
         }
-
         if (!checkMinutes) {
             String announcement = "Can not input minutes number, Please try again!";
             request.setAttribute("announcement", announcement);
@@ -89,5 +80,39 @@ public class CartUpdateServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
+        System.out.println(action);
+        if (action == null)
+            action = "";
+
+        switch (action) {
+            case "Delete": {
+                deleteProduct(request, response);
+                break;
+            }
+        }
+    }
+    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) {
+        String productId = request.getParameter("productId");
+
+        HttpSession session = request.getSession();
+        Order order = (Order) session.getAttribute("order");
+        List<Item> list = order.getItems();
+
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getProduct().getProductId().equals(productId)){
+                list.remove(i);
+            }
+        }
+
+        session.removeAttribute("order");
+        session.setAttribute("order", order);
+
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("cart.jsp");
+        try {
+            requestDispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
     }
 }
