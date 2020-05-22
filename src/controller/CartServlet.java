@@ -20,20 +20,53 @@ import java.util.List;
 
 @WebServlet(name = "CartServlet", urlPatterns = "/cartServlet")
 public class CartServlet extends HttpServlet {
-    private ProductService productService;
-
-    public void init() throws ServletException {
-        productService = new ProductServiceImp();
-        super.init();
-    }
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
-        super.doPost(request, response);
+        String action = request.getParameter("action");
+        if (action == null) action = "";
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        String productId = request.getParameter("productId");
+        String act = "Update";
+        int newQuantity = 0;
+
+        switch (action) {
+            case "plus": {
+                newQuantity = quantity + 1;
+                break;
+            }
+            case "minutes": {
+                newQuantity = quantity - 1;
+                break;
+            }
+        }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/cartUpdateServlet");
+        request.setAttribute("quantity", newQuantity);
+        request.setAttribute("productId", productId);
+        request.setAttribute("act", act);
+        dispatcher.forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("cart.jsp");
+        String action = request.getParameter("action");
+        if (action == null) action = "";
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        String productId = request.getParameter("productId");
+        String act = "Update";
+        int newQuantity = 0;
+
+        switch (action) {
+            case "plus": {
+                newQuantity = quantity + 1;
+                break;
+            }
+            case "minutes": {
+                newQuantity = quantity - 1;
+                break;
+            }
+        }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/cartUpdateServlet");
+        request.setAttribute("quantity", newQuantity);
+        request.setAttribute("productId", productId);
+        request.setAttribute("act", act);
         dispatcher.forward(request, response);
     }
 }
