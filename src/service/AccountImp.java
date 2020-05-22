@@ -38,7 +38,7 @@ public class AccountImp implements AccountService {
                 boolean gender = Boolean.parseBoolean(resultSet.getString("Gender"));
                 boolean status = Boolean.parseBoolean(resultSet.getString("Status"));
 
-                account = new Account(accountId, accountName, loginName, accountAccess, password, address, phoneNumber, gender, status);
+                account = new Account(accountId, accountName, loginName, password,accountAccess, address, phoneNumber, gender, status);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -171,7 +171,7 @@ public class AccountImp implements AccountService {
     public void deleteAccountById(String accountId) {
         Connection conn = DBConnect.getConnection();
         try {
-            PreparedStatement ps = conn.prepareStatement("delete from account where AccountID = ?");
+            PreparedStatement ps = conn.prepareStatement("delete from atagvn.account where AccountID = ?");
             ps.setString(1,accountId);
             ps.executeUpdate();
         } catch (SQLException throwables) {

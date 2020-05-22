@@ -40,7 +40,7 @@
                     <h3 style="margin-top: 50px; margin-bottom: 30px;">Your Cart</h3>
                 </div>
                 <div class="orderedListTable">
-                    <table class="table table-hover" style="margin-bottom: 70px">
+                    <table class="table table-hover" style="margin-bottom: 20px">
                         <thead>
                         <tr>
                             <th scope="col">Product ID</th>
@@ -57,8 +57,16 @@
                                 <td>${item.product.productId}</td>
                                 <td>${item.product.productName}</td>
                                 <td><p:formatNumber value="${item.product.productPrice}"></p:formatNumber>₫</td>
-                                <td>${item.quantity}</td>
-                                <td><p:formatNumber value="${item.product.productPrice * item.quantity}"></p:formatNumber>₫</td>
+                                <td style="width: 80px; height: 20px;">
+                                    <i class="qty mt-5" style="height: 20px;">
+                                        <span class="minus bg-dark">-</span>
+                                        <input type="number" class="count" name="qty" value="${item.quantity}">
+                                        <span class="plus bg-dark">+</span>
+                                    </i>
+                                </td>
+                                <td><p:formatNumber
+                                        value="${item.product.productPrice * item.quantity}"></p:formatNumber>₫
+                                </td>
                                 <td><a href="#">Update</a></td>
                                 <td><a href="#">Delete</a></td>
                             </tr>
@@ -68,7 +76,12 @@
                             <td>
                                 <c:set var="totalOrder" value="${0}"/>
                                 <c:forEach var="item" items="${order.items}">
+<<<<<<< HEAD
                                     <c:set var="totalOrder" value="${totalOrder + item.product.productPrice*item.quantity}"/>
+=======
+                                    <c:set var="totalOrder"
+                                           value="${totalOrder + item.product.productPrice* item.quantity}"/>
+>>>>>>> 66161ab292bda14c2c9d8d463dd3c7ef2b88881e
                                 </c:forEach>
                                 <p:formatNumber value="${totalOrder}"></p:formatNumber>₫
 
@@ -85,7 +98,9 @@
                         </tbody>
                     </table>
                 </div>
+                <a style="float: right; margin-bottom: 40px" href="/pagination" class="btn btn-outline-info" id="backToMain">Tiếp tục mua hàng</a>
             </div>
+
 
 
             <div class="checkout-form-row">
@@ -136,6 +151,20 @@
 
 <%--FOOTER--%>
 <jsp:include page="footer.jsp"></jsp:include>
+<script>
+    $(document).ready(function(){
+        $('.count').prop('disabled', true);
+        $(document).on('click','.plus',function(){
+            $('.count').val(parseInt($('.count').val()) + 1 );
+        });
+        $(document).on('click','.minus',function(){
+            $('.count').val(parseInt($('.count').val()) - 1 );
+            if ($('.count').val() == 0) {
+                $('.count').val(1);
+            }
+        });
+    });
+</script>
 
 </body>
 </html>

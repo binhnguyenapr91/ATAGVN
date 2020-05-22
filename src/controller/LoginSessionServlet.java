@@ -15,7 +15,7 @@ public class LoginSessionServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession ss =request.getSession();
         ss.invalidate();
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/pagination");
         requestDispatcher.forward(request,response);
     }
 }

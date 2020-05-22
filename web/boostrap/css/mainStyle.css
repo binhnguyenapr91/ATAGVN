@@ -7,6 +7,81 @@ body {
     background: none;
     color: darkslategray;
 }
+.productManagement table tr th, .productManagement table tr th input{
+    width: 50px;
+}
+
+
+.qty .count {
+    color: #000;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 10px;
+    padding: 0 2px;
+    min-width: 35px;
+    text-align: center;
+}
+
+.qty .plus {
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: top;
+    color: white;
+    width: 20px;
+    height: 20px;
+    font: 20px/1 Arial, sans-serif;
+    text-align: center;
+    border-radius: 50%;
+}
+
+.qty .minus {
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: top;
+    color: white;
+    width: 20px;
+    height: 20px;
+    font: 20px/1 Arial, sans-serif;
+    text-align: center;
+    border-radius: 50%;
+    background-clip: padding-box;
+}
+
+.qty div {
+    text-align: center;
+}
+
+.qty .minus:hover {
+    background-color: #717fe0 !important;
+}
+
+.qty .plus:hover {
+    background-color: #717fe0 !important;
+}
+
+/*Prevent text selection*/
+.qty span {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.qty input {
+    border: 0;
+    width: 2%;
+}
+
+.qty input::-webkit-outer-spin-button,
+.qty input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.qty input:disabled {
+    background-color: white;
+}
 
 h1,
 h2,
@@ -90,8 +165,8 @@ ol {
 }
 
 .spad {
-    padding-top: 100px;
-    padding-bottom: 100px;
+    padding-top: 70px;
+    padding-bottom: 70px;
 }
 
 .text-white h1,
@@ -146,11 +221,12 @@ ol {
     background-color: white;
     box-shadow: 2px 2px;
 }
-.loginPanel table tr{
+
+.loginPanel table tr {
     height: 50px;
 }
 
-.loginPanel table a:hover,.loginPanel table a:checked{
+.loginPanel table a:hover, .loginPanel table a:checked {
     color: red;
 }
 
@@ -377,13 +453,8 @@ ol {
 /*---------------------
   Header Info
 -----------------------*/
-.mainManagement a:active, .mainManagement a:visited {
-    color: blue;
-}
 
-.mainManagement a:hover {
-    color: red;
-}
+
 
 .mainManagement {
     width: 100%;

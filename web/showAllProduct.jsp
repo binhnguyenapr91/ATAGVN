@@ -47,7 +47,7 @@
         <h3><%=categoryServiceImp.getCategory(request.getParameter("categoryId")).getCategoryName().toUpperCase()%></h3>
     </div>
     <div class="cf-left" style="margin-bottom: 20px">
-        <form method="post" action="${pageContext.request.contextPath}/sort">
+        <form method="post" action="${pageContext.request.contextPath}/sort?categoryId=<%=categoryServiceImp.getCategory(request.getParameter("categoryId")).getCategoryId()%>">
             <table>
                 <tr>
                     <td><select name="sortByPrice" class="sort">
@@ -62,8 +62,6 @@
         </form>
     </div>
     <div class="productListShow" style="margin: 30px">
-
-<%--        Vòng lặp ở đây để show lần lượt tất cả sản phẩm--%>
 
         <div style="padding-top: 40px; padding-bottom: 60px">
             <%
@@ -90,7 +88,6 @@
             </table>
             </div>
             <br>
-<%--            <hr style="width: 800px; margin-bottom: 100px">--%>
             <%
                 }
             %>
