@@ -76,12 +76,10 @@
                             <td>
                                 <c:set var="totalOrder" value="${0}"/>
                                 <c:forEach var="item" items="${order.items}">
-<<<<<<< HEAD
+
                                     <c:set var="totalOrder" value="${totalOrder + item.product.productPrice*item.quantity}"/>
-=======
                                     <c:set var="totalOrder"
                                            value="${totalOrder + item.product.productPrice* item.quantity}"/>
->>>>>>> 66161ab292bda14c2c9d8d463dd3c7ef2b88881e
                                 </c:forEach>
                                 <p:formatNumber value="${totalOrder}"></p:formatNumber>₫
 

@@ -33,7 +33,23 @@ public class CartServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("cart.jsp");
-        dispatcher.forward(request, response);
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("cart.jsp");
+//        dispatcher.forward(request, response);
+        String action = request.getHeader("action");
+        if (action == null) {
+            action = "";
+        }
+//        try {
+            switch (action) {
+                case "update":
+                    break;
+
+                case "delete":
+                    break;
+            }
+
+//        } catch (SQLException e) {
+//            throw new ServletException();
+//        }
     }
 }
