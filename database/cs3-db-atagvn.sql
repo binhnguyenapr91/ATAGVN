@@ -39,9 +39,14 @@ create table account
 
 create table orders
 (
-    OrderID   varchar(20) not null primary key unique,
-    AccountID varchar(20) not null,
-    OrderDate date        not null
+    OrderID     varchar(20) not null primary key unique,
+    AccountID   varchar(20) not null,
+    OrderDate   date        not null default (current_date),
+    Receiver    nvarchar(255),
+    Address     nvarchar(255),
+    Email       varchar(50),
+    PhoneNumber varchar(20),
+    status      bit default 1
 );
 
 alter table orders
@@ -50,11 +55,12 @@ alter table orders
 
 create table order_product
 (
-    ID        varchar(20) not null primary key unique,
     OrderID   varchar(20) not null,
     ProductID varchar(20) not null,
     Quantity  int         not null,
-    PriceEach float
+    PriceEach float,
+    AccountID varchar(20) not null,
+    primary key (OrderID, ProductID)
 );
 
 alter table order_product
