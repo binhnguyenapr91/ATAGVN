@@ -34,7 +34,6 @@ public class AddProductServlet extends HttpServlet {
         String productImage = request.getParameter("productImage");
        int status = Integer.parseInt(request.getParameter("status"));
         String description = request.getParameter("description");
-
         try {
             this.productServiceImp.saveProduct(new Product(productId,categoryId,productName,productPrice,quantityInStock,productImage,status,description));
         } catch (SQLException throwables) {

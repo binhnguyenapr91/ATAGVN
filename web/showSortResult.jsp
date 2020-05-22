@@ -41,7 +41,7 @@
 
 <div class="container">
     <div class="categoryName" style="margin-bottom: 20px">
-        <h3>SAMSUNG</h3>
+        <h3><%=categoryServiceImp.getCategory(request.getParameter("categoryId")).getCategoryName().toUpperCase()%></h3>
     </div>
     <div class="cf-left" style="margin-bottom: 20px">
         <form method="post" action=${pageContext.request.contextPath}/sort?categoryId=<%=categoryServiceImp.getCategory(request.getParameter("categoryId")).getCategoryId()%>>
