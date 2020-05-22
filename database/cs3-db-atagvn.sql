@@ -46,7 +46,7 @@ create table orders
     Address     nvarchar(255),
     Email       varchar(50),
     PhoneNumber varchar(20),
-    status      bit default 1
+    Status      bit default 1
 );
 
 alter table orders
