@@ -39,9 +39,14 @@ create table account
 
 create table orders
 (
-    OrderID   varchar(20) not null primary key unique,
-    AccountID varchar(20) not null,
-    OrderDate date        not null
+    OrderID     varchar(20) not null primary key unique,
+    AccountID   varchar(20) not null,
+    OrderDate   date        not null default (current_date),
+    Receiver    nvarchar(255),
+    Address     nvarchar(255),
+    Email       varchar(50),
+    PhoneNumber varchar(20),
+    status      bit default 1
 );
 
 alter table orders
@@ -50,11 +55,12 @@ alter table orders
 
 create table order_product
 (
-    ID        varchar(20) not null primary key unique,
     OrderID   varchar(20) not null,
     ProductID varchar(20) not null,
     Quantity  int         not null,
-    PriceEach float
+    PriceEach float,
+    AccountID varchar(20) not null,
+    primary key (OrderID, ProductID)
 );
 
 alter table order_product
@@ -166,11 +172,11 @@ values ('OD300401', 'CT1', '2020-03-11'),
        ('OD050501', 'CT3', '2020-03-14'),
        ('OD100501', 'CT1', '2020-03-15');
 
-insert into order_product (ID, OrderID, ProductID, Quantity, PriceEach)
-values ('OP0001', 'OD300401', 'SSGAF', 1, 50000000),
-       ('OP0002', 'OD300402', 'IP73', 3, 12990000),
-       ('OP0003', 'OD300402', 'IP1164', 1, 30190000),
-       ('OP0004', 'OD010501', 'SSGA11', 2, 3690000),
-       ('OP0005', 'OD050501', 'SSGAS2P', 1, 23990000),
-       ('OP0006', 'OD100501', 'IP11PM2', 1, 37990000);
+insert into order_product (OrderID, ProductID, Quantity, PriceEach, AccountID)
+values ('OD300401', 'SSGAF', 1, 50000000,'CT1'),
+       ( 'OD300402', 'IP73', 3, 12990000,'CT3'),
+       ( 'OD300402', 'IP1164', 1, 30190000,'CT3'),
+       ( 'OD010501', 'SSGA11', 2, 3690000,'CT2'),
+       ( 'OD050501', 'SSGAS2P', 1, 23990000,'CT3'),
+       ( 'OD100501', 'IP11PM2', 1, 37990000,'CT1');
 

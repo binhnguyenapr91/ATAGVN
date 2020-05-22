@@ -12,8 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductServiceImp implements ProductService {
-
-
     //get chit tiet chua viet xong
     @Override
     public Product getProductDetail(String productId) {

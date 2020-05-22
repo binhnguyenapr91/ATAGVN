@@ -49,7 +49,7 @@
 <div class="mainManagement">
     <div class="productManagement" style="width: 1470px">
 
-        <h6 class="btn btn-outline-primary" style="float: right;margin: 10px 10px"><a href="/admin/createProduct.jsp">Add more Product</a></h6>
+        <h6><a class="btn btn-outline-primary" style="float: right;margin: 10px 10px" href="/admin/createProduct.jsp">Add more Product</a>&nbsp&nbsp<a class="btn btn-outline-danger" href="admin/admin.jsp">Back to Listing</a></h6>
         <table class="table table-hover">
             <thead>
             <tr>
@@ -82,7 +82,7 @@
                 </tr>
             <%
                 }
-            %>
+                %>
             <tr>
                 <td style="color: blue" colspan="4"><b>Total :</b></td>
                 <td style="color: blue"><b>
