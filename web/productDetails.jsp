@@ -37,8 +37,8 @@
     <div class="container-fluid">
         <br>
         <div class="row">
-            <div class="col-lg-6 text-left">
-                <img src="<%=product.getImage()%>" width="620" height="350"/>
+            <div class="col-lg-6 text-right">
+                <img  style="width: 500px; !important; height: 500px; !important;" src="<%=product.getImage()%>"/>
             </div>
             <div class="col-lg-6">
                 <div class="product-content">
@@ -55,13 +55,8 @@
                             <td><input style="background-color: transparent; border-color: transparent" type="text" name="quantityInStock" disabled value="<%=product.getQuantityInStock()%>"></td>
                         </tr>
                     </table>
-                    <div class="product-quantity">
-                        <div class="pro-qty">
-                            <input type="text" value="1" name="productQuantity">
-                        </div>
-                    </div>
-                    <a href="/addToCartServlet?productId=<%=product.getProductId()%>" class="primary-btn pc-btn" id="addToCart"><i class="fa fa-cart-plus">Add to cart</i></a>
-                    <a href="#" class="primary-btn pc-btn" id="backToMain">Tiếp tục mua hàng</a>
+                    <a style="width: 100px; !important; height: 50px; !important;" href="/addToCartServlet?productId=<%=product.getProductId()%>" class="btn btn-outline-danger" id="addToCart">
+                        <i style="font-size: 30px; !important; margin-top: 5px; !important;" class="fa fa-cart-plus"></i></a>
                 </div>
             </div>
         </div>

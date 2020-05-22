@@ -32,42 +32,42 @@
     <div class="container-fluid">
         <div class="inner-header">
             <div class="logo">
-                <a href="index.jsp"><img src="img/logo.png" alt="logo"></a>
+                <h2 style="margin-bottom: 20px">CATEGORY <small class="text-muted">Management</small></h2>
             </div>
             <div class="user-access">
-                <a class="active" href="index.jsp">Home Page/Logout</a>
-                <a href="" class="out"><i class="fa fa-user"></i> Admin</a>
+                <a style="margin: 30px" class="active" href="/pagination">Home Page/Logout</a>
+                <a href="" class="out"><i class="fa fa-user"></i>&nbspAdmin</a>
             </div>
         </div>
     </div>
 </header>
 <hr style="height: 10px">
 <div class="mainManagement">
-        <h3>Category Management</h3>
-        <h6><a href="/categoryServlet?action=add">Add more Category</a>|<a href="/categoryServlet">Back to Listing</a></h6>
+    <div class="productManagement" style="width: 1400px">
+        <h6><a style="float:right;" class="btn btn-outline-primary" href="/categoryServlet?action=add">Add more Category</a>&nbsp&nbsp<a class="btn btn-outline-danger" href="admin/admin.jsp">Back to Listing</a></h6>
         <table class="table table-hover">
             <thead>
             <tr>
-                <th>Category ID</th>
-                <th>Category Name</th>
-                <th scope="col" colspan="2">Functions</th>
+                <th style="width: 300px;">Category ID</th>
+                <th style="width: 300px;">Category Name</th>
+                <th style="width: 50px;" scope="col" colspan="2">Functions</th>
             </tr>
 
             </thead>
             <tbody>
             <c:forEach items="${categories}" var="category">
                 <tr>
-                    <th><input type="text" name="categoryId" value="${category.getCategoryId()}"></th>
-                    <th><input type="text" name="categoryName" value="${category.getCategoryName()}"></th>
-                    <td><a href="/categoryServlet?action=update&categoryId=${category.getCategoryId()}">Update</a></td>
-                    <td><a href="/categoryServlet?action=delete&categoryId=${category.getCategoryId()}">Delete</a></td>
+                    <th style="width: 300px;"><input style="width: 300px;" type="text" name="categoryId" value="${category.getCategoryId()}"></th>
+                    <th style="width: 300px;"><input style="width: 300px;" type="text" name="categoryName" value="${category.getCategoryName()}"></th>
+                    <td style="width: 50px;"><a class="btn btn-outline-success" href="/categoryServlet?action=update&categoryId=${category.getCategoryId()}">Update</a></td>
+                    <td style="width: 50px;"><a class="btn btn-outline-danger" href="/categoryServlet?action=delete&categoryId=${category.getCategoryId()}">Delete</a></td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
     </div>
-
 </div>
+
 </body>
 </html>
 

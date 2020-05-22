@@ -52,7 +52,7 @@ public class PaginationServlet extends HttpServlet {
 
         subList = productList.subList(start, end);
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp?page=1");
         request.setAttribute("subList", subList);
         requestDispatcher.forward(request, response);
     }

@@ -25,24 +25,23 @@
     <div class="container-fluid">
         <div class="inner-header">
             <div class="logo">
-                <a href="index.jsp"><img src="img/logo.png" alt="logo"></a>
+                <h2 style="margin-bottom: 20px">ACCOUNT <small class="text-muted">Management</small></h2>
             </div>
             <div class="user-access">
-                <a class="active" href="index.jsp">Home Page/Logout</a>
-                <a href="" class="out"><i class="fa fa-user"></i> Admin</a>
+                <a style="margin: 30px" class="active" href="/pagination">Home Page/Logout</a>
+                <a href="" class="out"><i class="fa fa-user"></i>&nbspAdmin</a>
             </div>
         </div>
     </div>
 </header>
 <hr style="height: 10px">
 <div class="mainManagement">
-    <div class="accountManagement">
-        <h3>Account Management</h3>
-        <h6><a href="/accountServlet?action=add">Add more Account</a>|<a href="/accountServlet">Back to Listing</a></h6>
+    <div class="accountManagement" style="width: 1470px">
+        <h6 style="width: 1470px;"><a style="float:right" class="btn btn-outline-primary" href="/accountServlet?action=add">Add more Account</a>&nbsp&nbsp<a class="btn btn-outline-danger" href="admin/admin.jsp">Back to Listing</a></h6>
         <table class="table table-hover">
             <thead>
             <tr>
-                <th>ID</th>
+                <th style="width: 80px;">ID</th>
                 <th>Account Name</th>
                 <th>Login Name</th>
                 <th>Password</th>
@@ -58,17 +57,17 @@
             <tbody>
             <c:forEach items="${accounts}" var="account">
             <tr>
-                <th><input type="text" name="accountId" value="${account.getAccountId()}"></th>
+                <th style="width: 80px;"><input style="width: 80px;"type="text" name="accountId" value="${account.getAccountId()}"></th>
                 <th><input type="text" name="accountName" value="${account.getAccountName()}"></th>
                 <th><input type="text" name="loginName" value="${account.getLoginName()}"></th>
                 <th><input type="text" name="password" value="${account.getPassword()}"></th>
                 <th><input type="text" name="accountAccess" value="${account.getAccountAccess()}"></th>
                 <th><input type="text" name="address" value="${account.getAddress()}"></th>
                 <th><input type="text" name="phoneNumber" value="${account.getPhoneNumber()}"></th>
-                <th><input type="text" name="gender" value="${account.isGender()}"></th>
-                <th><input type="text" name="status" value="${account.isStatus()}"></th>
-                <td><a href="/accountServlet?action=update&accountId=${account.getAccountId()}">Update</a></td>
-                <td><a href="/accountServlet?action=delete&accountId=${account.getAccountId()}">Delete</a></td>
+                <th  style="width: 80px;"><input  style="width: 80px;" type="text" name="gender" value="${account.isGender()}"></th>
+                <th  style="width: 80px;"><input  style="width: 80px;"type="text" name="status" value="${account.isStatus()}"></th>
+                <td><a class="btn btn-outline-success" href="/accountServlet?action=update&accountId=${account.getAccountId()}">Update</a></td>
+                <td><a class="btn btn-outline-danger" href="/accountServlet?action=delete&accountId=${account.getAccountId()}">Delete</a></td>
                 </tr>
             </c:forEach>
             </tbody>

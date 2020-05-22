@@ -135,7 +135,7 @@ public class LoginServlet extends HttpServlet {
                     request.setAttribute("announcement", announcement);
                     requestDispatcher.forward(request, response);
                 } else {
-                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("admin/productManagement.jsp");
+                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("admin/admin.jsp");
                     requestDispatcher.forward(request, response);
                 }
             } else if (account.getPassword().equals(password)) {
@@ -146,8 +146,7 @@ public class LoginServlet extends HttpServlet {
                 httpSession.setAttribute("cookieUserName",userName);
                 httpSession.setAttribute("cookieIsLogin",logined);
 
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
-                requestDispatcher.forward(request,response);
+                response.sendRedirect("/pagination");
             } else {
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
                 String announcement = "Wrong 'password'. Please try again!";

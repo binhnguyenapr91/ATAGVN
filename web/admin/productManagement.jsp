@@ -2,6 +2,7 @@
 <%@ page import="service.CategoryServiceImp" %>
 <%@ page import="model.Product" %>
 <%@ page import="java.text.NumberFormat" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -22,6 +23,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="../boostrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../boostrap/css/mainStyle.css">
 </head>
 <body>
 <%
@@ -34,32 +36,32 @@
     <div class="container-fluid">
         <div class="inner-header">
             <div class="logo">
-                <a href="../index.jsp"><img src="../img/logo.png" alt="logo"></a>
+                <h2 style="margin-bottom: 20px">PRODUCT <small class="text-muted">Management</small></h2>
             </div>
             <div class="user-access">
-                <a class="active" href="../index.jsp">Home Page/Logout</a>
-                <a href="" class="out"><i class="fa fa-user"></i> Admin</a>
+                <a style="margin: 30px" class="active" href="/pagination">Home Page/Logout</a>
+                <a href="" class="out"><i class="fa fa-user"></i>&nbspAdmin</a>
             </div>
         </div>
     </div>
 </header>
 <hr style="height: 10px">
 <div class="mainManagement">
-    <div class="productManagement" style="width: 1100px">
-        <h3>Product Management</h3>
-        <h6><a href="/admin/createProduct.jsp">Add more Product</a></h6>
+    <div class="productManagement" style="width: 1470px">
+
+        <h6><a class="btn btn-outline-primary" style="float: right;margin: 10px 10px" href="/admin/createProduct.jsp">Add more Product</a>&nbsp&nbsp<a class="btn btn-outline-danger" href="admin/admin.jsp">Back to Listing</a></h6>
         <table class="table table-hover">
             <thead>
             <tr>
-                <th>ID</th>
-                <th>Category ID</th>
-                <th>Product Name</th>
-                <th>Product Price</th>
-                <th>Quantity In Stock</th>
-                <th>Image</th>
-                <th>Status</th>
-                <th>Description</th>
-                <th colspan="2">#</th>
+                <th style="width: 80px;">ID</th>
+                <th style="width: 100px;">Category ID</th>
+                <th style="width: 150px;">Product Name</th>
+                <th style="width: 150px;">Product Price</th>
+                <th style="width: 160px;">Quantity In Stock</th>
+                <th style="width: 100px;">Image</th>
+                <th style="width: 80px;">Status</th>
+                <th style="width: 300px;">Description</th>
+                <th style="width: 70px;" colspan="2">#</th>
             </tr>
             </thead>
             <tbody>
@@ -67,23 +69,33 @@
                 for (Product product: productDAO.getListProduct()){
             %>
                 <tr>
-                    <th><input type="text" name="pmID" value="<%=product.getProductId()%>" style="width: 160px;"></th>
-                    <th><input type="text" name="pmCategoryID" value="<%=categoryDAO.getCategory(product.getCategoryId()).getCategoryName()%>"></th>
-                    <th><input type="text" name="pmName" value="<%=product.getProductName()%>"></th>
-                    <th><input type="text" name="pmPrice" value="<%=format.format(product.getProductPrice())%>"></th>
-                    <th><input type="text" name="pmQuantity" value="<%=product.getQuantityInStock()%>"></th>
-                    <th><img src="../<%=product.getImage()%>"/></th>
-                    <th><input type="text" name="pmStatus" value="<%=product.getStatus()%>"></th>
-                    <th><textarea cols="20" rows="6" name="pmDes" value="<%=product.getDescription()%>" ></textarea></th>
-                    <td><a href="/admin/updateProduct.jsp?productId=<%=product.getProductId()%>">Update</a></td>
-                    <td><a href="/deleteProduct?productId=<%=product.getProductId()%>">Delete</a></td>
+                    <th style="width: 80px;"><input  style="width: 80px;" type="text" name="pmID" value="<%=product.getProductId()%>"></th>
+                    <th style="width: 100px;"><input style="width: 100px;" type="text" name="pmCategoryID" value="<%=categoryDAO.getCategory(product.getCategoryId()).getCategoryName()%>"></th>
+                    <th style="width: 150px;"><input style="width: 150px;" type="text" name="pmName" value="<%=product.getProductName()%>"></th>
+                    <th style="width: 150px;"><input style="width: 150px;"type="text" name="pmPrice" value="<%=format.format(product.getProductPrice())%>"></th>
+                    <th style="width: 160px;"><input style="width: 160px;"type="text" name="pmQuantity" value="<%=product.getQuantityInStock()%>"></th>
+                    <th style="width: 100px;"><img style="width: 100px;"src="../<%=product.getImage()%>"/></th>
+                    <th style="width: 80px;"><input style="width: 80px;"type="text" name="pmStatus" value="<%=product.getStatus()%>"></th>
+                    <th style="width: 300px;"><textarea cols="35" rows="6" name="pmDes" value="<%=product.getDescription()%>" ></textarea></th>
+                    <th style="width: 70px;"><a class="btn btn-outline-success" href="/admin/updateProduct.jsp?productId=<%=product.getProductId()%>">Update</a></th>
+                    <th style="width: 70px;"><a class="btn btn-outline-danger" href="/deleteProduct?productId=<%=product.getProductId()%>">Delete</a></th>
                 </tr>
             <%
                 }
-            %>
+                %>
             <tr>
-                <td colspan="4">Total :</td>
-                <td>0xxx</td>
+                <td style="color: blue" colspan="4"><b>Total :</b></td>
+                <td style="color: blue"><b>
+                    <%
+                        int count = 0;
+                        List<Product> list = productDAO.getListProduct();
+                        for (Product product : list) {
+                            count += product.getQuantityInStock();
+                        }
+
+                    %>
+                    <%=count%></b>
+                </td>
             </tr>
             </tbody>
         </table>
