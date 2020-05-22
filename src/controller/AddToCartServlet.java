@@ -32,7 +32,9 @@ public class AddToCartServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int quantity = 1;
+
+
+                int quantity = 1;
         String id;
         if (request.getParameter("productId") != null) {
             id = request.getParameter("productId");
@@ -45,7 +47,7 @@ public class AddToCartServlet extends HttpServlet {
                     HttpSession session =request.getSession();
                     if (session.getAttribute("order") == null) {
                         Order order = new Order();
-                        List<Item> listItems = new ArrayList<Item>();
+                        List<Item> listItems = new ArrayList<>();
                         Item item = new Item();
                         item.setQuantity(quantity);
                         item.setProduct(product);
