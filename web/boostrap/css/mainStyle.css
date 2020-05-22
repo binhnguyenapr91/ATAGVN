@@ -79,9 +79,9 @@ body {
     margin: 0;
 }
 
-.qty input:disabled {
-    background-color: white;
-}
+/*.qty input:disabled {*/
+/*    background-color: white;*/
+/*}*/
 
 h1,
 h2,

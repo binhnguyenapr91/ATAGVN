@@ -60,9 +60,9 @@
                                 <td><p:formatNumber value="${item.product.productPrice}"></p:formatNumber>₫</td>
                                 <td style="width: 80px; height: 20px;">
                                     <i class="qty mt-5" style="height: 20px;">
-                                        <span class="minus bg-dark">-</span>
+<%--                                        <span class="minus bg-dark">-</span>--%>
                                         <input type="number" class="count" name="qty" value="${item.quantity}">
-                                        <span class="plus bg-dark">+</span>
+<%--                                        <span class="plus bg-dark">+</span>--%>
                                     </i>
                                 </td>
                                 <td><p:formatNumber
@@ -148,20 +148,7 @@
 
 <%--FOOTER--%>
 <jsp:include page="footer.jsp"></jsp:include>
-<script>
-    $(document).ready(function(){
-        $('.count').prop('disabled', true);
-        $(document).on('click','.plus',function(){
-            $('.count').val(parseInt($('.count').val()) + 1 );
-        });
-        $(document).on('click','.minus',function(){
-            $('.count').val(parseInt($('.count').val()) - 1 );
-            if ($('.count').val() == 0) {
-                $('.count').val(1);
-            }
-        });
-    });
-</script>
+
 
 </body>
 </html>
