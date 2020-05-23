@@ -57,14 +57,14 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <th><input type="text" name="accountId" ></th>
-                        <th><input type="text" name="accountName" ></th>
-                        <th><input type="text" name="loginName" ></th>
-                        <th><input type="text" name="password" ></th>
-                        <th><input type="text" name="accountAccess"></th>
+                        <th><input type="text" name="accountId" minlength="3" maxlength="20" pattern="[0-9a-zA-Z]" required="required"></th>
+                        <th><input type="text" name="accountName" minlength="2" maxlength="55" pattern="[0-9a-zA-Z]" required="required"></th>
+                        <th><input type="text" name="loginName" minlength="3" maxlength="55" pattern="[0-9a-zA-Z]" required="required" ></th>
+                        <th><input type="text" name="password" minlength="6" maxlength="36" pattern="[0-9a-zA-Z]" required="required" ></th>
+                        <th><input type="text" name="accountAccess" minlength="1" maxlength="1" pattern="[0-9]" required="required"></th>
                         <th><input type="text" name="address"></th>
-                        <th><input type="text" name="phoneNumber"></th>
-                        <th><input type="text" name="gender"></th>
+                        <th><input type="text" name="phoneNumber" minlength="10" maxlength="11" pattern="[0-9]" required="required"></th>
+                        <th><input type="text" name="gender" ></th>
                         <th><input type="text" name="status"></th>
                         <td><input type="submit" value="Add"></td>
                     </tr>
