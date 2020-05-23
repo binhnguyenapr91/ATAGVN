@@ -30,8 +30,13 @@ public class MainAdminNavigateServlet extends HttpServlet {
                 requestDispatcher = req.getRequestDispatcher("/accountServlet");
                 requestDispatcher.forward(req,resp);
                 break;
+            case "reportManagement":
+                requestDispatcher = req.getRequestDispatcher("/reportServlet");
+                requestDispatcher.forward(req,resp);
+                break;
             case "orderManagement":
-                resp.sendRedirect("/accountServlet");
+                requestDispatcher = req.getRequestDispatcher("/orderServlet");
+                requestDispatcher.forward(req, resp);
                 break;
 
         }
