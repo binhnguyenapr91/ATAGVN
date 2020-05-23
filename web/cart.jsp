@@ -26,7 +26,6 @@
 </head>
 <body>
 
-
 <%--HEADER--%>
 <jsp:include page="header.jsp"></jsp:include>
 <jsp:include page="header-infor.jsp"></jsp:include>
@@ -35,12 +34,13 @@
 <%--BODY--%>
 <section class="cart-total-page spad">
     <div class="container">
-        <form action="#" class="checkout-form">
+        <form action="/cartUpdateServlet?action=Update" class="checkout-form" method="post">
             <div class="checkout-form-row" style="margin-bottom: 0px">
                 <div class="col-lg-12">
                     <h3 style="margin-top: 50px; margin-bottom: 30px;">Your Cart</h3>
                 </div>
                 <div class="orderedListTable">
+                    <b><i style="color:red;">${announcement}</i></b>
                     <table class="table table-hover" style="margin-bottom: 20px">
                         <thead>
                         <tr>
@@ -49,7 +49,7 @@
                             <th scope="col">Price</th>
                             <th scope="col">Quantity</th>
                             <th scope="col">Amount</th>
-                            <th scope="col" colspan="2"></th>
+                            <th scope="col"><input class="btn btn-outline-success" type="submit" value="Update"></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -57,19 +57,16 @@
                             <tr>
                                 <td>${item.product.productId}</td>
                                 <td>${item.product.productName}</td>
-                                <td><p:formatNumber value="${item.product.productPrice}"></p:formatNumber>₫</td>
+                                <td><p:formatNumber value="${item.price}"></p:formatNumber>₫</td>
                                 <td style="width: 80px; height: 20px;">
-                                    <i class="qty mt-5" style="height: 20px;">
-                                        <span class="minus bg-dark">-</span>
-                                        <input type="number" class="count" name="qty" value="${item.quantity}">
-                                        <span class="plus bg-dark">+</span>
+                                    <i class="qty mt-5" style="height: 30px;">
+                                        <input style="width: 54px;height: 20px;" type="number" class="count"
+                                               name="quantity" value="${item.quantity}">
                                     </i>
                                 </td>
-                                <td><p:formatNumber
-                                        value="${item.product.productPrice * item.quantity}"></p:formatNumber>₫
-                                </td>
-                                <td><a href="#">Update</a></td>
-                                <td><a href="#">Delete</a></td>
+                                <td><p:formatNumber value="${item.price * item.quantity}"></p:formatNumber>₫</td>
+                                <td><a href="/cartUpdateServlet?action=Delete&productId=${item.product.productId}"><input name="act" class="btn btn-outline-danger" type="button"
+                                                      value="Delete"></a></td>
                             </tr>
                         </c:forEach>
                         <tr>
@@ -78,7 +75,7 @@
                                 <c:set var="totalOrder" value="${0}"/>
                                 <c:forEach var="item" items="${order.items}">
                                     <c:set var="totalOrder"
-                                           value="${totalOrder + item.product.productPrice* item.quantity}"/>
+                                           value="${totalOrder + item.price* item.quantity}"/>
                                 </c:forEach>
                                 <p:formatNumber value="${totalOrder}"></p:formatNumber>₫
 
@@ -95,9 +92,9 @@
                         </tbody>
                     </table>
                 </div>
-                <a style="float: right; margin-bottom: 40px" href="/pagination" class="btn btn-outline-info" id="backToMain">Tiếp tục mua hàng</a>
+                <a style="float: right; margin-bottom: 40px" href="/pagination" class="btn btn-outline-info"
+                   id="backToMain">Tiếp tục mua hàng</a>
             </div>
-
 
 
             <div class="checkout-form-row">
@@ -148,20 +145,7 @@
 
 <%--FOOTER--%>
 <jsp:include page="footer.jsp"></jsp:include>
-<script>
-    $(document).ready(function(){
-        $('.count').prop('disabled', true);
-        $(document).on('click','.plus',function(){
-            $('.count').val(parseInt($('.count').val()) + 1 );
-        });
-        $(document).on('click','.minus',function(){
-            $('.count').val(parseInt($('.count').val()) - 1 );
-            if ($('.count').val() == 0) {
-                $('.count').val(1);
-            }
-        });
-    });
-</script>
+
 
 </body>
 </html>
