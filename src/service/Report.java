@@ -33,10 +33,21 @@ public class Report {
         return listResult;
     }
 
+    public List<ResultReport> getOrdersDetailByStatus(boolean status) throws SQLException {
+        Connection connection = DBConnect.getConnection();
+        PreparedStatement ps = connection.prepareStatement("call reportByOrderStatus(?)");
+        ps.setBoolean(1,status);
+        List<ResultReport> listResult = new ArrayList<>();
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            String orderId = rs.getString("OrderId");
+            String orderDate = rs.getString("orderDate");
+            String accountName = rs.getString("AccountName");
+            listResult.add(new ResultReport(orderId, orderDate,accountName));
+        }
+        return listResult;
+    }
+
     public static void main(String[] args) throws SQLException {
-        Report rp = new Report();
-        List<ResultReport> list = new ArrayList<>();
-        list = rp.getOrdersDetailByName("Huynh Bui", "2020-03-11", "2020-03-13");
-        System.out.println(list.get(0).toString());
     }
 }

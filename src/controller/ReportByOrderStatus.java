@@ -1,5 +1,7 @@
 package controller;
 
+import model.ResultReport;
+import service.Report;
 import sun.misc.Request;
 
 import javax.servlet.RequestDispatcher;
@@ -9,9 +11,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 
 @WebServlet(name = "ReportByOrderStatus",urlPatterns = "/reportByOrderStatus")
 public class ReportByOrderStatus extends HttpServlet {
+    Report report = new Report();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("admin/reportByOrderStatus.jsp");
@@ -20,7 +25,14 @@ public class ReportByOrderStatus extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("admin/resultReport.jsp");
+        Boolean status = Boolean.parseBoolean(req.getParameter("selectStatus"));
+        try {
+            List<ResultReport> results = report.getOrdersDetailByStatus(status);
+            req.setAttribute("results", results);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("admin/resultReportByOrderStatus.jsp");
         requestDispatcher.forward(req,resp);
     }
 }
