@@ -375,6 +375,14 @@ begin
 end //
 delimiter ;
 
-call reportByNameAndTime('Huynh Bui','2020-03-11','2020-03-13');
+delimiter //
+create procedure reportByOrderStatus (in status bit)
+begin
+    select OrderID,OrderDate, AccountName
+    from orders
+             join account a on orders.AccountID = a.AccountID
+    where orders.Status = status;
+end //
+delimiter ;
 
 
