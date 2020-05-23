@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="../boostrap/css/bootstrap.css">
 </head>
 <body>
-<form action="/reportServlet" method="get">
+<form action="/reportServlet?action=<%="reportOrdersDetailByTime"%>" method="post">
     <select name="name" id="selectionName">
         <option value="Huynh Bui">Huynh Bui</option>
         <option value="Linh">Linh</option>

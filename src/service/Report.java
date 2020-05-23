@@ -12,6 +12,7 @@ import java.util.List;
 import model.ResultReport;
 
 public class Report {
+
     public List<ResultReport> getOrdersDetailByName(String name, String startTime, String endTime) throws SQLException {
         Connection connection = DBConnect.getConnection();
         List<ResultReport> listResult = new ArrayList<>();
@@ -31,8 +32,6 @@ public class Report {
         }
         return listResult;
     }
-
-    ;
 
     public static void main(String[] args) throws SQLException {
         Report rp = new Report();
