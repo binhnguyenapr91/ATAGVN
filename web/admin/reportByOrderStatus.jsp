@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: binhnguyen
@@ -24,29 +25,16 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="../boostrap/css/bootstrap.css">
+
 </head>
 <body>
-<form action="/reportServlet?action=<%="reportOrdersDetailByTime"%>" method="post">
-    <select name="name" id="selectionName">
-        <option value="Huynh Bui">Huynh Bui</option>
-        <option value="Linh">Linh</option>
-        <option value="Huynh">Huynh</option>
-        <option value="Thinh">Thinh</option>
-    </select>
-
-    <select name="startTime" id="startTime">
-        <option value="2020-03-11">2020-03-11</option>
-        <option value="2">Feb</option>
-        <option value="3">Jan</option>
-        <option value="4">Jan</option>
-    </select>
-    <select name="endTime" id="endTime">
-        <option value="2020-03-13">2020-03-13</option>
-        <option value="2">Feb</option>
-        <option value="3">Jan</option>
-        <option value="4">Jan</option>
-    </select>
-    <input type="submit" value="Get Report">
+<hr/>
+<h1>Report by Order Status</h1>
+<form action="/reportByOrderStatus" method="post">
+   <selection name="selectStatus">
+       <option value="1">Completed</option>
+       <option value="0">Processing</option>
+   </selection>
 </form>
 </body>
 </html>
