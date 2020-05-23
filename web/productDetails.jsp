@@ -1,6 +1,7 @@
 <%@ page import="service.ProductServiceImp" %>
 <%@ page import="model.Product" %>
 <%@ page import="java.text.NumberFormat" %>
+<%@ page import="java.sql.SQLException" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
@@ -26,7 +27,12 @@
 <body>
 <%
     ProductServiceImp productServiceImp = new ProductServiceImp();
-    Product product = productServiceImp.getProduct(request.getParameter("productId"));
+    Product product = null;
+    try {
+        product = productServiceImp.getProduct(request.getParameter("productId"));
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
     NumberFormat format = NumberFormat.getNumberInstance();
 %>
 <%--HEADER--%>
@@ -55,15 +61,6 @@
                             <td><input style="background-color: transparent; border-color: transparent" type="text" name="quantityInStock" disabled value="<%=product.getQuantityInStock()%>"></td>
                         </tr>
                     </table>
-
-                    <div class="product-quantity">
-                        <div class="pro-qty">
-                            <input type="text" value="1" name="productQuantity">
-                        </div>
-                    </div>
-                    <a href="/addToCartServlet?productId=<%=product.getProductId()%>" class="primary-btn pc-btn" id="addToCart"><i class="fa fa-cart-plus"></i></a>
-                    <a href="#" class="primary-btn pc-btn" id="backToMain">Tiếp tục mua hàng</a>
-
                     <a style="width: 100px; !important; height: 50px; !important;" href="/addToCartServlet?productId=<%=product.getProductId()%>" class="btn btn-outline-danger" id="addToCart">
                         <i style="font-size: 30px; !important; margin-top: 5px; !important;" class="fa fa-cart-plus"></i></a>
                 </div>

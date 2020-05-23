@@ -1,3 +1,6 @@
+<%@ page import="service.ProductServiceImp" %>
+<%@ page import="model.Product" %>
+<%@ page import="java.sql.SQLException" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -25,6 +28,15 @@
 
 </head>
 <body>
+<%
+    ProductServiceImp productServiceImp = new ProductServiceImp();
+    Product product = null;
+    try {
+        product = productServiceImp.getProduct(request.getParameter("productId"));
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+%>
 
 
 <%--HEADER--%>
@@ -65,10 +77,10 @@
                                         <span class="plus bg-dark">+</span>
                                     </i>
                                 </td>
-                                <td><p:formatNumber
-                                        value="${item.product.productPrice * item.quantity}"></p:formatNumber>₫
+                                <td>
+                                    <p:formatNumber value="${item.product.productPrice * item.quantity}"></p:formatNumber>₫
                                 </td>
-                                <td><a href="#">Update</a></td>
+                                <td><a href="/addToCartServlet?${item.quantity}=<%request.getParameter("qty");%>" class="btn-dark">Update</a></td>
                                 <td><a href="#">Delete</a></td>
                             </tr>
                         </c:forEach>
@@ -77,10 +89,7 @@
                             <td>
                                 <c:set var="totalOrder" value="${0}"/>
                                 <c:forEach var="item" items="${order.items}">
-
-                                    <c:set var="totalOrder" value="${totalOrder + item.product.productPrice*item.quantity}"/>
-                                    <c:set var="totalOrder"
-                                           value="${totalOrder + item.product.productPrice* item.quantity}"/>
+                                    <c:set var="totalOrder" value="${totalOrder + item.product.productPrice* item.quantity}"/>
                                 </c:forEach>
                                 <p:formatNumber value="${totalOrder}"></p:formatNumber>₫
 
