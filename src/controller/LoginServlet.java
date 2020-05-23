@@ -144,6 +144,8 @@ public class LoginServlet extends HttpServlet {
                 HttpSession httpSession = request.getSession();
 
                 httpSession.setAttribute("cookieUserName",userName);
+
+                httpSession.removeAttribute("cookieIsLogin");
                 httpSession.setAttribute("cookieIsLogin",logined);
 
                 response.sendRedirect("/pagination");
