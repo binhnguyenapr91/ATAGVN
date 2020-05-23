@@ -31,10 +31,11 @@
 <hr/>
 <h1>Report by Order Status</h1>
 <form action="/reportByOrderStatus" method="post">
-   <selection name="selectStatus">
+   <select name="selectStatus">
        <option value="1">Completed</option>
        <option value="0">Processing</option>
-   </selection>
+   </select>
+    <input type="submit" value="Get report">
 </form>
 </body>
 </html>
