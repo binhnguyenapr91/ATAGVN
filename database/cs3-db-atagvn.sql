@@ -180,3 +180,18 @@ values ('OD300401', 'SSGAF', 1, 50000000,'CT1'),
        ( 'OD050501', 'SSGAS2P', 1, 23990000,'CT3'),
        ( 'OD100501', 'IP11PM2', 1, 37990000,'CT1');
 
+
+delimiter //
+create procedure reportByNameAndTime (in name varchar(255),in startDate datetime,in endDate datetime)
+begin
+    select order_product.OrderID, orderDate,AccountName,ProductName,Quantity,PriceEach
+    from order_product
+             join orders o on order_product.OrderID = o.OrderID
+             join product p on order_product.ProductID = p.ProductID
+             join account a on o.AccountID = a.AccountID
+    where AccountName like name and OrderDate between startDate and endDate;
+end //
+delimiter ;
+
+call reportByNameAndTime('Huynh Bui','2020-03-11','2020-03-13');
+

@@ -39,8 +39,8 @@
                 <td><a href="/mainAdminNavigateServlet?target=productManagement"><input style="background-color: #c69500" type="button" value="Product Management"></a></td>
                 <td><a href="/mainAdminNavigateServlet?target=categoryManagement"><input style="background-color: #c69500" type="button" value="Category Management"></a></td>
                 <td><a href="/mainAdminNavigateServlet?target=accountManagement"><input style="background-color: #c69500" type="button" value="Account Management"></a></td>
-<%--                <td><a href="/mainAdminNavigateServlet?target=orderManagement"><input style="background-color: #c69500" type="button" value="Order Management"></a></td>--%>
-                <td><a href="admin/viewOrder.jsp"><input style="background-color: #c69500" type="button" value="Order Management"></a></td>
+                <td><a href="/mainAdminNavigateServlet?target=orderManagement"><input style="background-color: #c69500" type="button" value="Order Management"></a></td>
+                <td><a href="/mainAdminNavigateServlet?target=reportManagement"><input style="background-color: #c69500" type="button" value="Report Management"></a></td>
             </tr>
         </table>
 </div>
