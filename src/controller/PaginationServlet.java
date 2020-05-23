@@ -27,17 +27,35 @@ public class PaginationServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
 
-        boolean checkSessionExist = false;
+        boolean checkSessionLoginExist = false;
+        boolean checkSessionOrderList = false;
 
-        Enumeration keys = session.getAttributeNames();
-        while (keys.hasMoreElements()){
-            String key = (String)keys.nextElement();
-            if (key.equals("cookieIsLogin")){
-                checkSessionExist = true;
+        Enumeration keyCheckOrderList = session.getAttributeNames();
+        while (keyCheckOrderList.hasMoreElements()){
+            String key = (String)keyCheckOrderList.nextElement();
+            if (key.equals("order")){
+                checkSessionOrderList = true;
             }
         }
 
-        if (!checkSessionExist){
+        if (!checkSessionOrderList){
+            String noHaveOrder = "not yet";
+            session.setAttribute("haveOrder", noHaveOrder);
+        } else {
+            String alreadyHaveOrder = "ok";
+            session.removeAttribute("haveOrder");
+            session.setAttribute("haveOrder", alreadyHaveOrder);
+        }
+
+        Enumeration keyCheckLogin = session.getAttributeNames();
+        while (keyCheckLogin.hasMoreElements()){
+            String key = (String)keyCheckLogin.nextElement();
+            if (key.equals("cookieIsLogin")){
+                checkSessionLoginExist = true;
+            }
+        }
+
+        if (!checkSessionLoginExist){
             String isLogined = "not yet";
             session.setAttribute("cookieIsLogin", isLogined);
         }
