@@ -32,7 +32,7 @@
 
 
 <%--BODY--%>
-<h2>${announcementOrderSuccessful}</h2>
+<h3 style="color: blue; width: 1500px; text-align: center">${announcementOrderSuccessful}</h3>
 <section class="cart-total-page spad">
     <div class="container">
         <form action="/cartUpdateServlet?action=Update" class="checkout-form" method="post">
