@@ -1,6 +1,7 @@
 package controller;
 
 import model.Order;
+import service.OrderService;
 import service.OrderServiceImp;
 
 import javax.servlet.RequestDispatcher;
@@ -20,6 +21,17 @@ public class OrderServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
+        if (action == null) {
+            action = "";
+        }
+        switch (action) {
+            case "update":
+                updateOrder(request,response);
+                break;
+            default:
+                break;
+
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,6 +41,7 @@ public class OrderServlet extends HttpServlet {
         }
         switch (action) {
             case "update":
+                updateOrderForm(request,response);
                 break;
             case "delete":
                 break;
@@ -36,6 +49,22 @@ public class OrderServlet extends HttpServlet {
                 showAllOrders(request,response);
                 break;
         }
+    }
+
+    private void updateOrderForm(HttpServletRequest request, HttpServletResponse response) {
+        String orderID = request.getParameter("orderID");
+        OrderService orderService = new OrderServiceImp();
+        Order handler = orderService.findByID(orderID);
+        request.setAttribute("order", handler);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("admin/updateOrder.jsp");
+        try {
+            requestDispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void updateOrder(HttpServletRequest request, HttpServletResponse response) {
     }
 
     private void showAllOrders(HttpServletRequest request, HttpServletResponse response) {

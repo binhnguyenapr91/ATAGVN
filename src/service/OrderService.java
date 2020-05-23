@@ -8,4 +8,5 @@ public interface OrderService {
     List<Order> viewAllOrder ();
     void updateOder (Order order);
     void deleteOder (String orderID);
+    Order findByID (String orderIDToFind);
 }

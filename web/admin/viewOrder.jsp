@@ -71,7 +71,7 @@
                     <th><input type="text" name="email" value="${order.getEmail()}"></th>
                     <th style="width: 130px;"><input style="width: 130px;" type="text" name="phoneNumber" value="${order.getPhoneNumber()}"></th>
                     <th style="width: 50px;"><input style="width: 50px;" type="text" name="status" value="${order.getStatus()}"></th>
-                    <td style="width: 50px;"><a class="btn btn-outline-success" href="/categoryServlet?action=update&categoryId=${category.getCategoryId()}">Update</a></td>
+                    <td style="width: 50px;"><a class="btn btn-outline-success" href="/orderServlet?action=update&orderID=${order.getOrderID()}">Update</a></td>
                     <td style="width: 50px;"><a class="btn btn-outline-danger" href="/categoryServlet?action=delete&categoryId=${category.getCategoryId()}">Delete</a></td>
                 </tr>
             </c:forEach>
