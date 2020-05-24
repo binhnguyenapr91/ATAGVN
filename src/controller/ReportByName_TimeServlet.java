@@ -1,6 +1,8 @@
 package controller;
 
+import model.Account;
 import model.ResultReport;
+import service.AccountImp;
 import service.Report;
 
 import javax.servlet.RequestDispatcher;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -25,9 +28,17 @@ public class ReportByName_TimeServlet extends HttpServlet {
         }
         switch (action) {
             default:
-                RequestDispatcher requestDispatcher = req.getRequestDispatcher("/admin/reportByName_Time.jsp");
-                requestDispatcher.forward(req, resp);
+                showReport(req, resp);
+
         }
+    }
+
+    private void showReport(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        AccountImp accountImp = new AccountImp();
+        List<Account> users = accountImp.viewAllAccount();
+        req.setAttribute("users",users);
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/admin/reportByName_Time.jsp");
+        requestDispatcher.forward(req, resp);
     }
 
     @Override
