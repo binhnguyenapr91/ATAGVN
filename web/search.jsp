@@ -28,7 +28,7 @@
             <table>
                 <tr>
                     <td style="border-top-color : white" ><input name="searchName" type="text" placeholder=" What are you looking for ?" style="height: 70px; width: 800px; border-radius: 50px;border: 1px solid grey; text-indent: 30px"></td>
-                    <td style="border-top-color : white"><input type="submit" value="Search" style="height: 70px; width: 200px;border-radius: 50px"></td>
+                    <td style="border-top-color : white"><input type="submit" value="Search" style="height: 70px; width: 200px;border-radius: 50px; border: 1px solid grey"></td>
                 </tr>
             </table>
             </form>

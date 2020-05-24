@@ -18,6 +18,15 @@ public class Order implements Serializable {
     private String phoneNumber;
     private int status;
 
+    public Order(String orderID, String accountID, String receiver, String address, String email, String phoneNumber) {
+        this.orderID = orderID;
+        this.accountID = accountID;
+        this.receiver = receiver;
+        this.address = address;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
+
     public Order(String orderID, String accountID, Date orderDate, String receiver, String address, String email, String phoneNumber, int status) {
         this.orderID = orderID;
         this.accountID = accountID;
