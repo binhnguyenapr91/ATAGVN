@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: binhnguyen
-  Date: 5/21/20
-  Time: 1:35 PM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -44,8 +38,7 @@
 <hr style="height: 10px">
 <div class="mainManagement">
     <div class="productManagement" style="width: 1400px">
-        //chưa có trang servlet
-        <h6><a style="float:right;" class="btn btn-outline-primary" href="/categoryServlet?action=add">Add more Category</a>&nbsp&nbsp<a class="btn btn-outline-danger" href="admin/admin.jsp">Back to Listing</a></h6>
+        <h6><a style="float:right;" class="btn btn-outline-primary" href="/orderServlet?action=add">Add more Order</a>&nbsp&nbsp<a class="btn btn-outline-danger" href="admin/admin.jsp">Back to Listing</a></h6>
         <table class="table table-hover">
             <thead>
             <tr>
@@ -62,18 +55,19 @@
 
             </thead>
             <tbody>
-            <c:forEach items="${categories}" var="category">
+
+            <c:forEach items="${orders}" var="order">
                 <tr>
-                    <th style="width: 300px;"><input style="width: 300px;" type="text" name="categoryId" value="${category.getCategoryId()}"></th>
-                    <th style="width: 300px;"><input style="width: 300px;" type="text" name="categoryName" value="${category.getCategoryName()}"></th>
-                    <td style="width: 50px;"><a class="btn btn-outline-success" href="/categoryServlet?action=update&categoryId=${category.getCategoryId()}">Update</a></td>
-                    <td style="width: 50px;"><a class="btn btn-outline-danger" href="/categoryServlet?action=delete&categoryId=${category.getCategoryId()}">Delete</a></td>
-                    <td style="width: 50px;"><a class="btn btn-outline-danger" href="/categoryServlet?action=delete&categoryId=${category.getCategoryId()}">Delete</a></td>
-                    <td style="width: 50px;"><a class="btn btn-outline-danger" href="/categoryServlet?action=delete&categoryId=${category.getCategoryId()}">Delete</a></td>
-                    <td style="width: 50px;"><a class="btn btn-outline-danger" href="/categoryServlet?action=delete&categoryId=${category.getCategoryId()}">Delete</a></td>
-                    <td style="width: 50px;"><a class="btn btn-outline-danger" href="/categoryServlet?action=delete&categoryId=${category.getCategoryId()}">Delete</a></td>
-                    <td style="width: 50px;"><a class="btn btn-outline-danger" href="/categoryServlet?action=delete&categoryId=${category.getCategoryId()}">Delete</a></td>
-                    <td style="width: 50px;"><a class="btn btn-outline-danger" href="/categoryServlet?action=delete&categoryId=${category.getCategoryId()}">Delete</a></td>
+                    <th style="width: 100px;"><input style="width: 100px;" type="text" name="orderId" value="${order.getOrderID()}"></th>
+                    <th style="width: 85px;"><input style="width: 85px;" type="text" name="accountID" value="${order.getAccountID()}"></th>
+                    <th style="width: 100px;"><input style="width: 100px;" type="text" name="orderDate" value="${order.getOrderDate()}"></th>
+                    <th><input type="text" name="receiver" value="${order.getReceiver()}"></th>
+                    <th><input type="text" name="address" value="${order.getAddress()}"></th>
+                    <th><input type="text" name="email" value="${order.getEmail()}"></th>
+                    <th style="width: 130px;"><input style="width: 130px;" type="text" name="phoneNumber" value="${order.getPhoneNumber()}"></th>
+                    <th style="width: 50px;"><input style="width: 50px;" type="text" name="status" value="${order.getStatus()}"></th>
+                    <td style="width: 50px;"><a class="btn btn-outline-success" href="/orderServlet?action=update&orderID=${order.getOrderID()}">Update</a></td>
+                    <td style="width: 50px;"><a class="btn btn-outline-danger" href="/orderServlet?action=delete&orderID=${order.getOrderID()}">Delete</a></td>
                 </tr>
             </c:forEach>
             </tbody>
