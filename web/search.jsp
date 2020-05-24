@@ -56,6 +56,9 @@
                                                                     style="height: 70px; width: 200px;border-radius: 50px; border: 1px solid grey">
                         </td>
                     </tr>
+                    <tr>
+                        <td style="border-top-color : white; text-indent: 30px; color: red"><i>${announcement}</i></td>
+                    </tr>
                 </table>
             </form>
         </div>
