@@ -6,4 +6,28 @@
     <welcome-file-list>
         <welcome-file>pagination</welcome-file>
     </welcome-file-list>
+
+    <filter>
+        <filter-name>FilterServices</filter-name>
+        <filter-class>service.FilterServices</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>FilterServices</filter-name>
+        <url-pattern>/admin/*</url-pattern>
+        <servlet-name>AccountServlet</servlet-name>
+        <servlet-name>AddProductServlet</servlet-name>
+        <servlet-name>AddProductServlet</servlet-name>
+        <servlet-name>AddProductServlet</servlet-name>
+        <servlet-name>AddProductServlet</servlet-name>
+        <servlet-name>AddProductServlet</servlet-name>
+        <servlet-name>AddProductServlet</servlet-name>
+        <servlet-name>AddProductServlet</servlet-name>
+        <servlet-name>AddProductServlet</servlet-name>
+        <servlet-name>AddProductServlet</servlet-name>
+        <servlet-name>AddProductServlet</servlet-name>
+        <servlet-name>AddProductServlet</servlet-name>
+        <servlet-name>AddProductServlet</servlet-name>
+        <servlet-name>AddProductServlet</servlet-name>
+    </filter-mapping>
 </web-app>
+

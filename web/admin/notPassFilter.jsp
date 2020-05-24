@@ -8,9 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>$Title$</title>
+    <title>Filter Message</title>
 </head>
 <body>
-$END$
+Go to homepage to login as admin
 </body>
 </html>

@@ -135,6 +135,8 @@ public class LoginServlet extends HttpServlet {
                     request.setAttribute("announcement", announcement);
                     requestDispatcher.forward(request, response);
                 } else {
+                    HttpSession httpSession = request.getSession();
+                    httpSession.setAttribute("cookieUserName",userName);
                     RequestDispatcher requestDispatcher = request.getRequestDispatcher("admin/admin.jsp");
                     requestDispatcher.forward(request, response);
                 }
