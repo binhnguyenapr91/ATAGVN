@@ -28,13 +28,25 @@
 
 </head>
 <body>
+<header class="header-section">
+    <div class="container-fluid">
+        <div class="inner-header">
+            <div class="logo">
+                <h2 style="margin-bottom: 20px">REPORT <small class="text-muted">Management</small></h2>
+            </div>
+            <div class="user-access">
+                <a style="margin: 30px" class="active" href="/pagination">Home Page/Logout</a>
+                <a href="" class="out"><i class="fa fa-user"></i>&nbspAdmin</a>
+            </div>
+        </div>
+    </div>
+</header>
 <h1>Report by Name and Time</h1>
 <form action="/reportByName_TimeServlet" method="post">
     <select name="name" id="selectionName">
-        <option value="Huynh Bui">Huynh Bui</option>
-        <option value="Linh">Linh</option>
-        <option value="Huynh">Huynh</option>
-        <option value="Thinh">Thinh</option>
+        <c:forEach items="${users}" var="user">
+            <option value="${user.getAccountName}">${user.getAccountName()}</option>
+        </c:forEach>
     </select>
     <label for="startTime">Start Time</label></label><input type="text" id="startTime" name="startTime" placeholder="Format: 'YYYY-MM-DD'">
     <label for="endTime">End Time</label><input type="text" id="endTime" name="endTime" placeholder="Format: 'YYYY-MM-DD'">

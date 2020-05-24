@@ -27,6 +27,20 @@
     <link rel="stylesheet" href="../boostrap/css/bootstrap.css">
 </head>
 <body>
+<header class="header-section">
+    <div class="container-fluid">
+        <div class="inner-header">
+            <div class="logo">
+                <h2 style="margin-bottom: 20px">REPORT <small class="text-muted">Management</small></h2>
+            </div>
+            <div class="user-access">
+                <a style="margin: 30px" class="active" href="/pagination">Home Page/Logout</a>
+                <a href="" class="out"><i class="fa fa-user"></i>&nbspAdmin</a>
+            </div>
+        </div>
+    </div>
+</header>
+<h1>Report by status of Order</h1>
 <div class="mainManagement">
     <div class="accountManagement" style="width: 1470px">
         <h6 style="width: 1470px;"><a style="float:right" class="btn btn-outline-primary" href="/accountServlet?action=add">Add more Account</a>&nbsp&nbsp<a class="btn btn-outline-danger" href="admin/admin.jsp">Back to Listing</a></h6>
