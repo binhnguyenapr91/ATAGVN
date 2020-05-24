@@ -58,7 +58,7 @@
                 </tr>
                 <tr>
                     <th><b>PriceEach</b></th>
-                    <td><input type="hidden" name="priceEach"
+                    <td><input type="hidden" name="priceEach"productIdproductNamepriceEachqty
                                value="${list.getPrice()}"><p:formatNumber>${list.getPrice()}</p:formatNumber>₫
                     </td>
                 </tr>
@@ -67,6 +67,7 @@
                     <td><p:formatNumber>${list.getQuantity()*list.getPrice()*102/100}</p:formatNumber>₫</td>
                 </tr>
             </c:forEach>
+
             <tr>
                 <td><b>AccountID</b></td>
                 <td><input type="hidden" name="accountId" value="${accountId}">${accountId}</td>
