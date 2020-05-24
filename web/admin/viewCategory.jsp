@@ -45,6 +45,7 @@
 <div class="mainManagement">
     <div class="productManagement" style="width: 1400px">
         <h6><a style="float:right;" class="btn btn-outline-primary" href="/categoryServlet?action=add">Add more Category</a>&nbsp&nbsp<a class="btn btn-outline-danger" href="admin/admin.jsp">Back to Listing</a></h6>
+        <i style="color: red">${announcement}</i>
         <table class="table table-hover">
             <thead>
             <tr>

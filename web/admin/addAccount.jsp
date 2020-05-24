@@ -25,10 +25,10 @@
     <div class="container-fluid">
         <div class="inner-header">
             <div class="logo">
-                <a href="index.jsp"><img src="img/logo.png" alt="logo"></a>
+                <a href="../index.jsp"><img src="../img/logo.png" alt="logo"></a>
             </div>
             <div class="user-access">
-                <a class="active" href="index.jsp">Home Page/Logout</a>
+                <a class="active" href="../index.jsp">Home Page/Logout</a>
                 <a href="" class="out"><i class="fa fa-user"></i> Admin</a>
             </div>
         </div>
@@ -38,8 +38,8 @@
 <div class="mainManagement">
     <div class="accountManagement">
         <h3>Account Management</h3>
-        <h6><a href="#">Add more Account</a></h6>
-        <form method="post">
+        <h6><a class="btn btn-outline-danger" href="/accountServlet">Back to Listing</a></h6>
+        <form method="post" action="/accountServlet?action=add">
             <table class="table table-hover">
                 <thead>
                 <tr>

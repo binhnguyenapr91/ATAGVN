@@ -32,19 +32,20 @@
     <div class="container-fluid">
         <div class="inner-header">
             <div class="logo">
-                <a href="index.jsp"><img src="img/logo.png" alt="logo"></a>
+                <h2 style="margin-bottom: 20px">PRODUCT <small class="text-muted">Management</small></h2>
             </div>
             <div class="user-access">
-                <a class="active" href="index.jsp">Home Page/Logout</a>
-                <a href="" class="out"><i class="fa fa-user"></i> Admin</a>
+                <a style="margin: 30px" class="active" href="/pagination">Home Page/Logout</a>
+                <a href="" class="out"><i class="fa fa-user"></i>&nbspAdmin</a>
             </div>
         </div>
     </div>
 </header>
 <hr style="height: 10px">
 <div class="mainManagement">
-    <h3>Category Management</h3>
-    <h6><a href="/categoryServlet?action=add">Add more Category</a>|<a href="/categoryServlet">Back to Listing</a></h6>
+    <h3>Create New Category</h3>
+    <br>
+    <h6><a class="btn btn-outline-danger" href="/categoryServlet">Back to Listing</a></h6>
     <form method="post">
         <table class="table table-hover">
             <thead>

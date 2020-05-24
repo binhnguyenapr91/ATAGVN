@@ -74,94 +74,95 @@ values ('AAPL', 'Apple');
 
 insert into product (ProductID, CategoryID, ProductName, ProductPrice, QuantityInStock, Image, Status, Description)
 values ('SSGA11', '0593XQ', 'Galaxy A11', 3690000, 50, 'img/product/Galaxy-A11.PNG', 1,
-        '<p class="description">Màn hình Infinity-O siêu tràn viền 6.4 inch<br>
+        '<p>Màn hình Infinity-O siêu tràn viền 6.4 inch<br>
         Vì là smartphone giá rẻ, Galaxy A11 không dùng màn hình AMOLED<br>
         thường thấy của Samsung, thay vào đó là màn hình PLS TFT độ phân giải HD+.<br>
         Điểm cộng cho màn hình của máy là kích thước đến 6.4 inch rộng rãi, <br>
         phù hợp nhiều nhu cầu sử dụng khác nhau.</p>'),
        ('SSGA31', '0593XQ', 'Galaxy A31', 6490000, 20, 'img/product/Galaxy-A31.PNG', 1,
-        '<p class="description">Thiết kế đặc trưng của dòng Galaxy A 2020<br>
+        '<p>Thiết kế đặc trưng của dòng Galaxy A 2020<br>
         Tổng thể thiết kế của Galaxy A31 mang nhiều nét tương đồng<br>
         với hai người anh em Galaxy A31 và A71. Mặt lưng của thiết bị<br>
         vẫn được tạo điểm nhấn với cụm camera lớn và các vân kim cương đẹp mắt.</p>'),
        ('SSGAF', '0593XQ', 'Galaxy Fold', 50000000, 30, 'img/product/Galaxy-Fold.PNG', 1,
-        '<p class="description">Thiết kế 2 màn hình, màn hình uốn dẻo<br>
+        '<p>Thiết kế 2 màn hình, màn hình uốn dẻo<br>
         Samsung Galaxy Fold không chỉ sở hữu một màn hình<br>
         có thể uốn dẻo mà còn có một màn hình riêng,<br>
         để có thể sử dụng độc lập khi gập máy lại.</p>'),
        ('SSGAZF', '0593XQ', 'Galaxy Z Flip', 36000000, 10, 'img/product/Galaxy-Z-Flip.PNG', 1,
-        '<p class="description">Đột phá với thiết kế màn hình gập<br>
+        '<p>Đột phá với thiết kế màn hình gập<br>
         Samsung Galaxy Z Flip được thiết kế với kiểu dáng màn hình gập<br>
         lấy ý tưởng từ dòng sản phẩm Galaxy Fold từng gây nhiều tiếng vang trong năm 2019.</p>'),
        ('SSGAS2U', '0593XQ', 'Galaxy S20 Ultra', 29990000, 40, 'img/product/Galaxy-S20-Ultra.PNG', 1,
-        '<p class="description">Đột phá màn hình siêu tràn viền kích thước lớn<br>
+        '<p>Đột phá màn hình siêu tràn viền kích thước lớn<br>
         Galaxy S20 Ultra được trang bị một màn hình kích thước 6.9 inch<br>
         sử dụng tấm nền Dynamic AMOLED 2X<br>
         cho chất lượng hiển thị hình ảnh trung thực, sắc nét đến từng chi tiết.</p>'),
        ('SSGAN1P', '0593XQ', 'Galaxy Note 10+', 26990000, 25, 'img/product/Galaxy-Note-10+.PNG', 1,
-        '<p class="description">Camera đứng đầu thế giới<br>
+        '<p>Camera đứng đầu thế giới<br>
         DxOMark là chuyên trang đánh giá camera uy tín thế giới mới đây đã khẳng định,<br>
         Galaxy Note 10+ là chiếc smartphone có camera tốt nhất hiện nay.</p>'),
        ('SSGAS2P', '0593XQ', 'Galaxy S20+', 23990000, 50, 'img/product/Galaxy-S20+.PNG', 1,
-        '<p class="description">Thiết kế màn hình tràn viền, siêu mượt 120 Hz<br>
+        '<p>Thiết kế màn hình tràn viền, siêu mượt 120 Hz<br>
         Thiết kế của chiếc điện thoại Samsung Galaxy S20 Plus<br>
         là kính kết hợp độc đáo giữa với khung kim loại cùng mặt lưng<br>
         kính cường lực Gorilla Glass 6 thế hệ mới nhất<br>
         cho khả năng chống chịu trầy xước và va đập tốt.</p>'),
        ('SSGAA8', '0593XQ', 'Galaxy A80', 14990000, 20, 'img/product/Galaxy-A80.PNG', 1,
-        '<p class="description">Camera vừa trượt vừa xoay đầu tiên trên thế giới
+        '<p>Camera vừa trượt vừa xoay đầu tiên trên thế giới
         Thực tế thì xu hướng màn hình tràn viền đã bắt đầu<br>
         cách đây khá lâu nhưng có rất ít các hãng có thể mang<br>
         một màn hình tràn viền đúng nghĩa lên chiếc smartphone của mình.</p>'),
        ('SSGAN1L', '0593XQ', 'Galaxy Note 10 Lite', 12490000, 35, 'img/product/Galaxy-Note-10-Lite.PNG', 1,
-        '<p class="description">Ngoại hình mới mẻ theo xu thế<br>
+        '<p>Ngoại hình mới mẻ theo xu thế<br>
         Samsung Galaxy Note 10 Lite nhìn chung vẫn sở hữu thiết kế quen thuộc<br>
         của dòng Note 10 series ở mặt trước với rất ít viền xung quanh,<br>
         các góc được bo tròn, một camera selfie nằm trong lỗ đục chính giữa.</p>'),
        ('IP1164', 'AAPL', 'Iphone 11 64GB', 21690000, 50, 'img/product/Iphone-11-64GB.PNG', 1,
-        '<p class="description">Nâng cấp mạnh mẽ về camera<br>
+        '<p>Nâng cấp mạnh mẽ về camera<br>
         Nói về nâng cấp thì camera chính là điểm<br>
         có nhiều cải tiến nhất trên thế hệ iPhone mới.</p>'),
        ('IP11PM5', 'AAPL', 'Iphone 11 Pro Max 512GB', 41990000, 20, 'img/product/Iphone-11-Pro-Max-512GB.PNG', 1,
-        '<p class="description">Hiệu năng "đè bẹp" mọi đối thủ<br>
-        iPhone 11 Pro Max 512GB năm nay sử dụng chip Apple A13 Bionic mới nhất,<br>
-        nhanh và tiết kiệm điện hơn so với A12 năm ngoái.</p>'),
+        '<p>Pro về camera sau<br>
+        Camera là một trong những điểm nâng cấp mạnh mẽ nhất<br>
+        năm nay Apple mang đến cho chiếc iPhone 11 Pro Max.</p>'),
        ('IP11PM2', 'AAPL', 'Iphone 11 Pro Max 256GB', 37990000, 30, 'img/product/Iphone-11-Pro-Max-256GB.PNG', 1,
-        '<p class="description">Pro về camera sau<br>
+        '<p>Pro về camera sau<br>
         Camera là một trong những điểm nâng cấp mạnh mẽ nhất<br>
         năm nay Apple mang đến cho chiếc iPhone 11 Pro Max.</p>'),
        ('IP11PM6', 'AAPL', 'Iphone 11 Pro Max 64GB', 33990000, 30, 'img/product/Iphone-11-Pro-Max-64GB.PNG', 1,
-        '<p class="description">Camera được cải tiến mạnh mẽ<br>
+        '<p>Camera được cải tiến mạnh mẽ<br>
         Chắc chắn lý do lớn nhất mà bạn muốn nâng cấp lên iPhone 11 Pro Max<br>
         chính là cụm camera mới được Apple nâng cấp rất nhiều.</p>'),
        ('IPXSM2', 'AAPL', 'Iphone Xs Max 256GB', 33990000, 25, 'img/product/Iphone-Xs-Max-256GB.PNG', 1,
-        '<p class="description">Hiệu năng đỉnh cao cùng chip Apple A12<br>
+        '<p>Hiệu năng đỉnh cao cùng chip Apple A12<br>
         iPhone Xs Max được Apple trang bị cho con chip mới toanh<br>
         hàng đầu của hãng mang tên Apple A12.</p>'),
        ('IP11P6', 'AAPL', 'Iphone 11 Pro 64GB', 30190000, 40, 'img/product/Iphone-11-Pro-64GB.PNG', 1,
-        '<p class="description">Camera được cải tiến mạnh mẽ<br>
+        '<p>Camera được cải tiến mạnh mẽ<br>
         Chắc chắn lý do lớn nhất mà bạn muốn nâng cấp lên iPhone 11 Pro Max<br>
         chính là cụm camera mới được Apple nâng cấp rất nhiều.</p>'),
        ('IPXM6', 'AAPL', 'Iphone Xs Max 64GB', 25990000, 50, 'img/product/Iphone-Xs-Max-64GB.PNG', 1,
-        '<p class="description">Thiết kế cao cấp với viền thép không gỉ và mặt kính cường lực<br>
+        '<p>Thiết kế cao cấp với viền thép không gỉ và mặt kính cường lực<br>
         Điện thoại iPhone Xs Max sở hữu lối thiết kế vô cùng đẹp mắt<br>
         với những đường cong mềm mại được thừa hưởng từ chiếc iPhone đời trước đó.</p>'),
        ('IP112', 'AAPL', 'Iphone 11 256GB', 25690000, 20, 'img/product/Iphone-11-256GB.PNG', 1,
-        '<p class="description">Pro về camera sau<br>
+        '<p>Pro về camera sau<br>
         Camera là một trong những điểm nâng cấp mạnh mẽ nhất năm nay<br>
         Apple mang đến cho chiếc iPhone 11 Pro Max.</p>'),
        ('IP8P6', 'AAPL', 'Iphone 8 Plus 64GB', 14990000, 10, 'img/product/Iphone-8-Plus-64GB.PNG', 1,
-        '<p class="description">Thừa hưởng những thiết kế đã đạt đến độ chuẩn mực,<br>
+        '<p>Thừa hưởng những thiết kế đã đạt đến độ chuẩn mực,<br>
         thế hệ iPhone 8 Plus thay đổi phong cách bóng bẩy hơn<br>
         và bổ sung hàng loạt tính năng cao cấp cho trải nghiệm sử dụng vô cùng tuyệt vời.'),
        ('IP73', 'AAPL', 'Iphone 7 32 GB', 12990000, 5, 'img/product/Iphone-7-32-GB.PNG', 1,
-        '<p class="description">Mặc dù giữ nguyên vẻ bề ngoài so với dòng điện thoại iPhone đời trước,<br>
+        '<p>Mặc dù giữ nguyên vẻ bề ngoài so với dòng điện thoại iPhone đời trước,<br>
         bù lại iPhone 7 Plus 32GB lại được trang bị nhiều nâng cấp<br>
         đáng giá như camera kép đầu tiên cũng như cấu hình mạnh mẽ.</p>');
 
 insert into account (AccountID, AccountName, LoginName, Password, AccountAccess, Address, PhoneNumber, Gender, Status)
 values ('AD1', 'Thinh Bui', 'mrthinh2502', 'thinhba', 1, 'Moon City', '0969357766', 1, 1),
        ('CT1', 'Linh Hoang', 'linhhm', 'linh123', 0, '111 Van Cao', '0913026630', 0, 1),
+       ('AD2', 'admin', 'admin', 'admin', 1, '111 Van Cao', '0913026630', 0, 1),
        ('CT2', 'Binh Nguyen', 'binh491', 'binh123', 0, '50 Pham Hung', '0969358899', 1, 1),
        ('CT3', 'Huynh Bui', 'huynhhuynh', 'huynhbui123', 0, 'Royal City', '0966351299', 0, 0);
 

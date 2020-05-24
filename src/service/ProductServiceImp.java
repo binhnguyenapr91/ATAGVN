@@ -168,17 +168,15 @@ public class ProductServiceImp implements ProductService {
     @Override
     public boolean updateProduct(Product product) throws SQLException {
         Connection connection = DBConnect.getConnection();
-        String sql = "UPDATE atagvn.product SET CategoryID=?, ProductName=?, ProductPrice=?,QuantityInStock=?, Image=?,Status=?,Description = ? WHERE ProductID = ?";
+        String sql = "UPDATE atagvn.product SET ProductName=?, ProductPrice=?,QuantityInStock=?,Status=?,Description = ? WHERE ProductID = ?";
         try {
             PreparedStatement ps = connection.prepareCall(sql);
-            ps.setString(1, product.getCategoryId());
-            ps.setString(2, product.getProductName());
-            ps.setFloat(3, product.getProductPrice());
-            ps.setInt(4, product.getQuantityInStock());
-            ps.setString(5, product.getImage());
-            ps.setInt(6, product.getStatus());
-            ps.setString(7, product.getDescription());
-            ps.setString(8, product.getProductId());
+            ps.setString(1, product.getProductName());
+            ps.setFloat(2, product.getProductPrice());
+            ps.setInt(3, product.getQuantityInStock());
+            ps.setInt(4, product.getStatus());
+            ps.setString(5, product.getDescription());
+            ps.setString(6, product.getProductId());
 
             return ps.executeUpdate() > 0;
         } catch (SQLException ex) {

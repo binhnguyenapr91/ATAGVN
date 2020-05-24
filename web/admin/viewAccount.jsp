@@ -37,7 +37,7 @@
 <hr style="height: 10px">
 <div class="mainManagement">
     <div class="accountManagement" style="width: 1470px">
-        <h6 style="width: 1470px;"><a style="float:right" class="btn btn-outline-primary" href="/accountServlet?action=add">Add more Account</a>&nbsp&nbsp<a class="btn btn-outline-danger" href="admin/admin.jsp">Back to Listing</a></h6>
+        <h6 style="width: 1470px;"><a style="float:right" class="btn btn-outline-primary" href="/accountServlet?action=add">Add more Account</a>&nbsp&nbsp<a class="btn btn-outline-danger" href="/mainAdminNavigateServlet">Back to Listing</a></h6>
         <table class="table table-hover">
             <thead>
             <tr>
@@ -64,8 +64,8 @@
                 <th><input type="text" name="accountAccess" value="${account.getAccountAccess()}"></th>
                 <th><input type="text" name="address" value="${account.getAddress()}"></th>
                 <th><input type="text" name="phoneNumber" value="${account.getPhoneNumber()}"></th>
-                <th  style="width: 80px;"><input  style="width: 80px;" type="text" name="gender" value="${account.isGender()}"></th>
-                <th  style="width: 80px;"><input  style="width: 80px;"type="text" name="status" value="${account.isStatus()}"></th>
+                <th style="width: 80px;"><input style="width: 80px;" type="text" name="gender" value="${account.isGender()}"></th>
+                <th style="width: 80px;"><input style="width: 80px;"type="text" name="status" value="${account.isStatus()}"></th>
                 <td><a class="btn btn-outline-success" href="/accountServlet?action=update&accountId=${account.getAccountId()}">Update</a></td>
                 <td><a class="btn btn-outline-danger" href="/accountServlet?action=delete&accountId=${account.getAccountId()}">Delete</a></td>
                 </tr>

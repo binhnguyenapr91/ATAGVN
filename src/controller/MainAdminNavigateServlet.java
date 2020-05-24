@@ -12,7 +12,6 @@ import java.io.IOException;
 public class MainAdminNavigateServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //điều kiện nếu ko có role = admin thì ko có luôn đống ở dưới
         String target= req.getParameter("target");
         RequestDispatcher requestDispatcher;
         if (target==null){
@@ -20,7 +19,7 @@ public class MainAdminNavigateServlet extends HttpServlet {
         }
         switch (target){
             case "productManagement":
-                requestDispatcher = req.getRequestDispatcher("/admin/productManagement.jsp");
+                requestDispatcher = req.getRequestDispatcher("admin/productManagement.jsp");
                 requestDispatcher.forward(req,resp);
                 break;
             case "categoryManagement":
@@ -39,7 +38,10 @@ public class MainAdminNavigateServlet extends HttpServlet {
                 requestDispatcher = req.getRequestDispatcher("/reportByOrderStatus");
                 requestDispatcher.forward(req,resp);
                 break;
-
+            default:
+                requestDispatcher = req.getRequestDispatcher("admin/admin.jsp");
+                requestDispatcher.forward(req,resp);
+                break;
         }
     }
 }

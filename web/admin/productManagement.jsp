@@ -49,7 +49,7 @@
 <div class="mainManagement">
     <div class="productManagement" style="width: 1470px">
 
-        <h6><a class="btn btn-outline-primary" style="float: right;margin: 10px 10px" href="/admin/createProduct.jsp">Add more Product</a>&nbsp&nbsp<a class="btn btn-outline-danger" href="admin/admin.jsp">Back to Listing</a></h6>
+        <h6><a class="btn btn-outline-primary" style="float: right;margin: 10px 10px" href="admin/createProduct.jsp">Add more Product</a>&nbsp&nbsp<a class="btn btn-outline-danger" href="/mainAdminNavigateServlet">Back to Listing</a></h6>
         <table class="table table-hover">
             <thead>
             <tr>
@@ -76,9 +76,9 @@
                     <th style="width: 160px;"><input style="width: 160px;"type="text" name="pmQuantity" value="<%=product.getQuantityInStock()%>"></th>
                     <th style="width: 100px;"><img style="width: 100px;"src="../<%=product.getImage()%>"/></th>
                     <th style="width: 80px;"><input style="width: 80px;"type="text" name="pmStatus" value="<%=product.getStatus()%>"></th>
-                    <th style="width: 300px;"><textarea cols="35" rows="6" name="pmDes" value="<%=product.getDescription()%>" ></textarea></th>
-                    <th style="width: 70px;"><a class="btn btn-outline-success" href="/admin/updateProduct.jsp?productId=<%=product.getProductId()%>">Update</a></th>
-                    <th style="width: 70px;"><a class="btn btn-outline-danger" href="/deleteProduct?productId=<%=product.getProductId()%>">Delete</a></th>
+                    <th style="width: 300px;"><input type="text" name="pmDes" value="<%=product.getDescription()%>"></th>
+                    <th style="width: 70px;"><a class="btn btn-outline-success" href="/productServlet?action=update&productId=<%=product.getProductId()%>">Update</a></th>
+                    <th style="width: 70px;"><a class="btn btn-outline-danger" href="/deleteProduct?action=delete&productId=<%=product.getProductId()%>">Delete</a></th>
                 </tr>
             <%
                 }
@@ -101,93 +101,6 @@
         </table>
     </div>
 
-<%--    <div class="categoryManagement" style="width: 1100px">--%>
-<%--        <h3>Category Management</h3>--%>
-<%--        <h6><a href="#">Add more Category</a></h6>--%>
-<%--        <table class="table table-hover">--%>
-<%--            <thead>--%>
-<%--            <tr>--%>
-<%--                <th>ID</th>--%>
-<%--                <th>Category Name</th>--%>
-<%--                <th colspan="2">#</th>--%>
-<%--            </tr>--%>
-<%--            </thead>--%>
-<%--            <tbody>--%>
-<%--            <tr>--%>
-<%--                <th><input type="text" name="pmStatus" value="0593XQ"></th>--%>
-<%--                <th><input type="text" name="pmDes" value="Samsung"></th>--%>
-<%--                <td><a href="#">Update</a></td>--%>
-<%--                <td><a href="#">Delete</a></td>--%>
-<%--            </tr>--%>
-<%--            </tbody>--%>
-<%--        </table>--%>
-<%--    </div>--%>
-
-<%--    <div class="accountManagement">--%>
-<%--        <h3>Account Management</h3>--%>
-<%--        <h6><a href="#">Add more Account</a></h6>--%>
-<%--        <table class="table table-hover">--%>
-<%--            <thead>--%>
-<%--            <tr>--%>
-<%--                <th>ID</th>--%>
-<%--                <th>Account Name</th>--%>
-<%--                <th>Login Name</th>--%>
-<%--                <th>Password</th>--%>
-<%--                <th>Account Access</th>--%>
-<%--                <th>Address</th>--%>
-<%--                <th>Phone Number</th>--%>
-<%--                <th>Gender</th>--%>
-<%--                <th scope="col" colspan="2">#</th>--%>
-<%--            </tr>--%>
-<%--            </thead>--%>
-<%--            <tbody>--%>
-<%--            <tr>--%>
-<%--                <th><input type="text" name="amID" value="example"></th>--%>
-<%--                <th><input type="text" name="amName" value="example"></th>--%>
-<%--                <th><input type="text" name="amLoginName" value="example"></th>--%>
-<%--                <th><input type="text" name="amPassword" value="example"></th>--%>
-<%--                <th><input type="text" name="amAccess" value="example"></th>--%>
-<%--                <th><input type="text" name="amAddress" value="example"></th>--%>
-<%--                <th><input type="text" name="amPhoneNumber" value="example"></th>--%>
-<%--                <th><input type="text" name="amGender" value="example"></th>--%>
-<%--                <td><a href="#">Update</a></td>--%>
-<%--                <td><a href="#">Delete</a></td>--%>
-<%--            </tr>--%>
-<%--            </tbody>--%>
-<%--        </table>--%>
-<%--    </div>--%>
-<%--    <div class="orderManagement">--%>
-<%--        <h3>Order Management</h3>--%>
-<%--        <table class="table table-hover">--%>
-<%--            <thead>--%>
-<%--            <tr>--%>
-<%--                <th>Order ID</th>--%>
-<%--                <th>Account Name</th>--%>
-<%--                <th>Product Name</th>--%>
-<%--                <th>Categogy Name</th>--%>
-<%--                <th>Price</th>--%>
-<%--                <th>Quantity</th>--%>
-<%--                <th>Amount</th>--%>
-<%--                <th>Order Date</th>--%>
-<%--                <th scope="col" colspan="2">#</th>--%>
-<%--            </tr>--%>
-<%--            </thead>--%>
-<%--            <tbody>--%>
-<%--            <tr>--%>
-<%--                <th><input type="text" name="omID" value="example"></th>--%>
-<%--                <th><input type="text" name="omAccName" value="example"></th>--%>
-<%--                <th><input type="text" name="omProName" value="example"></th>--%>
-<%--                <th><input type="text" name="omCateName" value="example"></th>--%>
-<%--                <th><input type="text" name="omPrice" value="example"></th>--%>
-<%--                <th><input type="text" name="omQty" value="example"></th>--%>
-<%--                <th><input type="text" name="omAmount" value="example"></th>--%>
-<%--                <th><input type="text" name="omOrderDate" value="example"></th>--%>
-<%--                <td><a href="#">Update</a></td>--%>
-<%--                <td><a href="#">Delete</a></td>--%>
-<%--            </tr>--%>
-<%--            </tbody>--%>
-<%--        </table>--%>
-<%--    </div>--%>
 </div>
 </body>
 </html>

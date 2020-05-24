@@ -27,9 +27,35 @@ public class ProductServlet extends HttpServlet {
             case "add":
                 addProduct(req,resp);
                 break;
+            case "update":
+                updateProduct(req,resp);
+                break;
             default:
                 listProducts(req,resp);
                 break;
+        }
+    }
+
+    private void updateProduct(HttpServletRequest req, HttpServletResponse resp) {
+        String pmID = req.getParameter("pmID");
+        String pmCategoryID = req.getParameter("pmCategoryID");
+        String pmName = req.getParameter("pmName");
+        String pmPrice = req.getParameter("pmPrice");
+        String pmQuantity = req.getParameter("pmQuantity");
+        String pmStatus = req.getParameter("pmStatus");
+        String pmDes = req.getParameter("pmDes");
+        String pmImg = req.getParameter("pmImg");
+
+        Product product = new Product(pmID,pmCategoryID,pmName, Float.parseFloat(pmPrice), Integer.parseInt(pmQuantity),pmImg,Integer.parseInt(pmStatus), pmDes);
+        try {
+            productService.updateProduct(product);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        try {
+            resp.sendRedirect("/mainAdminNavigateServlet?target=productManagement");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -62,9 +88,35 @@ public class ProductServlet extends HttpServlet {
             action = "";
         }
         switch (action){
+            case "update":{
+                showUpdateForm(req,resp);
+                break;
+            }
             default:
                 listProducts(req,resp);
                 break;
+        }
+    }
+
+    private void showUpdateForm(HttpServletRequest req, HttpServletResponse resp) {
+        String productId = req.getParameter("productId");
+        Product product = new Product();
+        System.out.println("ok");
+        try {
+            product = productService.getProduct(productId);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("admin/updateProduct.jsp");
+        req.setAttribute("productId", productId);
+        req.setAttribute("product", product);
+        try {
+            requestDispatcher.forward(req,resp);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -76,7 +128,7 @@ public class ProductServlet extends HttpServlet {
             throwables.printStackTrace();
         }
         req.setAttribute("productList",productList);
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("productManagement.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("admin/productManagement.jsp");
         try {
             requestDispatcher.forward(req,resp);
         } catch (ServletException e) {

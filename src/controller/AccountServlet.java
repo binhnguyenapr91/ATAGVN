@@ -117,8 +117,8 @@ public class AccountServlet extends HttpServlet {
         boolean status = Boolean.parseBoolean(req.getParameter("status"));
         Account handler = new Account(accountId, accountName, loginName, password, accountAccess, address, phoneNumber, gender, status);
         accountImp.addNewAccount(handler);
-        List<Account> accounts;
-        accounts = accountImp.viewAllAccount();
+
+        List<Account> accounts = accountImp.viewAllAccount();;
         req.setAttribute("accounts",accounts);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("admin/viewAccount.jsp");
         try {
