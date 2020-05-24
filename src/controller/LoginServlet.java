@@ -118,6 +118,9 @@ public class LoginServlet extends HttpServlet {
     }
 
     private void checkLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        String admin = "admin";
+        String user = "user";
         String userName = request.getParameter("username");
         String password = request.getParameter("password");
         Account account = accountImp.findByLoginName(userName);
@@ -128,7 +131,7 @@ public class LoginServlet extends HttpServlet {
             request.setAttribute("announcement", announcement);
             requestDispatcher.forward(request, response);
         } else {
-            if (userName.equals("mrthinh2502")) {
+            if (account.getAccountAccess().equals("1")) {
                 if (!password.equals(account.getPassword())) {
                     RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
                     String announcement = "Wrong 'password'. Please try again!";
@@ -137,16 +140,17 @@ public class LoginServlet extends HttpServlet {
                 } else {
                     RequestDispatcher requestDispatcher = request.getRequestDispatcher("admin/admin.jsp");
                     requestDispatcher.forward(request, response);
+                    session.setAttribute("role", admin);
                 }
             } else if (account.getPassword().equals(password)) {
                 String logined = "ok";
 
                 HttpSession httpSession = request.getSession();
-
                 httpSession.setAttribute("cookieUserName",userName);
 
                 httpSession.removeAttribute("cookieIsLogin");
                 httpSession.setAttribute("cookieIsLogin",logined);
+                httpSession.setAttribute("role",user);
 
                 response.sendRedirect("/pagination");
             } else {
