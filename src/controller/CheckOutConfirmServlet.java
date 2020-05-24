@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "CheckOutConfirmServlet", urlPatterns = "/checkoutconfirm")
@@ -38,10 +40,30 @@ public class CheckOutConfirmServlet extends HttpServlet {
             orderServiceImp.addOrderProductFromCart(orderId,productId,Integer.parseInt(quantity),Float.parseFloat(priceEach),accountId);
         }
 
+        List<Integer> orderQuantities = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            orderQuantities.add(list.get(i).getQuantity());
+        }
+
+        List<Integer> quantityInStock = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            quantityInStock.add(list.get(i).getProduct().getQuantityInStock());
+        }
+
+        for (int i = 0; i < quantityInStock.size(); i++) {
+            quantityInStock.set(i,(quantityInStock.get(i)-orderQuantities.get(i)));
+        }
+
+        for (int i = 0; i < quantityInStock.size(); i++) {
+            orderServiceImp.updateQuantityProduct(quantityInStock.get(i),list.get(i).getProduct().getProductId());
+        }
+
+
         String announcementOrderSuccessful = "Order Completed ! Please wait Admin to Confirm";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("cart.jsp");
         request.setAttribute("announcementOrderSuccessful",announcementOrderSuccessful);
         requestDispatcher.forward(request,response);
+        session.removeAttribute("order");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
