@@ -193,5 +193,17 @@ begin
 end //
 delimiter ;
 
+<<<<<<< HEAD
 call reportByNameAndTime('Huynh Bui','2020-03-11','2020-03-13');
+=======
+delimiter //
+create procedure reportByOrderStatus (in status bit)
+begin
+    select OrderID,OrderDate, AccountName
+    from orders
+             join account a on orders.AccountID = a.AccountID
+    where orders.Status = status;
+end //
+delimiter ;
+>>>>>>> 3d50d2fcac2c430e599e1e9b6050a8098efc59a6
 

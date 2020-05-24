@@ -63,7 +63,7 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <th style="width: 100px;"><input style="width: 100px;" type="text" name="orderId" value="${requestScope["order"].getOrderID()}"></th>
+                    <th style="width: 100px;"><input style="width: 100px;" type="text" name="orderID" value="${requestScope["order"].getOrderID()}"></th>
                     <th style="width: 90px;"><input style="width: 90px;" type="text" name="accountID" value="${requestScope["order"].getAccountID()}"></th>
                     <th style="width: 100px;"><input style="width: 100px;" type="text" name="orderDate" value="${requestScope["order"].getOrderDate()}"></th>
                     <th><input type="text" name="receiver" value="${requestScope["order"].getReceiver()}"></th>

@@ -61,10 +61,11 @@
 
             </thead>
             <tbody>
+
             <c:forEach items="${orders}" var="order">
                 <tr>
                     <th style="width: 100px;"><input style="width: 100px;" type="text" name="orderId" value="${order.getOrderID()}"></th>
-                    <th style="width: 90px;"><input style="width: 90px;" type="text" name="accountID" value="${order.getAccountID()}"></th>
+                    <th style="width: 85px;"><input style="width: 85px;" type="text" name="accountID" value="${order.getAccountID()}"></th>
                     <th style="width: 100px;"><input style="width: 100px;" type="text" name="orderDate" value="${order.getOrderDate()}"></th>
                     <th><input type="text" name="receiver" value="${order.getReceiver()}"></th>
                     <th><input type="text" name="address" value="${order.getAddress()}"></th>
@@ -72,7 +73,7 @@
                     <th style="width: 130px;"><input style="width: 130px;" type="text" name="phoneNumber" value="${order.getPhoneNumber()}"></th>
                     <th style="width: 50px;"><input style="width: 50px;" type="text" name="status" value="${order.getStatus()}"></th>
                     <td style="width: 50px;"><a class="btn btn-outline-success" href="/orderServlet?action=update&orderID=${order.getOrderID()}">Update</a></td>
-                    <td style="width: 50px;"><a class="btn btn-outline-danger" href="/categoryServlet?action=delete&categoryId=${category.getCategoryId()}">Delete</a></td>
+                    <td style="width: 50px;"><a class="btn btn-outline-danger" href="/orderServlet?action=delete&orderID=${order.getOrderID()}">Delete</a></td>
                 </tr>
             </c:forEach>
             </tbody>

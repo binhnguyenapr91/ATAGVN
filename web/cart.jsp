@@ -28,6 +28,7 @@
 
 </head>
 <body>
+<<<<<<< HEAD
 <%
     ProductServiceImp productServiceImp = new ProductServiceImp();
     Product product = null;
@@ -37,6 +38,8 @@
         e.printStackTrace();
     }
 %>
+=======
+>>>>>>> 3d50d2fcac2c430e599e1e9b6050a8098efc59a6
 
 <%--HEADER--%>
 <jsp:include page="header.jsp"></jsp:include>
@@ -77,6 +80,7 @@
                                     </i>
                                 </td>
 <<<<<<< HEAD
+<<<<<<< HEAD
                                 <td>
                                     <p:formatNumber value="${item.product.productPrice * item.quantity}"></p:formatNumber>₫
                                 </td>
@@ -87,6 +91,13 @@
                                 <td><a href="/cartUpdateServlet?action=Delete&productId=${item.product.productId}"><input name="act" class="btn btn-outline-danger" type="button"
                                                       value="Delete"></a></td>
 >>>>>>> 0db28a9b59aaa84158a177b6fc766b94aeb968b2
+=======
+                                <td><p:formatNumber value="${item.price * item.quantity}"></p:formatNumber>₫</td>
+                                <td>
+                                    <a href="/cartUpdateServlet?action=Delete&productId=${item.product.productId}"><input
+                                            name="act" class="btn btn-outline-danger" type="button"
+                                            value="Delete"></a></td>
+>>>>>>> 3d50d2fcac2c430e599e1e9b6050a8098efc59a6
                             </tr>
                         </c:forEach>
                         <tr>
@@ -99,7 +110,10 @@
 =======
                                     <c:set var="totalOrder"
                                            value="${totalOrder + item.price* item.quantity}"/>
+<<<<<<< HEAD
 >>>>>>> 0db28a9b59aaa84158a177b6fc766b94aeb968b2
+=======
+>>>>>>> 3d50d2fcac2c430e599e1e9b6050a8098efc59a6
                                 </c:forEach>
                                 <p:formatNumber value="${totalOrder}"></p:formatNumber>₫
 
@@ -119,7 +133,9 @@
                 <a style="float: right; margin-bottom: 40px" href="/pagination" class="btn btn-outline-info"
                    id="backToMain">Tiếp tục mua hàng</a>
             </div>
+        </form>
 
+<<<<<<< HEAD
 
             <div class="checkout-form-row">
                 <div class="col-lg-12">
@@ -162,10 +178,67 @@
                         </table>
                     </form>
                 </div>
+=======
+        <div class="checkout-form-row">
+            <div class="col-lg-12">
+                <h3 style="margin-bottom: 40px">Your Information (to Order)</h3>
+>>>>>>> 3d50d2fcac2c430e599e1e9b6050a8098efc59a6
             </div>
-        </form>
+            <div>
+                <form action="/checkoutcart" method="post" class="deliveryInformation">
+                    <a style="margin-left: 25px" class="text-primary" href="/checkoutcart">Click here to Use User's default information</a>
+                    <b><i style="margin-left: 25px; color: red">${announcementToLogin}</i></b>
+                    <table class="table table-hover"
+                           style="margin-left: 20px; width: 1060px; margin-bottom: 50px; margin-top: 10px">
+                        <tr>
+                            <th>Your Name*</th>
+                            <td><input style="padding-top: 0px" name="fullName" type="text" placeholder="Full Name" value="${defaultAccountName}"></td>
+                        </tr>
+                        <tr>
+                            <th>Your Email*</th>
+                            <td><input style="padding-top: 0px" name="email" type="text" value="example@gmail.com"><i style="color:red;">${defaultEmail}</i></td>
+                        </tr>
+                        <tr>
+                            <th>Your Phone Number*</th>
+                            <td><input style="padding-top: 0px" name="phoneNumber" type="text" value="${defaultPhoneNumber}"></td>
+                        </tr>
+                        <tr>
+                            <th>Your Address*</th>
+                            <td><input style="padding-top: 0px" name="address" type="text" value="${defaultAddress}"></td>
+                        </tr>
+                        <tr>
+                            <th>Payment Method</th>
+                            <td><input style="padding-top: 0px" type="text" value=" Cash on Delivery" disabled ></td>
+                        </tr>
+                        <tr>
+                            <th>Delivery Date</th>
+                            <td><input style="padding-top: 0px" type="text" value=" 3-5 working days " disabled></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td colspan="3" style="width: 40px;"><input class="btn btn-outline-success" type="submit" value="Order"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
     </div>
 </section>
+<style>
+    .deliveryInformation table th {
+        width: 150px;
+    }
+
+    .deliveryInformation table td {
+        width: 500px;
+        height: 20px;
+    }
+    .deliveryInformation table input {
+        width: 500px;
+        height: 35px;
+    }
+
+</style>
 
 <%--FOOTER--%>
 <jsp:include page="footer.jsp"></jsp:include>

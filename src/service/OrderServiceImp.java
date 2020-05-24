@@ -1,6 +1,9 @@
 package service;
 
+
+import model.Account;
 import model.DBConnect;
+import model.Item;
 import model.Order;
 
 import java.sql.*;
@@ -71,6 +74,11 @@ public class OrderServiceImp implements OrderService {
     }
 
     @Override
+    public void addNewOrder(Account account, List<Item> list) {
+
+    }
+
+    @Override
     public void updateOder(Order order) {
         Connection connection = DBConnect.getConnection();
         try {
@@ -93,6 +101,4 @@ public class OrderServiceImp implements OrderService {
     public void deleteOder(String orderID) {
 
     }
-
-
 }
