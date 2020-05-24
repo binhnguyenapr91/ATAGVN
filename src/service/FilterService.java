@@ -17,12 +17,15 @@ public class FilterService implements Filter {
         String serverPath = req.getServletPath();
         System.out.println("Time: "+ new Date() + " Info: " + serverPath + " URL: "+req.getRequestURL());
         String role = (String) req.getSession().getAttribute("role");
+        if(role ==null){
+            role = "";
+        }
         System.out.println("Session role: "+role);
         if(role.equals("admin")){
             filterChain.doFilter(servletRequest,servletResponse);
         }
-        else {
-            RequestDispatcher requestDispatcher = servletRequest.getRequestDispatcher("login.jsp");
+        else{
+            RequestDispatcher requestDispatcher = servletRequest.getRequestDispatcher("/login.jsp");
             requestDispatcher.forward(servletRequest,servletResponse);
         }
 
