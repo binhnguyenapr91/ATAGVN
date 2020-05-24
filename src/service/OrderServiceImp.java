@@ -79,17 +79,18 @@ public class OrderServiceImp implements OrderService {
     }
 
     @Override
-    public void updateOder(Order order) {
+    public void updateOder(String orderID, String accountID, String orderDate, String receiver, String address, String email, String phoneNumber, int status) {
         Connection connection = DBConnect.getConnection();
         try {
             PreparedStatement ps = connection.prepareStatement(UPDATE_ORDER_BY_ID);
-            ps.setString(1, order.getAccountID());
-            ps.setDate(2, order.getOrderDate());
-            ps.setString(3, order.getReceiver());
-            ps.setString(4, order.getAddress());
-            ps.setString(5, order.getEmail());
-            ps.setString(6, order.getPhoneNumber());
-            ps.setInt(7, order.getStatus());
+            ps.setString(1, accountID);
+            ps.setString(2, orderDate);
+            ps.setString(3, receiver);
+            ps.setString(4, address);
+            ps.setString(5, email);
+            ps.setString(6, phoneNumber);
+            ps.setInt(7, status);
+            ps.setString(8, orderID);
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -97,16 +98,26 @@ public class OrderServiceImp implements OrderService {
     }
 
     @Override
-    public boolean deleteOder(String orderID) {
-        boolean rowDeleted = false;
+    public void deleteOder(String orderID) {
         Connection connection = DBConnect.getConnection();
         try {
             PreparedStatement ps = connection.prepareStatement("delete from atagvn.orders where OrderID = ?");
             ps.setString(1, orderID);
-            rowDeleted = ps.executeUpdate() > 0;
+            ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return rowDeleted;
+    }
+
+    @Override
+    public void deleteOder_product(String orderID) {
+        Connection connection = DBConnect.getConnection();
+        try {
+            PreparedStatement ps = connection.prepareStatement("delete from atagvn.order_product where OrderID = ?");
+            ps.setString(1, orderID);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

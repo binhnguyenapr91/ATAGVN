@@ -59,6 +59,7 @@ public class OrderServlet extends HttpServlet {
 
     private void deleteOrder(HttpServletRequest request, HttpServletResponse response) {
         String orderID = request.getParameter("orderID");
+        orderServiceImp.deleteOder_product(orderID);
         orderServiceImp.deleteOder(orderID);
         List<Order> orders = new ArrayList<>();
         orders = orderServiceImp.viewAllOrder();
@@ -91,22 +92,18 @@ public class OrderServlet extends HttpServlet {
             String orderID = request.getParameter("orderID");
             String accountID = request.getParameter("accountID");
             String orderDate = request.getParameter("orderDate");
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-            Date date = formatter.parse(orderDate);
-
             String receiver = request.getParameter("receiver");
             String address = request.getParameter("address");
             String email = request.getParameter("email");
             String phoneNumber = request.getParameter("phoneNumber");
             Integer status = Integer.parseInt(request.getParameter("status"));
-            Order handler = new Order(orderID, accountID, (java.sql.Date) date, receiver, address, email, phoneNumber, status);
-            orderServiceImp.updateOder(handler);
+            orderServiceImp.updateOder(orderID, accountID, orderDate, receiver, address, email, phoneNumber, status);
             List<Order> orders;
             orders = orderServiceImp.viewAllOrder();
             request.setAttribute("orders", orders);
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("admin/viewOrder.jsp");
             requestDispatcher.forward(request, response);
-        } catch (ServletException | IOException | ParseException e) {
+        } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
     }

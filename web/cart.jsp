@@ -79,25 +79,20 @@
                                                name="quantity" value="${item.quantity}">
                                     </i>
                                 </td>
-<<<<<<< HEAD
-<<<<<<< HEAD
+
                                 <td>
                                     <p:formatNumber value="${item.product.productPrice * item.quantity}"></p:formatNumber>₫
                                 </td>
                                 <td><a href="/addToCartServlet?${item.quantity}=<%request.getParameter("qty");%>" class="btn-dark">Update</a></td>
                                 <td><a href="#">Delete</a></td>
-=======
                                 <td><p:formatNumber value="${item.price * item.quantity}"></p:formatNumber>₫</td>
                                 <td><a href="/cartUpdateServlet?action=Delete&productId=${item.product.productId}"><input name="act" class="btn btn-outline-danger" type="button"
                                                       value="Delete"></a></td>
->>>>>>> 0db28a9b59aaa84158a177b6fc766b94aeb968b2
-=======
                                 <td><p:formatNumber value="${item.price * item.quantity}"></p:formatNumber>₫</td>
                                 <td>
                                     <a href="/cartUpdateServlet?action=Delete&productId=${item.product.productId}"><input
                                             name="act" class="btn btn-outline-danger" type="button"
                                             value="Delete"></a></td>
->>>>>>> 3d50d2fcac2c430e599e1e9b6050a8098efc59a6
                             </tr>
                         </c:forEach>
                         <tr>
@@ -105,15 +100,11 @@
                             <td>
                                 <c:set var="totalOrder" value="${0}"/>
                                 <c:forEach var="item" items="${order.items}">
-<<<<<<< HEAD
+
                                     <c:set var="totalOrder" value="${totalOrder + item.product.productPrice* item.quantity}"/>
-=======
+
                                     <c:set var="totalOrder"
                                            value="${totalOrder + item.price* item.quantity}"/>
-<<<<<<< HEAD
->>>>>>> 0db28a9b59aaa84158a177b6fc766b94aeb968b2
-=======
->>>>>>> 3d50d2fcac2c430e599e1e9b6050a8098efc59a6
                                 </c:forEach>
                                 <p:formatNumber value="${totalOrder}"></p:formatNumber>₫
 
@@ -134,8 +125,6 @@
                    id="backToMain">Tiếp tục mua hàng</a>
             </div>
         </form>
-
-<<<<<<< HEAD
 
             <div class="checkout-form-row">
                 <div class="col-lg-12">
@@ -178,11 +167,9 @@
                         </table>
                     </form>
                 </div>
-=======
         <div class="checkout-form-row">
             <div class="col-lg-12">
                 <h3 style="margin-bottom: 40px">Your Information (to Order)</h3>
->>>>>>> 3d50d2fcac2c430e599e1e9b6050a8098efc59a6
             </div>
             <div>
                 <form action="/checkoutcart" method="post" class="deliveryInformation">
