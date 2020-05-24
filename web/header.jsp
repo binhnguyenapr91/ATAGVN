@@ -33,6 +33,8 @@
 <body>
 <%
     CategoryServiceImp categoryServiceImp = new CategoryServiceImp();
+    ProductServiceImp productServiceImp = new ProductServiceImp();
+    Product product = productServiceImp.getProduct(request.getParameter("productId"));
 %>
 <header class="header-section">
     <div class="container-fluid">
@@ -46,6 +48,9 @@
                 <a href="cart.jsp">
                     <i class="fa fa-shopping-bag"></i>
                     <span>
+                         <a href="/addToCartServlet?productId=<%=product.getProductId()%>"></a>
+                    </span>
+
                         <c:set var="totalOrder" value="${0}"/>
                                 <c:forEach var="item" items="${order.items}">
                                     <c:set var="totalOrder"

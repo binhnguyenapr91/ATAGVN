@@ -1,3 +1,6 @@
+<%@ page import="service.ProductServiceImp" %>
+<%@ page import="model.Product" %>
+<%@ page import="java.sql.SQLException" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -25,6 +28,18 @@
 
 </head>
 <body>
+<<<<<<< HEAD
+<%
+    ProductServiceImp productServiceImp = new ProductServiceImp();
+    Product product = null;
+    try {
+        product = productServiceImp.getProduct(request.getParameter("productId"));
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+%>
+=======
+>>>>>>> 3d50d2fcac2c430e599e1e9b6050a8098efc59a6
 
 <%--HEADER--%>
 <jsp:include page="header.jsp"></jsp:include>
@@ -65,6 +80,15 @@
                                                name="quantity" value="${item.quantity}">
                                     </i>
                                 </td>
+
+                                <td>
+                                    <p:formatNumber value="${item.product.productPrice * item.quantity}"></p:formatNumber>₫
+                                </td>
+                                <td><a href="/addToCartServlet?${item.quantity}=<%request.getParameter("qty");%>" class="btn-dark">Update</a></td>
+                                <td><a href="#">Delete</a></td>
+                                <td><p:formatNumber value="${item.price * item.quantity}"></p:formatNumber>₫</td>
+                                <td><a href="/cartUpdateServlet?action=Delete&productId=${item.product.productId}"><input name="act" class="btn btn-outline-danger" type="button"
+                                                      value="Delete"></a></td>
                                 <td><p:formatNumber value="${item.price * item.quantity}"></p:formatNumber>₫</td>
                                 <td>
                                     <a href="/cartUpdateServlet?action=Delete&productId=${item.product.productId}"><input
@@ -77,6 +101,9 @@
                             <td>
                                 <c:set var="totalOrder" value="${0}"/>
                                 <c:forEach var="item" items="${order.items}">
+
+                                    <c:set var="totalOrder" value="${totalOrder + item.product.productPrice* item.quantity}"/>
+
                                     <c:set var="totalOrder"
                                            value="${totalOrder + item.price* item.quantity}"/>
                                 </c:forEach>
@@ -99,6 +126,7 @@
                    id="backToMain">Tiếp tục mua hàng</a>
             </div>
         </form>
+
 
         <div class="checkout-form-row">
             <div class="col-lg-12">

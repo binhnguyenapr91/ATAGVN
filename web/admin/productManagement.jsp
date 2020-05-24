@@ -69,13 +69,13 @@
                 for (Product product: productDAO.getListProduct()){
             %>
                 <tr>
-                    <th style="width: 80px;"><input  style="width: 80px;" type="text" name="pmID" value="<%=product.getProductId()%>"></th>
-                    <th style="width: 100px;"><input style="width: 100px;" type="text" name="pmCategoryID" value="<%=categoryDAO.getCategory(product.getCategoryId()).getCategoryName()%>"></th>
-                    <th style="width: 150px;"><input style="width: 150px;" type="text" name="pmName" value="<%=product.getProductName()%>"></th>
-                    <th style="width: 150px;"><input style="width: 150px;"type="text" name="pmPrice" value="<%=format.format(product.getProductPrice())%>"></th>
-                    <th style="width: 160px;"><input style="width: 160px;"type="text" name="pmQuantity" value="<%=product.getQuantityInStock()%>"></th>
+                    <th style="width: 80px;"><input  style="width: 80px;" type="text" name="pmID" value="<%=product.getProductId()%>" minlength="4" maxlength="10" pattern="[a-z0-9A-Z]" required="required"></th>
+                    <th style="width: 100px;"><input style="width: 100px;" type="text" name="pmCategoryID" value="<%=categoryDAO.getCategory(product.getCategoryId()).getCategoryName()%>" minlength="4" maxlength="55" pattern="[a-z0-9A-Z]" required="required"></th>
+                    <th style="width: 150px;"><input style="width: 150px;" type="text" name="pmName" value="<%=product.getProductName()%>" minlength="4" maxlength="55" pattern="[a-z0-9A-Z]" required="required"></th>
+                    <th style="width: 150px;"><input style="width: 150px;"type="text" name="pmPrice" value="<%=format.format(product.getProductPrice())%>" minlength="7" maxlength="20" pattern="[0-9]" required="required"></th>
+                    <th style="width: 160px;"><input style="width: 160px;"type="text" name="pmQuantity" value="<%=product.getQuantityInStock()%>" minlength="1" maxlength="20" pattern="[0-9]" required="required"></th>
                     <th style="width: 100px;"><img style="width: 100px;"src="../<%=product.getImage()%>"/></th>
-                    <th style="width: 80px;"><input style="width: 80px;"type="text" name="pmStatus" value="<%=product.getStatus()%>"></th>
+                    <th style="width: 80px;"><input style="width: 80px;"type="text" name="pmStatus" value="<%=product.getStatus()%>" minlength="1" maxlength="1" pattern="[0-9]" required="required"></th>
                     <th style="width: 300px;"><textarea cols="35" rows="6" name="pmDes" value="<%=product.getDescription()%>" ></textarea></th>
                     <th style="width: 70px;"><a class="btn btn-outline-success" href="/admin/updateProduct.jsp?productId=<%=product.getProductId()%>">Update</a></th>
                     <th style="width: 70px;"><a class="btn btn-outline-danger" href="/deleteProduct?productId=<%=product.getProductId()%>">Delete</a></th>
