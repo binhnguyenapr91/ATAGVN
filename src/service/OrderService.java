@@ -15,7 +15,7 @@ public interface OrderService {
 
     void updateOder(Order order);
 
-    void deleteOder(String orderID);
+    boolean deleteOder(String orderID);
 
     Order findByID(String orderIDToFind);
 

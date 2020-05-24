@@ -13,7 +13,7 @@ import java.util.List;
 public class OrderServiceImp implements OrderService {
     private static final String SELECT_ALL_ORDER = "select * from atagvn.orders;";
     private static final String SELECT_BY_ID = "select * from atagvn.orders where orderID = ?;";
-    private static final String UPDATE_ORDER_BY_ID = "update atagvn.orders set OrderID=?, AccountID=?, OrderDate=?, Receiver=?, Address=?, Email=?, PhoneNumber=?, Status = ?;";
+    private static final String UPDATE_ORDER_BY_ID = "update atagvn.orders set AccountID=?, OrderDate=?, Receiver=?, Address=?, Email=?, PhoneNumber=?, Status = ? where OrderID = ?;";
 
     @Override
     public List<Order> viewAllOrder() {
@@ -39,7 +39,7 @@ public class OrderServiceImp implements OrderService {
                 email = rs.getString(6);
                 phoneNumber = rs.getString(7);
                 status = rs.getInt(8);
-                orders.add(new Order(orderID,accountID,orderDate,receiver,address,email,phoneNumber,status));
+                orders.add(new Order(orderID, accountID, orderDate, receiver, address, email, phoneNumber, status));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -65,7 +65,7 @@ public class OrderServiceImp implements OrderService {
                 String phoneNumber = resultSet.getString("PhoneNumber");
                 Integer status = resultSet.getInt("Status");
 
-                order = new Order(orderID,accountID, orderDate, receiver, address, email, phoneNumber, status);
+                order = new Order(orderID, accountID, orderDate, receiver, address, email, phoneNumber, status);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -83,14 +83,13 @@ public class OrderServiceImp implements OrderService {
         Connection connection = DBConnect.getConnection();
         try {
             PreparedStatement ps = connection.prepareStatement(UPDATE_ORDER_BY_ID);
-            ps.setString(1, order.getOrderID());
-            ps.setString(2, order.getAccountID());
-            ps.setDate(3, order.getOrderDate());
-            ps.setString(4, order.getReceiver());
-            ps.setString(5, order.getAddress());
-            ps.setString(6, order.getEmail());
-            ps.setString(7, order.getPhoneNumber());
-            ps.setInt(8, order.getStatus());
+            ps.setString(1, order.getAccountID());
+            ps.setDate(2, order.getOrderDate());
+            ps.setString(3, order.getReceiver());
+            ps.setString(4, order.getAddress());
+            ps.setString(5, order.getEmail());
+            ps.setString(6, order.getPhoneNumber());
+            ps.setInt(7, order.getStatus());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -98,7 +97,16 @@ public class OrderServiceImp implements OrderService {
     }
 
     @Override
-    public void deleteOder(String orderID) {
-
+    public boolean deleteOder(String orderID) {
+        boolean rowDeleted = false;
+        Connection connection = DBConnect.getConnection();
+        try {
+            PreparedStatement ps = connection.prepareStatement("delete from atagvn.orders where OrderID = ?");
+            ps.setString(1, orderID);
+            rowDeleted = ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rowDeleted;
     }
 }
