@@ -126,47 +126,7 @@
             </div>
         </form>
 
-            <div class="checkout-form-row">
-                <div class="col-lg-12">
-                    <h3>Your Information (to Order)</h3>
-                </div>
-                <div>
-                    <form action="#" method="post" class="deliveryInformation">
-                        <table style="margin-left: 20px; width: 1060px; margin-bottom: 50px;">
-                            <tr>
-                                <th style="width: 150px">Your Name*</th>
-                                <td style="width: 500px"><input type="text" placeholder="Full Name"
-                                                                style="font-size: 15px"></td>
-                            </tr>
-                            <tr>
-                                <th style="width: 150px;">Your Email*</th>
-                                <td style="width: 500px"><input type="text" placeholder="example@gmail.com"
-                                                                style="font-size: 15px"></td>
-                            </tr>
-                            <tr>
-                                <th style="width: 150px;">Your Phone Number*</th>
-                                <td style="width: 500px"><input type="text" style="font-size: 15px"></td>
-                            </tr>
-                            <tr>
-                                <th style="width: 150px;">Your Address*</th>
-                                <td style="width: 500px"><input type="text" style="font-size: 15px"></td>
-                            </tr>
-                            <tr>
-                                <th style="width: 150px;">Payment Method</th>
-                                <td style="width: 500px"><input type="text" value=" Cash on Delivery" disabled
-                                                                style="font-size: 15px"></td>
-                            </tr>
-                            <tr>
-                                <th style="width: 150px;">Delivery Date</th>
-                                <td style="width: 500px"><input type="text" value=" 3-5 working days " disabled
-                                                                style="font-size: 15px"></td>
-                            </tr>
-                            <tr>
-                                <th colspan="2" style="text-align: right"><input type="submit" value="Order"></th>
-                            </tr>
-                        </table>
-                    </form>
-                </div>
+
         <div class="checkout-form-row">
             <div class="col-lg-12">
                 <h3 style="margin-bottom: 40px">Your Information (to Order)</h3>
