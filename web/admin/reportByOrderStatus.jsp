@@ -35,7 +35,7 @@
                 <h2 style="margin-bottom: 20px">Report <small class="text-muted">Management</small></h2>
             </div>
             <div class="user-access">
-                <a style="margin: 30px" class="active" href="/pagination">Home Page/Logout</a>
+                <a style="margin: 30px" class="active" href="/loginSession">Home Page/Logout</a>
                 <a href="" class="out"><i class="fa fa-user"></i>&nbspAdmin</a>
             </div>
         </div>

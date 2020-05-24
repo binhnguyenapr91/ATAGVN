@@ -35,7 +35,6 @@ public class OrderServlet extends HttpServlet {
                 break;
             default:
                 break;
-
         }
     }
 
@@ -86,7 +85,6 @@ public class OrderServlet extends HttpServlet {
         }
     }
 
-    //can kiem tra
     private void updateOrder(HttpServletRequest request, HttpServletResponse response) {
         try {
             String orderID = request.getParameter("orderID");
