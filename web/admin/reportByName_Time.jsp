@@ -45,7 +45,7 @@
 <form action="/reportByName_TimeServlet" method="post">
     <select name="name" id="selectionName">
         <c:forEach items="${users}" var="user">
-            <option value="${user.getAccountName}">${user.getAccountName()}</option>
+            <option value="${user.getAccountName()}">${user.getAccountName()}</option>
         </c:forEach>
     </select>
     <label for="startTime">Start Time</label></label><input type="text" id="startTime" name="startTime" placeholder="Format: 'YYYY-MM-DD'">
