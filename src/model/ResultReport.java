@@ -8,6 +8,12 @@ public class ResultReport {
     String quantity;
     String priceEach;
 
+    public ResultReport(String orderId, String orderDate, String accountName) {
+        this.orderId = orderId;
+        this.orderDate = orderDate;
+        this.accountName = accountName;
+    }
+
     public String getOrderId() {
         return orderId;
     }

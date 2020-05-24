@@ -13,8 +13,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "ReprotServlet", urlPatterns = "/reportServlet")
-public class ReportServlet extends HttpServlet {
+@WebServlet(name = "ReprotByName_TimeServlet", urlPatterns = "/reportByName_TimeServlet")
+public class ReportByName_TimeServlet extends HttpServlet {
     private Report report = new Report();
 
     @Override
@@ -25,7 +25,7 @@ public class ReportServlet extends HttpServlet {
         }
         switch (action) {
             default:
-                RequestDispatcher requestDispatcher = req.getRequestDispatcher("/admin/reportManagement.jsp");
+                RequestDispatcher requestDispatcher = req.getRequestDispatcher("/admin/reportByName_Time.jsp");
                 requestDispatcher.forward(req, resp);
         }
     }

@@ -2,10 +2,11 @@
   Created by IntelliJ IDEA.
   User: binhnguyen
   Date: 5/22/20
-  Time: 11:15 AM
+  Time: 1:34 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>ATAG.VN</title>
@@ -26,27 +27,29 @@
     <link rel="stylesheet" href="../boostrap/css/bootstrap.css">
 </head>
 <body>
-<form action="/reportServlet?action=<%="reportOrdersDetailByTime"%>" method="post">
-    <select name="name" id="selectionName">
-        <option value="Huynh Bui">Huynh Bui</option>
-        <option value="Linh">Linh</option>
-        <option value="Huynh">Huynh</option>
-        <option value="Thinh">Thinh</option>
-    </select>
+<div class="mainManagement">
+    <div class="accountManagement" style="width: 1470px">
+        <h6 style="width: 1470px;"><a style="float:right" class="btn btn-outline-primary" href="/accountServlet?action=add">Add more Account</a>&nbsp&nbsp<a class="btn btn-outline-danger" href="admin/admin.jsp">Back to Listing</a></h6>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>OrderID</th>
+                <th>OrderDate</th>
+                <th>AccountName</th>
 
-    <select name="startTime" id="startTime">
-        <option value="2020-03-11">2020-03-11</option>
-        <option value="2">Feb</option>
-        <option value="3">Jan</option>
-        <option value="4">Jan</option>
-    </select>
-    <select name="endTime" id="endTime">
-        <option value="2020-03-13">2020-03-13</option>
-        <option value="2">Feb</option>
-        <option value="3">Jan</option>
-        <option value="4">Jan</option>
-    </select>
-    <input type="submit" value="Get Report">
-</form>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach items="${results}" var="result">
+                <tr>
+                    <td><input type="text" name="orderId" value="${result.getOrderId()}"></td>
+                    <td><input type="text" name="orderDate" value="${result.getOrderDate()}"></td>
+                    <td><input type="text" name="accountName" value="${result.getAccountName()}"></td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </div>
+</div>
 </body>
 </html>
