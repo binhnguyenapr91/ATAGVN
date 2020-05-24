@@ -1,3 +1,10 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Admin
+  Date: 23/05/2020
+  Time: 4:24 PM
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -37,37 +44,35 @@
 <hr style="height: 10px">
 <div class="mainManagement">
     <div class="accountManagement">
-        <h3>Account Management</h3>
-        <h6><a href="#">Add more Account</a></h6>
+        <h3>Order Management</h3>
+        <h6><a href="#">Add more Order</a></h6>
         <form method="post">
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Account Name</th>
-                    <th>Login Name</th>
-                    <th>Password</th>
-                    <th>Account Access</th>
-                    <th>Address</th>
-                    <th>Phone Number</th>
-                    <th>Gender</th>
-                    <th>Status</th>
-                    <th>Functions</th>
+                    <th> OrderID</th>
+                    <th> AccountID</th>
+                    <th> OrderDate</th>
+                    <th> Receiver</th>
+                    <th> Address</th>
+                    <th> Email</th>
+                    <th> PhoneNumber</th>
+                    <th> Status</th>
+                    <th scope="col" colspan="2">Functions</th>
                 </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th><input type="text" name="accountId" minlength="3" maxlength="20" pattern="[0-9a-zA-Z]" required="required"></th>
-                        <th><input type="text" name="accountName" minlength="2" maxlength="55" pattern="[0-9a-zA-Z]" required="required"></th>
-                        <th><input type="text" name="loginName" minlength="3" maxlength="55" pattern="[0-9a-zA-Z]" required="required" ></th>
-                        <th><input type="text" name="password" minlength="6" maxlength="36" pattern="[0-9a-zA-Z]" required="required" ></th>
-                        <th><input type="text" name="accountAccess" minlength="1" maxlength="1" pattern="[0-9]" required="required"></th>
-                        <th><input type="text" name="address"></th>
-                        <th><input type="text" name="phoneNumber" minlength="10" maxlength="11" pattern="[0-9]" required="required"></th>
-                        <th><input type="text" name="gender" ></th>
-                        <th><input type="text" name="status"></th>
-                        <td><input type="submit" value="Add"></td>
-                    </tr>
+                <tr>
+                    <th style="width: 100px;"><input style="width: 100px;" type="text" name="orderID" value="${requestScope["order"].getOrderID()}"></th>
+                    <th style="width: 90px;"><input style="width: 90px;" type="text" name="accountID" value="${requestScope["order"].getAccountID()}"></th>
+                    <th style="width: 100px;"><input style="width: 100px;" type="text" name="orderDate" value="${requestScope["order"].getOrderDate()}"></th>
+                    <th><input type="text" name="receiver" value="${requestScope["order"].getReceiver()}"></th>
+                    <th><input type="text" name="address" value="${requestScope["order"].getAddress()}"></th>
+                    <th><input type="text" name="email" value="${requestScope["order"].getEmail()}"></th>
+                    <th style="width: 130px;"><input style="width: 130px;" type="text" name="phoneNumber" value="${requestScope["order"].getPhoneNumber()}"></th>
+                    <th style="width: 50px;"><input style="width: 50px;" type="text" name="status" value="${requestScope["order"].getStatus()}"></th>
+                    <td><input class="btn btn-outline-success" type="submit" value="Update"></td>
+                </tr>
                 </tbody>
             </table>
         </form>
@@ -76,3 +81,4 @@
 </div>
 </body>
 </html>
+

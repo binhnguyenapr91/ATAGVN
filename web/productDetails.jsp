@@ -1,6 +1,7 @@
 <%@ page import="service.ProductServiceImp" %>
 <%@ page import="model.Product" %>
 <%@ page import="java.text.NumberFormat" %>
+<%@ page import="java.sql.SQLException" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
@@ -26,7 +27,12 @@
 <body>
 <%
     ProductServiceImp productServiceImp = new ProductServiceImp();
-    Product product = productServiceImp.getProduct(request.getParameter("productId"));
+    Product product = null;
+    try {
+        product = productServiceImp.getProduct(request.getParameter("productId"));
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
     NumberFormat format = NumberFormat.getNumberInstance();
 %>
 <%--HEADER--%>

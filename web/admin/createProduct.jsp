@@ -30,7 +30,7 @@
         <table>
             <tr>
                 <td>ID: </td>
-                <td><input type="text" name="productId" id="product_id"></td>
+                <td><input type="text" name="productId" id="product_id" minlength="4" max></td>
             </tr>
             <tr>
                 <td>Category: </td>
@@ -45,7 +45,7 @@
             </tr>
             <tr>
                 <td>Name: </td>
-                <td><input type="text" name="productName" id="product_name"></td>
+                <td><input type="text" name="productName" id="product_name" minlength="4" maxlength="100" pattern="[0-9a-zA-Z]+" required="required"></td>
             </tr>
             <tr>
                 <td>Price: </td>
