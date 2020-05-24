@@ -154,7 +154,7 @@ public class LoginServlet extends HttpServlet {
 
                 response.sendRedirect("/pagination");
             } else {
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("notPassFilter.jsp");
                 String announcement = "Wrong 'password'. Please try again!";
                 request.setAttribute("announcement", announcement);
                 requestDispatcher.forward(request, response);

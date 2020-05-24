@@ -28,8 +28,21 @@
 
 </head>
 <body>
+<header class="header-section">
+    <div class="container-fluid">
+        <div class="inner-header">
+            <div class="logo">
+                <h2 style="margin-bottom: 20px">Report <small class="text-muted">Management</small></h2>
+            </div>
+            <div class="user-access">
+                <a style="margin: 30px" class="active" href="/pagination">Home Page/Logout</a>
+                <a href="" class="out"><i class="fa fa-user"></i>&nbspAdmin</a>
+            </div>
+        </div>
+    </div>
+</header>
 <hr/>
-<h1>Report by Order Status</h1>
+<h1>Report by status of order</h1>
 <form action="/reportByOrderStatus" method="post">
    <select name="selectStatus">
        <option value="true">Completed</option>

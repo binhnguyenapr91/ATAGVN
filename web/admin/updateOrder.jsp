@@ -1,3 +1,4 @@
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -25,11 +26,11 @@
     <div class="container-fluid">
         <div class="inner-header">
             <div class="logo">
-                <h2 style="margin-bottom: 20px">ACCOUNT <small class="text-muted">Management</small></h2>
+                <a href="index.jsp"><img src="img/logo.png" alt="logo"></a>
             </div>
             <div class="user-access">
-                <a style="margin: 30px" class="active" href="/pagination">Home Page/Logout</a>
-                <a href="" class="out"><i class="fa fa-user"></i>&nbspAdmin</a>
+                <a class="active" href="index.jsp">Home Page/Logout</a>
+                <a href="" class="out"><i class="fa fa-user"></i> Admin</a>
             </div>
         </div>
     </div>
@@ -37,36 +38,35 @@
 <hr style="height: 10px">
 <div class="mainManagement">
     <div class="accountManagement">
-        <h6><a class="btn btn-outline-danger" href="mainAdminNavigateServlet?target=accountManagement">Back to Listing</a></h6>
+        <h3>Order Management</h3>
+        <h6><a href="#">Add more Order</a></h6>
         <form method="post">
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Account Name</th>
-                    <th>Login Name</th>
-                    <th>Password</th>
-                    <th>Account Access</th>
-                    <th>Address</th>
-                    <th>Phone Number</th>
-                    <th>Gender</th>
-                    <th>Status</th>
+                    <th> OrderID</th>
+                    <th> AccountID</th>
+                    <th> OrderDate</th>
+                    <th> Receiver</th>
+                    <th> Address</th>
+                    <th> Email</th>
+                    <th> PhoneNumber</th>
+                    <th> Status</th>
                     <th scope="col" colspan="2">Functions</th>
                 </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th><input type="text" name="accountId" value="${requestScope["account"].getAccountId()}"></th>
-                        <th><input type="text" name="accountName" value="${requestScope["account"].getAccountName()}"></th>
-                        <th><input type="text" name="loginName" value="${requestScope["account"].getLoginName()}"></th>
-                        <th><input type="text" name="password" value="${requestScope["account"].getPassword()}"></th>
-                        <th><input type="text" name="accountAccess" value="${requestScope["account"].getAccountAccess()}"></th>
-                        <th><input type="text" name="address" value="${requestScope["account"].getAddress()}"></th>
-                        <th><input type="text" name="phoneNumber" value="${requestScope["account"].getPhoneNumber()}"></th>
-                        <th><input type="text" name="gender" value="${requestScope["account"].isGender()}"></th>
-                        <th><input type="text" name="status" value="${requestScope["account"].isStatus()}"></th>
-                        <td><input class="btn btn-outline-success" type="submit" value="Update"></td>
-                    </tr>
+                <tr>
+                    <th style="width: 100px;"><input style="width: 100px;" type="text" name="orderID" value="${requestScope["order"].getOrderID()}"></th>
+                    <th style="width: 90px;"><input style="width: 90px;" type="text" name="accountID" value="${requestScope["order"].getAccountID()}"></th>
+                    <th style="width: 100px;"><input style="width: 100px;" type="text" name="orderDate" value="${requestScope["order"].getOrderDate()}"></th>
+                    <th><input type="text" name="receiver" value="${requestScope["order"].getReceiver()}"></th>
+                    <th><input type="text" name="address" value="${requestScope["order"].getAddress()}"></th>
+                    <th><input type="text" name="email" value="${requestScope["order"].getEmail()}"></th>
+                    <th style="width: 130px;"><input style="width: 130px;" type="text" name="phoneNumber" value="${requestScope["order"].getPhoneNumber()}"></th>
+                    <th style="width: 50px;"><input style="width: 50px;" type="text" name="status" value="${requestScope["order"].getStatus()}"></th>
+                    <td><input class="btn btn-outline-success" type="submit" value="Update"></td>
+                </tr>
                 </tbody>
             </table>
         </form>
@@ -75,3 +75,4 @@
 </div>
 </body>
 </html>
+
