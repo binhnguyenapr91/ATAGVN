@@ -16,6 +16,7 @@ public class OrderServiceImp implements OrderService {
     public static final String GET_MAX_ORDER_ID_BY_ID_HEAD = "select * from atagvn.orders where OrderID like ? order by OrderID desc limit 1;";
     public static final String ADD_NEW_ORDER_FROM_CART = "insert into atagvn.orders(OrderID, AccountID, Receiver, Address, Email, PhoneNumber) value (?,?,?,?,?,?);";
     private static final String ADD_NEW_ORDER_PRODUCT_FROM_CART = "insert into atagvn.order_product value (?,?,?,?,?);";
+    public static final String UPDATE_QUANTITY_AFTER_ORDER = "update product set QuantityInStock = ? where ProductID=?";
 
     @Override
     public List<Order> getRecentOrderList() {
@@ -86,6 +87,20 @@ public class OrderServiceImp implements OrderService {
             preparedStatement.setString(3,String.valueOf(quantity));
             preparedStatement.setString(4,String.valueOf(priceEach));
             preparedStatement.setString(5,accountId);
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    @Override
+    public void updateQuantityProduct(int quantity, String productId) {
+        Connection connection = DBConnect.getConnection();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_QUANTITY_AFTER_ORDER);
+            preparedStatement.setInt(1, quantity);
+            preparedStatement.setString(2, productId);
 
             preparedStatement.executeUpdate();
         } catch (SQLException throwables) {

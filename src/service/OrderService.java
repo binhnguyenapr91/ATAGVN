@@ -11,4 +11,5 @@ public interface OrderService {
     String getMaxOrderIdByOrderIdHead(String orderIdHead);
     void addOrderFromCart(Order order);
     void addOrderProductFromCart(String orderId, String productId, int quantity, float priceEach, String accountId);
+    void updateQuantityProduct(int quantity, String productId);
 }

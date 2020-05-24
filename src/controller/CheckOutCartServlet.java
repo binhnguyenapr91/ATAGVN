@@ -27,7 +27,7 @@ public class CheckOutCartServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         String isLogined = (String) session.getAttribute("cookieIsLogin");
-        if (isLogined.equals("not yet")){
+        if (isLogined.equals("not yet")) {
             requestLoginIfNot(request, response);
         } else {
             String email = request.getParameter("email");
@@ -41,45 +41,45 @@ public class CheckOutCartServlet extends HttpServlet {
                 address = request.getParameter("address");
             }
 
-            if (receiver.equals("") || address.equals("") || phoneNumber.equals("")){
-                String announcementToFillFields = "Please fill up all fields";
+            if (receiver.equals("") || address.equals("") || phoneNumber.equals("") || email.equals("example@gmail.com") || email.equals("")) {
+                String announcementToFillFields = "Please fill up all fields or Do not use 'example' value";
+                request.setAttribute("announcementToFillFields", announcementToFillFields);
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("cart.jsp");
-                request.setAttribute("announcementToFillFields",announcementToFillFields);
-                requestDispatcher.forward(request,response);
-            }
-
-            String orderUserName = (String) session.getAttribute("cookieUserName");
-            Account loginedAccount = accountImp.findByLoginName(orderUserName);
-
-            Order order = (Order) session.getAttribute("order");
-            List<Item> list = order.getItems();
-
-            String orderDate = String.valueOf(LocalDate.now());
-            String[] dateArray = orderDate.split("-");
-            int no;
-            String orderIdHead = "OD"+dateArray[0]+dateArray[1]+dateArray[2];
-            String maxOrderIdHaveOrderIdHead = orderServiceImp.getMaxOrderIdByOrderIdHead(orderIdHead);
-            if (maxOrderIdHaveOrderIdHead.equals("")){
-                no = 1;
+                requestDispatcher.forward(request, response);
             } else {
-                String orderIdTails = maxOrderIdHaveOrderIdHead.substring(9);
-                no = Integer.parseInt(orderIdTails)+1;
+                String orderUserName = (String) session.getAttribute("cookieUserName");
+                Account loginedAccount = accountImp.findByLoginName(orderUserName);
+
+                Order order = (Order) session.getAttribute("order");
+                List<Item> list = order.getItems();
+
+                String orderDate = String.valueOf(LocalDate.now());
+                String[] dateArray = orderDate.split("-");
+                int no;
+                String orderIdHead = "OD" + dateArray[0] + dateArray[1] + dateArray[2];
+                String maxOrderIdHaveOrderIdHead = orderServiceImp.getMaxOrderIdByOrderIdHead(orderIdHead);
+                if (maxOrderIdHaveOrderIdHead.equals("")) {
+                    no = 1;
+                } else {
+                    String orderIdTails = maxOrderIdHaveOrderIdHead.substring(9);
+                    no = Integer.parseInt(orderIdTails) + 1;
+                }
+
+                String orderId = orderIdHead + String.valueOf(no);
+
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("confirmOrder.jsp");
+                request.setAttribute("orderId", orderId);
+                request.setAttribute("list", list);
+                request.setAttribute("accountId", loginedAccount.getAccountId());
+                request.setAttribute("accountName", receiver);
+                request.setAttribute("orderDate", orderDate);
+                request.setAttribute("receiver", receiver);
+                request.setAttribute("address", address);
+                request.setAttribute("phoneNumber", phoneNumber);
+                request.setAttribute("email", email);
+
+                requestDispatcher.forward(request, response);
             }
-
-            String orderId = orderIdHead+String.valueOf(no);
-
-            RequestDispatcher requestDispatcher =request.getRequestDispatcher("confirmOrder.jsp");
-            request.setAttribute("orderId",orderId);
-            request.setAttribute("list",list);
-            request.setAttribute("accountId", loginedAccount.getAccountId());
-            request.setAttribute("accountName", receiver);
-            request.setAttribute("orderDate", orderDate);
-            request.setAttribute("receiver", receiver);
-            request.setAttribute("address", address);
-            request.setAttribute("phoneNumber", phoneNumber);
-            request.setAttribute("email", email);
-
-            requestDispatcher.forward(request,response);
         }
     }
 
@@ -97,7 +97,7 @@ public class CheckOutCartServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         String isLogined = (String) session.getAttribute("cookieIsLogin");
-        if (isLogined.equals("not yet")){
+        if (isLogined.equals("not yet")) {
             requestLoginIfNot(request, response);
         } else {
             setDefaultInformation(request, response, session);
@@ -116,11 +116,11 @@ public class CheckOutCartServlet extends HttpServlet {
         String address = account.getAddress();
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("cart.jsp");
-        request.setAttribute("defaultAccountName",accountName);
-        request.setAttribute("defaultEmail",email);
-        request.setAttribute("defaultPhoneNumber",phoneNumber);
-        request.setAttribute("defaultAddress",address);
+        request.setAttribute("defaultAccountName", accountName);
+        request.setAttribute("defaultEmail", email);
+        request.setAttribute("defaultPhoneNumber", phoneNumber);
+        request.setAttribute("defaultAddress", address);
 
-        requestDispatcher.forward(request,response);
+        requestDispatcher.forward(request, response);
     }
 }
