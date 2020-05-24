@@ -2,6 +2,10 @@
 <%@ page import="model.Category" %>
 <%@ page import="service.ProductServiceImp" %>
 <%@ page import="model.Product" %>
+<%@ page import="model.Order" %>
+<%@ page import="model.Item" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page session="true" %>
@@ -46,6 +50,13 @@
                     <span>
                          <a href="/addToCartServlet?productId=<%=product.getProductId()%>"></a>
                     </span>
+
+                        <c:set var="totalOrder" value="${0}"/>
+                                <c:forEach var="item" items="${order.items}">
+                                    <c:set var="totalOrder"
+                                           value="${totalOrder + item.quantity}"/>
+                                </c:forEach>${totalOrder}</span>
+
                 </a>
             </div>
             <div class="user-access">
@@ -71,8 +82,8 @@
             </div>
             <nav class="main-menu mobile-menu">
                 <ul>
-                    <li><a class="active" href="/pagination">Home</a></li>
-                    <li><a href="">Category</a>
+                    <li><a style="font-size: 20px" class="active" href="/pagination">Home</a></li>
+                    <li><a style="font-size: 20px" href="">Category</a>
                         <ul class="sub-menu">
                             <%
                                 for (Category category: categoryServiceImp.getListCategory()){
@@ -83,13 +94,13 @@
                             %>
                         </ul>
                     </li>
-                    <li><a href="">Blog</a>
+                    <li><a style="font-size: 20px" href="">Blog</a>
                         <ul class="sub-menu">
                             <li><a href="">ATAG.VN Story</a></li>
                             <li><a href="">How to become a perfect Online Market ?</a></li>
                         </ul>
                     </li>
-                    <li><a href="">Contact</a>
+                    <li><a style="font-size: 20px" href="">Contact</a>
                         <ul class="sub-menu">
                             <li><a href="">Phone : (024).0000-0000</a></li>
                             <li><a href="">Email : cskh@atag.vn</a></li>

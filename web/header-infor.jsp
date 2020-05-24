@@ -4,7 +4,7 @@
     <title>Title</title>
 </head>
 <body>
-<div class="header-info">
+<div class="header-info" style="background: #286260; !important;">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-4 text-center">

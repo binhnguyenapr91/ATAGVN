@@ -47,6 +47,7 @@
 
 
 <%--BODY--%>
+<h3 style="color: blue; width: 1500px; text-align: center">${announcementOrderSuccessful}</h3>
 <section class="cart-total-page spad">
     <div class="container">
         <form action="/cartUpdateServlet?action=Update" class="checkout-form" method="post">
@@ -134,36 +135,36 @@
             <div>
                 <form action="/checkoutcart" method="post" class="deliveryInformation">
                     <a style="margin-left: 25px" class="text-primary" href="/checkoutcart">Click here to Use User's default information</a>
-                    <b><i style="margin-left: 25px; color: red">${announcementToLogin}</i></b>
+                    <b><i style="margin-left: 25px; color: red">${announcementToLogin}${announcementToFillFields}</i></b>
                     <table class="table table-hover"
                            style="margin-left: 20px; width: 1060px; margin-bottom: 50px; margin-top: 10px">
                         <tr>
                             <th>Your Name*</th>
-                            <td><input style="padding-top: 0px" name="fullName" type="text" placeholder="Full Name" value="${defaultAccountName}"></td>
+                            <td><input style="margin: 0; padding: 0; border: 0.5px solid lightgrey" name="fullName" type="text" placeholder="Full Name" value="${defaultAccountName}"></td>
                         </tr>
                         <tr>
                             <th>Your Email*</th>
-                            <td><input style="padding-top: 0px" name="email" type="text" value="example@gmail.com"><i style="color:red;">${defaultEmail}</i></td>
+                            <td><input style="margin: 0; padding: 0; border: 0.5px solid lightgrey" name="email" type="text" value="example@gmail.com"><i style="color:red;">${defaultEmail}</i></td>
                         </tr>
                         <tr>
                             <th>Your Phone Number*</th>
-                            <td><input style="padding-top: 0px" name="phoneNumber" type="text" value="${defaultPhoneNumber}"></td>
+                            <td><input style="margin: 0; padding: 0; border: 0.5px solid lightgrey" name="phoneNumber" type="text" value="${defaultPhoneNumber}"></td>
                         </tr>
                         <tr>
                             <th>Your Address*</th>
-                            <td><input style="padding-top: 0px" name="address" type="text" value="${defaultAddress}"></td>
+                            <td><input style="margin: 0; padding: 0; border: 0.5px solid lightgrey" name="address" type="text" value="${defaultAddress}"></td>
                         </tr>
                         <tr>
                             <th>Payment Method</th>
-                            <td><input style="padding-top: 0px" type="text" value=" Cash on Delivery" disabled ></td>
+                            <td><input style="margin: 0; padding: 0; border: 0.5px solid lightgrey" type="text" value=" Cash on Delivery" disabled ></td>
                         </tr>
                         <tr>
                             <th>Delivery Date</th>
-                            <td><input style="padding-top: 0px" type="text" value=" 3-5 working days " disabled></td>
+                            <td><input style="margin: 0; padding: 0; border: 0.5px solid lightgrey" type="text" value=" 3-5 working days " disabled></td>
                         </tr>
                         <tr>
                             <th></th>
-                            <td colspan="3" style="width: 40px;"><input class="btn btn-outline-success" type="submit" value="Order"></td>
+                            <td colspan="3" style="width: 40px;"><input style="margin: 0; padding: 0; border-bottom: 1px solid" class="btn btn-outline-primary" type="submit" value="Order"></td>
                         </tr>
                     </table>
                 </form>
@@ -172,8 +173,7 @@
     </div>
 </section>
 <style>
-    .deliveryInformation table th {
-        width: 150px;
+    .deliveryInformation table th {        width: 150px;
     }
 
     .deliveryInformation table td {

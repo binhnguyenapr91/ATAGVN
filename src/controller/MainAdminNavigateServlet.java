@@ -12,6 +12,7 @@ import java.io.IOException;
 public class MainAdminNavigateServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //điều kiện nếu ko có role = admin thì ko có luôn đống ở dưới
         String target= req.getParameter("target");
         RequestDispatcher requestDispatcher;
         if (target==null){
