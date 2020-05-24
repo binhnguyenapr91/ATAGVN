@@ -2,6 +2,10 @@
 <%@ page import="model.Category" %>
 <%@ page import="service.ProductServiceImp" %>
 <%@ page import="model.Product" %>
+<%@ page import="model.Order" %>
+<%@ page import="model.Item" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page session="true" %>
@@ -41,7 +45,16 @@
                 <i class="fa fa-user">&nbsp${sessionScope['cookieUserName']}</i>
                 <a href="cart.jsp">
                     <i class="fa fa-shopping-bag"></i>
-                    <span>2</span>
+                    <span>
+                        <%
+                            List<Item> list = new ArrayList<>();
+                            String haveOrder = (String) session.getAttribute("haveOrder");
+                            if (!haveOrder.equals("not yet")) {
+                                Order orderSession = (Order) session.getAttribute("order");
+                                list = orderSession.getItems();
+                            }
+                        %>
+                        <%=list.size()%></span>
                 </a>
             </div>
             <div class="user-access">
