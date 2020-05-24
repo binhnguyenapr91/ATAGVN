@@ -61,7 +61,7 @@ public class CheckOutCartServlet extends HttpServlet {
                 if (maxOrderIdHaveOrderIdHead.equals("")) {
                     no = 1;
                 } else {
-                    String orderIdTails = maxOrderIdHaveOrderIdHead.substring(9);
+                    String orderIdTails = maxOrderIdHaveOrderIdHead.substring(10);
                     no = Integer.parseInt(orderIdTails) + 1;
                 }
 

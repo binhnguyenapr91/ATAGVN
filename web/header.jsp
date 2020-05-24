@@ -46,15 +46,12 @@
                 <a href="cart.jsp">
                     <i class="fa fa-shopping-bag"></i>
                     <span>
-                        <%
-                            List<Item> list = new ArrayList<>();
-                            String haveOrder = (String) session.getAttribute("haveOrder");
-                            if (!haveOrder.equals("not yet")) {
-                                Order orderSession = (Order) session.getAttribute("order");
-                                list = orderSession.getItems();
-                            }
-                        %>
-                        <%=list.size()%></span>
+                        <c:set var="totalOrder" value="${0}"/>
+                                <c:forEach var="item" items="${order.items}">
+                                    <c:set var="totalOrder"
+                                           value="${totalOrder + item.quantity}"/>
+                                </c:forEach>${totalOrder}</span>
+
                 </a>
             </div>
             <div class="user-access">
