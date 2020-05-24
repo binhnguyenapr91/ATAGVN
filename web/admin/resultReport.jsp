@@ -40,10 +40,10 @@
         </div>
     </div>
 </header>
-<h1>Report by Name and Time</h1>
-<div class="mainManagement">
-    <div class="accountManagement" style="width: 1470px">
-        <h6 style="width: 1470px;"><a style="float:right" class="btn btn-outline-primary" href="/accountServlet?action=add">Add more Account</a>&nbsp&nbsp<a class="btn btn-outline-danger" href="admin/admin.jsp">Back to Listing</a></h6>
+<hr style="height: 10px">
+<div class="container-fluid" style="margin-left: 30px">
+    <h3>Report by Name and Time</h3>
+    <h6 style="margin: 20px 0"><a class="btn btn-outline-danger" href="/mainAdminNavigateServlet?target=reportByName_TimeServlet">Back</a></h6>
         <table class="table table-hover">
             <thead>
             <tr>

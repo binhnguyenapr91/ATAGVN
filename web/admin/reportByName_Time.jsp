@@ -41,16 +41,34 @@
         </div>
     </div>
 </header>
-<h1>Report by Name and Time</h1>
+<hr style="height: 10px">
+<div class="container-fluid" style="margin-left: 30px">
+<h3>Report by Name and Time</h3>
+    <h6 style="margin: 20px 0"><a class="btn btn-outline-danger" href="/mainAdminNavigateServlet">Back to Listing</a></h6>
 <form action="/reportByName_TimeServlet" method="post">
-    <select name="name" id="selectionName">
-        <c:forEach items="${users}" var="user">
-            <option value="${user.getAccountName()}">${user.getAccountName()}</option>
-        </c:forEach>
-    </select>
-    <label for="startTime">Start Time</label></label><input type="text" id="startTime" name="startTime" placeholder="Format: 'YYYY-MM-DD'">
-    <label for="endTime">End Time</label><input type="text" id="endTime" name="endTime" placeholder="Format: 'YYYY-MM-DD'">
-    <input type="submit" value="Get Report">
+    <table>
+        <tr>
+            <td style="width: 100px;">User       : </td>
+            <td><select name="name" id="selectionName">
+                <c:forEach items="${users}" var="user">
+                    <option value="${user.getAccountName()}">${user.getAccountName()}</option>
+                </c:forEach>
+            </select></td>
+        </tr>
+        <tr>
+            <td style="width: 100px;">Start Time :</td>
+            <td><label for="startTime"></label></label><input type="text" id="startTime" name="startTime" placeholder="Format: 'YYYY-MM-DD'"></td>
+        </tr>
+        <tr>
+            <td style="width: 100px;">End Time   : </td>
+            <td><label for="endTime"></label><input type="text" id="endTime" name="endTime" placeholder="Format: 'YYYY-MM-DD'"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Get Report"></td>
+        </tr>
+    </table>
 </form>
+</div>
 </body>
 </html>
