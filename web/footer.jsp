@@ -62,7 +62,7 @@
                 <a href="" class="pinterest"><img src="img/facebook.PNG"><span> facebook</span></a>
                 <a href="" class="facebook"><img src="img/twitter.PNG"><span> twitter</span></a>
                 <a href="" class="twitter"><img src="img/youtube.PNG"><span> youtube</span></a>
-                <a href="" class="twitter"><p><b>GookLuck & Thank you all!!!</b></p></a>
+                <a href="" class="bt"><img src="img/BCT.png" width="270px" height="50px"></a>
             </div>
         </div>
     </div>
