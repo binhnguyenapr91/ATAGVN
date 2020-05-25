@@ -115,7 +115,7 @@ public class AccountServlet extends HttpServlet {
         String phoneNumber = req.getParameter("phoneNumber");
         boolean gender = Boolean.parseBoolean(req.getParameter("gender"));
         boolean status = Boolean.parseBoolean(req.getParameter("status"));
-        Account handler = new Account(accountId, accountName, loginName, password, accountAccess, address, phoneNumber, gender, status);
+        Account handler = new Account(accountId, accountName, loginName, accountAccess,password, address, phoneNumber, gender, status);
         accountImp.addNewAccount(handler);
 
         List<Account> accounts = accountImp.viewAllAccount();;
