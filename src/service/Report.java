@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.ResultReport;
+import model.RevenueReport;
 
 public class Report {
 
@@ -48,6 +49,26 @@ public class Report {
         return listResult;
     }
 
+    public List<RevenueReport> getTotalRevenue(String startTime, String endTime) throws SQLException {
+        Connection connection = DBConnect.getConnection();
+        List<RevenueReport> listResult = new ArrayList<>();
+        PreparedStatement ps = connection.prepareStatement("call reportRevenue(?,?)");
+        ps.setString(1, startTime);
+        ps.setString(2, endTime);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            String orderId = rs.getString("OrderID");
+            String orderDate = rs.getString("orderDate");
+            Float totalRevenue = rs.getFloat("total");
+            listResult.add(new RevenueReport(orderId, orderDate,totalRevenue));
+        }
+        return listResult;
+    }
     public static void main(String[] args) throws SQLException {
+
+        Report rp = new Report();
+        List<RevenueReport> list = new ArrayList<>();
+        list = rp.getTotalRevenue("2020-03-01","2020-03-30");
+        System.out.println(list);
     }
 }

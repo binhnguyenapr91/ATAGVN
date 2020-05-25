@@ -1,12 +1,12 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: binhnguyen
   Date: 5/22/20
-  Time: 11:15 AM
+  Time: 1:34 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>ATAG.VN</title>
@@ -25,7 +25,6 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="../boostrap/css/bootstrap.css">
-
 </head>
 <body>
 <header class="header-section">
@@ -41,16 +40,29 @@
         </div>
     </div>
 </header>
-<h1>Report by Name and Time</h1>
-<form action="/reportByName_TimeServlet" method="post">
-    <select name="name" id="selectionName">
-        <c:forEach items="${users}" var="user">
-            <option value="${user.getAccountName()}">${user.getAccountName()}</option>
-        </c:forEach>
-    </select>
-    <label for="startTime">Start Time</label></label><input type="text" id="startTime" name="startTime" placeholder="Format: 'YYYY-MM-DD'">
-    <label for="endTime">End Time</label><input type="text" id="endTime" name="endTime" placeholder="Format: 'YYYY-MM-DD'">
-    <input type="submit" value="Get Report">
-</form>
+<h1>Report by Revenue</h1>
+<div class="mainManagement">
+    <div class="accountManagement" style="width: 1470px">
+        <h6 style="width: 1470px;"><a style="float:right" class="btn btn-outline-primary" href="/accountServlet?action=add">Add more Account</a>&nbsp&nbsp<a class="btn btn-outline-danger" href="admin/admin.jsp">Back to Listing</a></h6>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>OrderID</th>
+                <th>OrderDate</th>
+                <th>Total</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach items="${results}" var="result">
+                <tr>
+                    <td><input type="text" name="orderId" value="${result.getOrderId()}"></td>
+                    <td><input type="text" name="orderDate" value="${result.getOrderDate()}"></td>
+                    <td><input type="text" name="totalRevenue" value="${result.getTotalRevenue()}"></td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </div>
+</div>
 </body>
 </html>

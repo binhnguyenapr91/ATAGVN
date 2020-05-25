@@ -36,14 +36,15 @@
     <h3>Admin Management Page</h3>
         <table>
             <tr>
-                <td><a href="/mainAdminNavigateServlet?target=productManagement"><input style="background-color: #c69500" type="button" value="Product Management"></a></td>
-                <td><a href="/mainAdminNavigateServlet?target=categoryManagement"><input style="background-color: #c69500" type="button" value="Category Management"></a></td>
-                <td><a href="/mainAdminNavigateServlet?target=accountManagement"><input style="background-color: #c69500" type="button" value="Account Management"></a></td>
-                <td><a href="/mainAdminNavigateServlet?target=orderManagement"><input style="background-color: #c69500" type="button" value="Order Management"></a></td>
+                <td><a href="/mainAdminNavigateServlet?target=productManagement"><input class="btn btn-primary" type="button" value="Product Management"></a></td>
+                <td><a href="/mainAdminNavigateServlet?target=categoryManagement"><input class="btn btn-danger" type="button" value="Category Management"></a></td>
+                <td><a href="/mainAdminNavigateServlet?target=accountManagement"><input class="btn btn-success" type="button" value="Account Management"></a></td>
+                <td><a href="/mainAdminNavigateServlet?target=orderManagement"><input class="btn btn-dark" type="button" value="Order Management"></a></td>
             </tr>
             <tr>
                 <td><a href="/mainAdminNavigateServlet?target=reportByName_TimeServlet"><input style="background-color: #c69500" type="button" value="Report By Name And Time"></a></td>
                 <td><a href="/mainAdminNavigateServlet?target=reportByOrderStatus"><input style="background-color: #c69500" type="button" value="Report By Order Status"></a></td>
+                <td><a href="/mainAdminNavigateServlet?target=reportByRevenueServlet"><input style="background-color: #c69500" type="button" value="Report By Revenue"></a></td>
             </tr>
         </table>
 </div>

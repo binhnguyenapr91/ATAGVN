@@ -42,6 +42,10 @@ public class MainAdminNavigateServlet extends HttpServlet {
                 requestDispatcher = req.getRequestDispatcher("/reportByOrderStatus");
                 requestDispatcher.forward(req,resp);
                 break;
+            case "reportByRevenueServlet":
+                requestDispatcher = req.getRequestDispatcher("/reportByRevenueServlet");
+                requestDispatcher.forward(req,resp);
+                break;
             default:
                 requestDispatcher = req.getRequestDispatcher("admin/admin.jsp");
                 requestDispatcher.forward(req,resp);

@@ -41,13 +41,8 @@
         </div>
     </div>
 </header>
-<h1>Report by Name and Time</h1>
-<form action="/reportByName_TimeServlet" method="post">
-    <select name="name" id="selectionName">
-        <c:forEach items="${users}" var="user">
-            <option value="${user.getAccountName()}">${user.getAccountName()}</option>
-        </c:forEach>
-    </select>
+<h1>Report Revenue by Time</h1>
+<form action="/reportByRevenueServlet" method="post">
     <label for="startTime">Start Time</label></label><input type="text" id="startTime" name="startTime" placeholder="Format: 'YYYY-MM-DD'">
     <label for="endTime">End Time</label><input type="text" id="endTime" name="endTime" placeholder="Format: 'YYYY-MM-DD'">
     <input type="submit" value="Get Report">

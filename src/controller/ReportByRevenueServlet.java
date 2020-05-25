@@ -1,8 +1,7 @@
 package controller;
 
-import model.Account;
 import model.ResultReport;
-import service.AccountImp;
+import model.RevenueReport;
 import service.Report;
 
 import javax.servlet.RequestDispatcher;
@@ -13,11 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "ReprotByName_TimeServlet", urlPatterns = "/reportByName_TimeServlet")
-public class ReportByName_TimeServlet extends HttpServlet {
+@WebServlet(name = "ReprotByRevenueServlet", urlPatterns = "/reportByRevenueServlet")
+public class ReportByRevenueServlet extends HttpServlet {
     private Report report = new Report();
 
     @Override
@@ -28,32 +26,23 @@ public class ReportByName_TimeServlet extends HttpServlet {
         }
         switch (action) {
             default:
-                showSelectUser(req,resp);
-
+                RequestDispatcher requestDispatcher = req.getRequestDispatcher("/admin/reportRevenueByTime.jsp");
+                requestDispatcher.forward(req, resp);
         }
-    }
-
-    private void showSelectUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        AccountImp accountImp = new AccountImp();
-        List<Account> users = accountImp.viewAllAccount();
-        req.setAttribute("users",users);
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/admin/reportByName_Time.jsp");
-        requestDispatcher.forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        selectOrdersDetailByTime(req, resp);
+        getRevenueByTime(req, resp);
     }
 
-    private void selectOrdersDetailByTime(HttpServletRequest req, HttpServletResponse resp) {
-        String name = req.getParameter("name");
+    private void getRevenueByTime(HttpServletRequest req, HttpServletResponse resp) {
         String startDate = req.getParameter("startTime");
         String endDate = req.getParameter("endTime");
         try {
-            List<ResultReport> resultReports = report.getOrdersDetailByName(name, startDate, endDate);
-            req.setAttribute("results", resultReports);
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/admin/resultReport.jsp");
+            List<RevenueReport> revenueReport = report.getTotalRevenue(startDate,endDate);
+            req.setAttribute("results", revenueReport);
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/admin/resultRevenue.jsp");
             requestDispatcher.forward(req, resp);
         } catch (SQLException throwables) {
             throwables.printStackTrace();

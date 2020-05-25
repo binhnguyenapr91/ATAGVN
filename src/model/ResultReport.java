@@ -7,11 +7,26 @@ public class ResultReport {
     String productName;
     String quantity;
     String priceEach;
+    float totalRevenue;
+
+    public float getTotalRevenue() {
+        return totalRevenue;
+    }
+
+    public void setTotalRevenue(float totalRevenue) {
+        this.totalRevenue = totalRevenue;
+    }
 
     public ResultReport(String orderId, String orderDate, String accountName) {
         this.orderId = orderId;
         this.orderDate = orderDate;
         this.accountName = accountName;
+    }
+
+    public ResultReport(String orderId, String orderDate, float totalRevenue){
+        this.orderId = orderId;
+        this.orderDate = orderDate;
+        this.totalRevenue = totalRevenue;
     }
 
     public String getOrderId() {
