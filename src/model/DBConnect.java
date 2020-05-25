@@ -8,7 +8,7 @@ public class DBConnect {
     public static Connection getConnection() {
         Connection conn = null;
 
-        String url= "jdbc:mysql://localhost:3306/atagvn?&useSSL=false";
+        String url= "jdbc:mysql://localhost:3306/atagvn?allowPublicKeyRetrieval=true&useSSL=false";
         String username = "root";
         String password = "sysadmin1234$";
 
