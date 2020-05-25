@@ -46,16 +46,6 @@
 <h3>Report by Name and Time</h3>
     <h6 style="margin: 20px 0"><a class="btn btn-outline-danger" href="/mainAdminNavigateServlet">Back to Listing</a></h6>
 <form action="/reportByName_TimeServlet" method="post">
-<<<<<<< HEAD
-    <select name="name" id="selectionName">
-        <c:forEach items="${users}" var="user">
-            <option value="${user.getAccountName()}">${user.getAccountName()}</option>
-        </c:forEach>
-    </select>
-    <label for="startTime">Start Time</label></label><input type="text" id="startTime" name="startTime" placeholder="Format: 'YYYY-MM-DD'">
-    <label for="endTime">End Time</label><input type="text" id="endTime" name="endTime" placeholder="Format: 'YYYY-MM-DD'">
-    <input type="submit" value="Get Report">
-=======
     <table>
         <tr>
             <td style="width: 100px;">User       : </td>
@@ -78,7 +68,6 @@
             <td><input type="submit" value="Get Report"></td>
         </tr>
     </table>
->>>>>>> ece35e748ad86253b02e2e1b7862dce8043a07dc
 </form>
 </div>
 </body>
