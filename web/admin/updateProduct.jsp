@@ -3,7 +3,8 @@
 <%@ page import="service.ProductServiceImp" %>
 <%@ page import="service.CategoryServiceImp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %><%@ page import="service.ProductServiceImp" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="service.ProductServiceImp" %>
 <%@ page import="service.CategoryServiceImp" %>
 <%@ page import="model.Product" %>
 <%@ page import="java.text.NumberFormat" %>
@@ -38,14 +39,14 @@
     Product product = productDAO.getProduct(request.getParameter("productId"));
     NumberFormat format = NumberFormat.getNumberInstance();
 %>
-<header class="header-section" >
-    <div class="container-fluid" >
+<header class="header-section">
+    <div class="container-fluid">
         <div class="inner-header">
             <div class="logo">
                 <h2 style="margin-bottom: 20px">PRODUCT <small class="text-muted">Management</small></h2>
             </div>
             <div class="user-access">
-                <a style="margin: 30px" class="active" href="/pagination">Home Page/Logout</a>
+                <a style="margin: 30px" class="active" href="/loginSession">Home Page/Logout</a>
                 <a href="" class="out"><i class="fa fa-user"></i>&nbspAdmin</a>
             </div>
         </div>
@@ -54,7 +55,7 @@
 <hr style="height: 10px">
 <h3>Update Product</h3>
 <br>
-<h6><a class="btn btn-outline-danger" href="mainAdminNavigateServlet?target=productManagement">Back to Listing</a></h6>
+<h6><a class="btn btn-outline-danger" href="/productServlet">Back to Listing</a></h6>
 <br>
 <form method="post" action="/productServlet?action=update">
     <table class="table table-hover">
@@ -84,7 +85,8 @@
                                              value="${product.getProductPrice()}"></th>
             <th style="width: 160px;"><input style="width: 160px;" type="text" name="pmQuantity"
                                              value="${product.getQuantityInStock()}"></th>
-            <th style="width: 100px;"><input type="hidden" name ="pmImg" value="${product.getImage()}"><img style="width: 100px;" src="../${product.getImage()}"/></th>
+            <th style="width: 100px;"><input type="hidden" name="pmImg" value="${product.getImage()}"><img
+                    style="width: 100px;" src="../${product.getImage()}"/></th>
             <th style="width: 80px;"><input style="width: 80px;" type="text" name="pmStatus"
                                             value="${product.getStatus()}"></th>
             <th style="width: 300px;"><input type="text" name="pmDes" value="${product.getDescription()}"></th>

@@ -35,14 +35,18 @@
                 <h2 style="margin-bottom: 20px">REPORT <small class="text-muted">Management</small></h2>
             </div>
             <div class="user-access">
-                <a style="margin: 30px" class="active" href="/pagination">Home Page/Logout</a>
+                <a style="margin: 30px" class="active" href="/loginSession">Home Page/Logout</a>
                 <a href="" class="out"><i class="fa fa-user"></i>&nbspAdmin</a>
             </div>
         </div>
     </div>
 </header>
-<h1>Report by Name and Time</h1>
+<hr style="height: 10px">
+<div class="container-fluid" style="margin-left: 30px">
+<h3>Report by Name and Time</h3>
+    <h6 style="margin: 20px 0"><a class="btn btn-outline-danger" href="/mainAdminNavigateServlet">Back to Listing</a></h6>
 <form action="/reportByName_TimeServlet" method="post">
+<<<<<<< HEAD
     <select name="name" id="selectionName">
         <c:forEach items="${users}" var="user">
             <option value="${user.getAccountName()}">${user.getAccountName()}</option>
@@ -51,6 +55,31 @@
     <label for="startTime">Start Time</label></label><input type="text" id="startTime" name="startTime" placeholder="Format: 'YYYY-MM-DD'">
     <label for="endTime">End Time</label><input type="text" id="endTime" name="endTime" placeholder="Format: 'YYYY-MM-DD'">
     <input type="submit" value="Get Report">
+=======
+    <table>
+        <tr>
+            <td style="width: 100px;">User       : </td>
+            <td><select name="name" id="selectionName">
+                <c:forEach items="${users}" var="user">
+                    <option value="${user.getAccountName()}">${user.getAccountName()}</option>
+                </c:forEach>
+            </select></td>
+        </tr>
+        <tr>
+            <td style="width: 100px;">Start Time :</td>
+            <td><label for="startTime"></label></label><input type="text" id="startTime" name="startTime" placeholder="Format: 'YYYY-MM-DD'"></td>
+        </tr>
+        <tr>
+            <td style="width: 100px;">End Time   : </td>
+            <td><label for="endTime"></label><input type="text" id="endTime" name="endTime" placeholder="Format: 'YYYY-MM-DD'"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Get Report"></td>
+        </tr>
+    </table>
+>>>>>>> ece35e748ad86253b02e2e1b7862dce8043a07dc
 </form>
+</div>
 </body>
 </html>

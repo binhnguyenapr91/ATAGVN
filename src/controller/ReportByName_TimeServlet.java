@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,12 +29,20 @@ public class ReportByName_TimeServlet extends HttpServlet {
         }
         switch (action) {
             default:
+<<<<<<< HEAD
                 showSelectUser(req,resp);
+=======
+                showReport(req, resp);
+>>>>>>> ece35e748ad86253b02e2e1b7862dce8043a07dc
 
         }
     }
 
+<<<<<<< HEAD
     private void showSelectUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+=======
+    private void showReport(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+>>>>>>> ece35e748ad86253b02e2e1b7862dce8043a07dc
         AccountImp accountImp = new AccountImp();
         List<Account> users = accountImp.viewAllAccount();
         req.setAttribute("users",users);

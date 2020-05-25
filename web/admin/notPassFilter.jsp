@@ -12,6 +12,6 @@
 </head>
 <body>
 Turn to login page and login as admin to access this feature
-<a href="/login.jsp">
+<a href="login.jsp"></a>
 </body>
 </html>

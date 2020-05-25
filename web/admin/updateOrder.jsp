@@ -22,15 +22,15 @@
 </head>
 <body>
 <%--HEADER--%>
-<header class="header-section">
-    <div class="container-fluid">
+<header class="header-section" >
+    <div class="container-fluid" >
         <div class="inner-header">
             <div class="logo">
-                <a href="index.jsp"><img src="img/logo.png" alt="logo"></a>
+                <h2 style="margin-bottom: 20px">Order <small class="text-muted">Management</small></h2>
             </div>
             <div class="user-access">
-                <a class="active" href="index.jsp">Home Page/Logout</a>
-                <a href="" class="out"><i class="fa fa-user"></i> Admin</a>
+                <a style="margin: 30px" class="active" href="/loginSession">Home Page/Logout</a>
+                <a href="" class="out"><i class="fa fa-user"></i>&nbspAdmin</a>
             </div>
         </div>
     </div>
@@ -38,8 +38,8 @@
 <hr style="height: 10px">
 <div class="mainManagement">
     <div class="accountManagement">
-        <h3>Order Management</h3>
-        <h6><a href="#">Add more Order</a></h6>
+        <h3>Update Order</h3>
+        <h6><a class="btn btn-outline-danger" href="/orderServlet">Back to Listing</a></h6>
         <form method="post">
             <table class="table table-hover">
                 <thead>

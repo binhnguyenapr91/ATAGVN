@@ -32,17 +32,19 @@
     <div class="container-fluid">
         <div class="inner-header">
             <div class="logo">
-                <h2 style="margin-bottom: 20px">Report <small class="text-muted">Management</small></h2>
+                <h2 style="margin-bottom: 20px">REPORT <small class="text-muted">Management</small></h2>
             </div>
             <div class="user-access">
-                <a style="margin: 30px" class="active" href="/pagination">Home Page/Logout</a>
+                <a style="margin: 30px" class="active" href="/loginSession">Home Page/Logout</a>
                 <a href="" class="out"><i class="fa fa-user"></i>&nbspAdmin</a>
             </div>
         </div>
     </div>
 </header>
-<hr/>
-<h1>Report by status of order</h1>
+<hr style="height: 10px">
+<div class="container-fluid" style="margin-left: 30px">
+    <h3>Report by Order Status</h3>
+    <h6 style="margin: 20px 0"><a class="btn btn-outline-danger" href="/mainAdminNavigateServlet">Back to Listing</a></h6>
 <form action="/reportByOrderStatus" method="post">
    <select name="selectStatus">
        <option value="true">Completed</option>
