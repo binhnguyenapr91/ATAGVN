@@ -204,3 +204,12 @@ begin
 end //
 delimiter ;
 
+delimiter //
+create procedure reportRevenue (in startDate datetime,in endDate datetime)
+begin
+    select orders.OrderID,orders.OrderDate,(Quantity * PriceEach) as total from orders
+    join order_product on orders.OrderID = order_product.OrderID
+    where OrderDate between startDate and endDate;
+end //
+delimiter ;
+
